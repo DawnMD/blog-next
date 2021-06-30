@@ -1,11 +1,12 @@
 import Nav from '../shared/Nav';
+import Footer from '../shared/Footer';
 
-export function Layout(props) {
+export default function Layout(props) {
 	return (
 		<>
 			<Nav />
 			<main>{props.children}</main>
-			{/* //TODOFooter */}
+			<Footer />
 		</>
 	);
 }

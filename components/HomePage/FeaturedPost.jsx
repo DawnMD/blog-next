@@ -1,8 +1,11 @@
+import Grid from '../shared/Grid';
 const FeaturedPost = (props) => {
 	return (
-		<section className='bg-gray-600 m-6 p-6'>
-			<h2 className='text-3xl tracking-wide font-semibold'>Featured Posts</h2>
-			{/* // TODO post grid */}
+		<section className='m-6 space-y-6'>
+			<h2 className='text-4xl tracking-wide font-semibold text-center'>
+				Featured Posts
+			</h2>
+			<Grid posts={props.posts} />
 		</section>
 	);
 };

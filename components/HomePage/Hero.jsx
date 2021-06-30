@@ -3,12 +3,13 @@ const Hero = (props) => {
 	return (
 		<>
 			<section className='bg-gray-900 m-6 rounded-lg p-6 space-y-6 shadow-xl flex flex-col items-center md:space-y-10'>
-				<div className='rounded-full overflow-hidden border-4 max-w-xs'>
+				<div className='w-72 h-72 rounded-full overflow-hidden border-4 max-w-xs'>
 					<Image
-						src='/images/home/potrait.png'
+						src='/images/home/potrait.JPG'
 						alt='An image showing Mainak'
 						width={320}
 						height={320}
+						layout='responsive'
 					/>
 				</div>
 				<h1 className='text-2xl font-semibold md:text-4xl md:font-bold'>

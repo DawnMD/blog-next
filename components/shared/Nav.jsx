@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import MenuIcon from './icons/MenuIcon';
+// import MenuIcon from './icons/MenuIcon';
 const Nav = (props) => {
 	return (
-		<header className='w-full p-4 text-lg font-medium bg-gray-900 shadow-xl flex justify-between items-center'>
-			<span className='text-2xl font-bold text-transparent bg-gradient-to-r from-red-500 via--400 to bg-purple-500 bg-clip-text'>
+		<header className='sticky top-0 left-0 z-10 w-full p-4 text-lg font-medium bg-gray-900 bg-opacity-95 shadow-xl flex justify-between items-center md:text-xl'>
+			<span className='text-2xl font-bold text-transparent bg-gradient-to-r from-red-500 via--400 to bg-purple-500 bg-clip-text md:text-3xl '>
 				<Link href='/'>MD</Link>
 			</span>
 			<nav className='flex space-x-4'>
