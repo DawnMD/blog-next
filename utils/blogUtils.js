@@ -5,9 +5,9 @@ import matter from 'gray-matter';
 const pathDirectory = path.join(process.cwd(), 'content');
 
 export function getBlog(blog) {
-	const blogPath = path.join(pathDirectory, blog);
-	const blogContent = fs.readFileSync(blogPath, 'utf-8');
 	const blogSlug = blog.replace(/\.md$/, '');
+	const blogPath = path.join(pathDirectory, `${blogSlug}.md`);
+	const blogContent = fs.readFileSync(blogPath, 'utf-8');
 	const { data, content } = matter(blogContent);
 	const parsedBlog = {
 		blogSlug,
