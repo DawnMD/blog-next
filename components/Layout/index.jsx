@@ -1,10 +1,10 @@
-import Nav from '../shared/Nav';
+import Navbar from '../shared/Navbar';
 import Footer from '../shared/Footer';
 
 export default function Layout(props) {
 	return (
 		<>
-			<Nav />
+			<Navbar />
 			<main>{props.children}</main>
 			<Footer />
 		</>

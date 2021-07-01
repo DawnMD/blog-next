@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-const GridItem = (props) => {
-	const { title, date, image, excert, slug } = props.post;
+const ListItem = ({ blog }) => {
+	const { title, date, image, excert, blogSlug } = blog;
 	const formatDate = new Date(date).toLocaleDateString('en-US', {
 		day: '2-digit',
 		month: 'long',
@@ -9,12 +9,12 @@ const GridItem = (props) => {
 	});
 	return (
 		<li className='bg-gray-900 rounded-lg shadow-lg overflow-hidden w-full md:w-4/5 lg:w-3/5 xl:w-2/5'>
-			<Link href={`/blogs/${slug}`}>
+			<Link href={`/blog/${blogSlug}`}>
 				<a className='flex flex-col'>
 					<div className='h-52 flex flex-col'>
 						{image && (
 							<Image
-								src={`/images/blogs/${slug}/${image}`}
+								src={`/images/blog/${blogSlug}/${image}`}
 								alt={title}
 								height={320}
 								width={320}
@@ -39,4 +39,4 @@ const GridItem = (props) => {
 		</li>
 	);
 };
-export default GridItem;
+export default ListItem;
