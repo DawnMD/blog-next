@@ -1,7 +1,7 @@
 const Education = () => {
 	return (
-		<section className='my-3 p-4 flex flex-col items-center space-y-4 tracking-wide md:space-y-6'>
-			<h2 className='font-bold text-3xl lg:text-5xl'>Education</h2>
+		<section className='flex flex-col items-center space-y-4 tracking-wide md:space-y-6'>
+			<h2 className='font-bold text-3xl lg:text-4xl'>Education</h2>
 			<div className='w-36 mx-auto h-1 rounded-lg bg-gradient-to-r from-red-500 via--400 to bg-purple-500 animate-gradient-x'></div>
 			<div className='bg-gray-900 md:w-6/12 md:text-center py-4 px-6 rounded-lg shadow-lg md:px-3'>
 				<h3 className='font-semibold text-2xl lg:text-3xl'>

@@ -2,7 +2,7 @@ import Image from 'next/image';
 const Hero = (props) => {
 	return (
 		<>
-			<section className='bg-gray-900 rounded-lg p-6 space-y-4 shadow-xl flex flex-col items-center md:space-y-8'>
+			<section className='bg-gray-900 rounded-lg p-4 space-y-4 shadow-xl flex flex-col items-center md:space-y-8'>
 				<div className='w-72 h-72 rounded-full overflow-hidden border-4 max-w-xs'>
 					<Image
 						src='/images/home/potrait.JPG'

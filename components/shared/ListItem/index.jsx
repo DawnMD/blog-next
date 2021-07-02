@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 const ListItem = ({ blog }) => {
-	const { title, date, image, excert, blogSlug } = blog;
+	const { title, date, image, excerpt, blogSlug } = blog;
 	const formatDate = new Date(date).toLocaleDateString('en-US', {
 		day: '2-digit',
 		month: 'long',
@@ -32,7 +32,7 @@ const ListItem = ({ blog }) => {
 								{formatDate}
 							</p>
 						</span>
-						<p className='md:text-xl'>{excert}</p>
+						<p className='md:text-xl'>{excerpt}</p>
 					</div>
 				</a>
 			</Link>
