@@ -1,7 +1,7 @@
 import List from '../shared/List';
 const Blogs = ({ blogs }) => {
 	return (
-		<section className='m-6 space-y-6'>
+		<section className='space-y-8'>
 			<h2 className='text-4xl tracking-wide font-semibold text-center'>
 				All Blogs
 			</h2>
