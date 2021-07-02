@@ -7,13 +7,13 @@ const Hero = (props) => {
 					<Image
 						src='/images/home/potrait.JPG'
 						alt='An image showing Mainak'
-						width={320}
-						height={320}
+						width={280}
+						height={280}
 						layout='responsive'
 					/>
 				</div>
 				<h1 className='text-2xl font-semibold md:text-4xl md:font-bold tracking-wide'>
-					Hi, I'm{' '}
+					<span>Hi, I&apos;m</span>
 					<span className='text-4xl font-bold text-transparent bg-gradient-to-r from-red-500 via--400 to bg-purple-500 bg-clip-text animate-gradient-x md:text-7xl'>
 						Mainak Das
 					</span>
