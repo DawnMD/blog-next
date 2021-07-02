@@ -1,18 +1,29 @@
-export function MenuIcon() {
+export function MenuIcon({ onClick, navStatus }) {
 	return (
-		<svg
-			xmlns='http://www.w3.org/2000/svg'
-			className='h-6 w-6'
-			fill='none'
-			viewBox='0 0 24 24'
-			stroke='currentColor'>
-			<path
-				strokeLinecap='round'
-				strokeLinejoin='round'
-				strokeWidth={2}
-				d='M4 6h16M4 12h16M4 18h16'
-			/>
-		</svg>
+		<>
+			<button
+				className='w-10 h-10 relative focus:outline-none'
+				onClick={onClick}>
+				{/* <span className='sr-only'>navStatus main menu</span> */}
+				<div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+					<span
+						aria-hidden='true'
+						className={`block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out ${
+							navStatus && 'rotate-45'
+						} ${!navStatus && '-translate-y-1.5'}`}></span>
+					<span
+						aria-hidden='true'
+						className={`block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out ${
+							navStatus && 'opacity-0'
+						}`}></span>
+					<span
+						aria-hidden='true'
+						className={`block absolute  h-0.5 w-5 bg-current transform transition duration-500 ease-in-out  ${
+							navStatus && '-rotate-45'
+						} ${!navStatus && 'translate-y-1.5'}`}></span>
+				</div>
+			</button>
+		</>
 	);
 }
 
