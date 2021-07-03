@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { useState } from 'react';
-import Mode from '../icons/Mode';
+import { useEffect, useState } from 'react';
+// import Mode from '../icons/Mode';
 import MenuIcon from '../icons/MenuIcon';
 const Nav = (props) => {
 	const [mobileNav, setMobileNav] = useState(false);
@@ -29,7 +29,7 @@ const Nav = (props) => {
 				</nav>
 			</header>
 			{mobileNav && (
-				<nav className='fixed z-10 w-full px-4 pb-4 text-xl font-medium tracking-wide bg-gray-900 shadow-md bg-opacity-95'>
+				<nav className='fixed z-10 w-full px-4 pb-4 text-xl font-medium tracking-wide bg-gray-900 shadow-md md:hidden md:invisible bg-opacity-95'>
 					<ul className='flex flex-col justify-center space-y-2'>
 						<li>
 							<Link href='/blogs'>Blogs</Link>
