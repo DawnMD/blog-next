@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import nightwind from 'nightwind/helper';
 
 const Mode = () => {
 	const [darkMode, setDarkMode] = useState(false);
 	const onModeSwitch = () => {
-		nightwind.enable(!darkMode);
-		setDarkMode(!darkMode);
+		console.log('change mode');
 	};
 	return (
 		<>

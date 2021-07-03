@@ -22,7 +22,7 @@ const Nav = (props) => {
 							<Link href='/contact'>Contact Me</Link>
 						</li>
 					</ul>
-					<Mode />
+					{/* <Mode /> */}
 					<div className=' md:hidden md:invisible'>
 						<MenuIcon onClick={toggleMobileNav} navStatus={mobileNav} />
 					</div>
