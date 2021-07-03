@@ -8,10 +8,10 @@ const ListItem = ({ blog }) => {
 		year: 'numeric',
 	});
 	return (
-		<li className='bg-gray-900 rounded-lg shadow-lg overflow-hidden w-full md:w-4/5 lg:w-3/5 xl:w-2/5'>
+		<li className='w-full overflow-hidden bg-gray-900 rounded-lg shadow-lg md:w-4/5 lg:w-3/5 xl:w-2/5'>
 			<Link href={`/blog/${blogSlug}`}>
 				<a className='flex flex-col'>
-					<div className='h-52 flex flex-col'>
+					<div className='flex flex-col h-52'>
 						{image && (
 							<Image
 								src={`/images/blog/${blogSlug}/${image}`}
@@ -25,10 +25,10 @@ const ListItem = ({ blog }) => {
 					</div>
 					<div className='p-3 space-y-2'>
 						<span className='space-y-1'>
-							<h3 className='font-semibold text-lg md:text-2xl tracking-wide'>
+							<h3 className='text-lg font-semibold tracking-wide md:text-2xl'>
 								{title}
 							</h3>
-							<p className='font-light text-sm text-gray-400 md:text-2xl'>
+							<p className='text-sm font-light text-gray-400 md:text-2xl'>
 								{formatDate}
 							</p>
 						</span>

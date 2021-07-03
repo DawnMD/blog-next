@@ -2,7 +2,7 @@ import Image from 'next/image';
 const BlogHeader = ({ title, image }) => {
 	return (
 		<header>
-			<div className='h-44 flex flex-col md:h-56 lg:h-64 xl:h-90'>
+			<div className='flex flex-col h-44 md:h-56 lg:h-64 xl:h-90'>
 				<Image
 					src={`/images/blog/getting-started-with-nextjs/${image}`}
 					alt={title}
