@@ -1,14 +1,22 @@
-import { useState } from 'react';
-
-const Mode = () => {
-	const [darkMode, setDarkMode] = useState(false);
-	const onModeSwitch = () => {
-		console.log('change mode');
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+const ThemeSwitch = () => {
+	// state mounting
+	const [mounted, setMounted] = useState(false);
+	//set initial theme
+	const { theme, setTheme } = useTheme();
+	//toggle theme
+	const toggleMode = () => {
+		setTheme(theme === 'light' ? 'dark' : 'light');
 	};
+	//check mount
+	useEffect(() => setMounted(true), []);
+	//mount decision
+	if (!mounted) return null;
 	return (
 		<>
-			<button onClick={onModeSwitch} className='w-10 h-10 focus:outline-none'>
-				{darkMode ? (
+			<button className='w-10 h-10 focus:outline-none' onClick={toggleMode}>
+				{theme === 'light' ? (
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						className='w-6 h-6 mx-auto'
@@ -25,7 +33,7 @@ const Mode = () => {
 				) : (
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
-						className='w-6 h-6 mx-auto'
+						className='w-6 h-6 mx-auto text-yellow-500'
 						fill='none'
 						viewBox='0 0 24 24'
 						stroke='currentColor'>
@@ -41,4 +49,4 @@ const Mode = () => {
 		</>
 	);
 };
-export default Mode;
+export default ThemeSwitch;
