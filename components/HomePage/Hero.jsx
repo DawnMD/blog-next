@@ -2,8 +2,8 @@ import Image from 'next/image';
 const Hero = (props) => {
 	return (
 		<>
-			<section className='flex flex-col items-center p-4 space-y-4 bg-gray-900 rounded-lg shadow-xl md:space-y-8'>
-				<div className='max-w-xs overflow-hidden border-4 rounded-full w-72 h-72'>
+			<section className='flex flex-col items-center p-4 space-y-4 bg-gray-100 rounded-lg shadow-xl md:space-y-8 dark:bg-gray-900'>
+				<div className='max-w-xs overflow-hidden border-4 border-gray-800 rounded-full w-72 h-72 dark:border-gray-100'>
 					<Image
 						src='/images/home/potrait.JPG'
 						alt='An image showing Mainak'
@@ -13,7 +13,7 @@ const Hero = (props) => {
 					/>
 				</div>
 				<h1 className='text-2xl font-semibold tracking-wide md:text-4xl md:font-bold'>
-					<span>Hi, I&apos;m</span>
+					<span>Hi, I&apos;m</span>{' '}
 					<span className='text-4xl font-bold text-transparent bg-purple-500 bg-gradient-to-r from-red-500 bg-clip-text animate-gradient-x md:text-7xl'>
 						Mainak Das
 					</span>
