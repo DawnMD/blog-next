@@ -23,7 +23,7 @@ const Education = () => {
 			</div>
 			<div className='px-6 py-4 space-y-1 bg-gray-900 rounded-lg shadow-lg md:w-6/12 md:text-center md:px-3'>
 				<h3 className='text-2xl font-semibold lg:text-3xl'>
-					Bidhannagaer Municipal School
+					Bidhannagar Municipal School
 				</h3>
 				<p className='space-x-2'>
 					<span className='text-xl font-medium'>Higher Secondary</span>
