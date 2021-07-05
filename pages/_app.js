@@ -1,17 +1,25 @@
 import '../styles/globals.css';
 import Layout from '../components/Layout';
-import { ThemeProvider } from 'next-themes';
+import { useEffect } from 'react';
 function MyApp({ Component, pageProps }) {
+	useEffect(() => {
+		// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+		if (
+			localStorage.theme === 'dark' ||
+			(!('theme' in localStorage) &&
+				window.matchMedia('(prefers-color-scheme: dark)').matches)
+		) {
+			document.documentElement.classList.remove('light');
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+			document.documentElement.classList.add('light');
+		}
+	});
 	return (
-		<ThemeProvider
-			attribute='class'
-			enableSystem={false}
-			disableTransitionOnChange
-			enableColorScheme>
-			<Layout>
-				<Component {...pageProps} />
-			</Layout>
-		</ThemeProvider>
+		<Layout>
+			<Component {...pageProps} />
+		</Layout>
 	);
 }
 
