@@ -30,6 +30,8 @@ module.exports = {
 				html: '#E65100',
 				css: '#0277BD',
 				react: '#61dafb',
+				node: '#026e00',
+				mongo: '#13aa52',
 			},
 			typography: (theme) => ({
 				light: {

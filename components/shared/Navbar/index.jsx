@@ -33,6 +33,9 @@ const Nav = (props) => {
 					<button
 						className='relative w-10 h-10 focus:outline-none md:invisible md:hidden'
 						onClick={toggleMobileNav}>
+						<span className='sr-only'>
+							Open navbar menu on mobile screen button
+						</span>
 						<div className='absolute block w-5 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2'>
 							<span
 								aria-hidden='true'

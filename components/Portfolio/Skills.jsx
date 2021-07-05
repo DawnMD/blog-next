@@ -16,7 +16,7 @@ const Skills = () => {
 			info: 'A utility-first CSS framework.',
 		},
 		{
-			tech: 'React JS',
+			tech: 'React.JS',
 			color: 'text-react',
 			info: 'A JavaScript library for building user interfaces.',
 		},
@@ -26,9 +26,19 @@ const Skills = () => {
 			info: 'A Predictable State Container for JS Apps.',
 		},
 		{
-			tech: 'Next JS',
+			tech: 'Next.JS',
 			color: '',
 			info: 'The React Framework for Production.',
+		},
+		{
+			tech: 'Node.Js',
+			color: 'text-node',
+			info: `Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.`,
+		},
+		{
+			tech: 'Mongo DB',
+			color: 'text-mongo',
+			info: 'MongoDB is a document database, which means it stores data in JSON-like documents.',
 		},
 	];
 	return (
@@ -41,10 +51,10 @@ const Skills = () => {
 						<div
 							className='px-6 py-4 space-y-2 text-center bg-gray-100 rounded-lg shadow-lg dark:bg-gray-900'
 							key={skill.tech}>
-							<h4
+							<h3
 								className={`text-2xl font-bold tracking-wider ${skill.color}`}>
 								{skill.tech}
-							</h4>
+							</h3>
 							<p className='text-lg font-medium'>{skill.info}</p>
 						</div>
 					);
