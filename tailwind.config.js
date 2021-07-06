@@ -1,5 +1,4 @@
 const defaultFonts = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors');
 module.exports = {
 	purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
 	darkMode: 'class', // or 'media' or 'class'
@@ -37,9 +36,9 @@ module.exports = {
 				light: {
 					css: [
 						{
-							color: theme('colors.gray.400'),
+							color: theme('colors.gray.300'),
 							'[class~="lead"]': {
-								color: theme('colors.gray.300'),
+								color: theme('colors.gray.200'),
 							},
 							a: {
 								color: theme('colors.white'),
@@ -48,17 +47,17 @@ module.exports = {
 								color: theme('colors.white'),
 							},
 							'ol > li::before': {
-								color: theme('colors.gray.400'),
+								color: theme('colors.gray.300'),
 							},
 							'ul > li::before': {
-								backgroundColor: theme('colors.gray.600'),
+								backgroundColor: theme('colors.gray.500'),
 							},
 							hr: {
-								borderColor: theme('colors.gray.200'),
+								borderColor: theme('colors.gray.100'),
 							},
 							blockquote: {
-								color: theme('colors.gray.200'),
-								borderLeftColor: theme('colors.gray.600'),
+								color: theme('colors.gray.100'),
+								borderLeftColor: theme('colors.gray.500'),
 							},
 							h1: {
 								color: theme('colors.white'),
@@ -73,7 +72,7 @@ module.exports = {
 								color: theme('colors.white'),
 							},
 							'figure figcaption': {
-								color: theme('colors.gray.400'),
+								color: theme('colors.gray.300'),
 							},
 							code: {
 								color: theme('colors.white'),
@@ -82,15 +81,15 @@ module.exports = {
 								color: theme('colors.white'),
 							},
 							pre: {
-								color: theme('colors.gray.200'),
-								backgroundColor: theme('colors.gray.800'),
+								color: theme('colors.gray.100'),
+								backgroundColor: theme('colors.gray.700'),
 							},
 							thead: {
 								color: theme('colors.white'),
-								borderBottomColor: theme('colors.gray.400'),
+								borderBottomColor: theme('colors.gray.300'),
 							},
 							'tbody tr': {
-								borderBottomColor: theme('colors.gray.600'),
+								borderBottomColor: theme('colors.gray.500'),
 							},
 						},
 					],

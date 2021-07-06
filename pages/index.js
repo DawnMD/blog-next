@@ -2,7 +2,7 @@ import Hero from '../components/HomePage/Hero';
 import Education from '../components/Portfolio/Education';
 // import FeaturedPost from '../components/HomePage/FeaturedPost';
 import Skills from '../components/Portfolio/Skills';
-import { getFeaturedBlogs } from '../utils/blogUtils';
+// import { getFeaturedBlogs } from '../utils/blogUtils';
 export default function Home({ featuredBlogs }) {
 	return (
 		<>
@@ -14,12 +14,12 @@ export default function Home({ featuredBlogs }) {
 	);
 }
 
-export async function getStaticProps() {
-	const featuredBlogs = getFeaturedBlogs();
-	return {
-		props: {
-			featuredBlogs,
-		},
-		revalidate: 86400,
-	};
-}
+// export async function getStaticProps() {
+// 	const featuredBlogs = getFeaturedBlogs();
+// 	return {
+// 		props: {
+// 			featuredBlogs,
+// 		},
+// 		revalidate: 86400,
+// 	};
+// }

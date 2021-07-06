@@ -1,5 +1,4 @@
 import BlogDetail from '../../components/BlogDetail';
-import { getBlog } from '../../utils/blogUtils';
 export default function Post({ blog }) {
 	return (
 		<>
@@ -7,19 +6,44 @@ export default function Post({ blog }) {
 		</>
 	);
 }
+
 export async function getStaticProps(context) {
 	const { slug } = context.params;
-	const blog = getBlog(slug);
-	// console.log(blog);
+	const res = await fetch('https://dev.to/api/articles/me/published', {
+		headers: {
+			'api-key': process.env.devToAPIKey,
+		},
+	});
+
+	const data = await res.json();
+	const result = data.filter((article) => article.slug === slug);
+	const blog = Object.assign({}, ...result);
 	return {
 		props: {
 			blog,
 		},
+		revalidate: 60,
 	};
 }
-export async function getStaticPaths(context) {
+export async function getStaticPaths() {
+	const res = await fetch('https://dev.to/api/articles/me/published', {
+		headers: {
+			'api-key': process.env.devToAPIKey,
+		},
+	});
+
+	const data = await res.json();
+	const path = [];
+	data.map((blog) => {
+		path.push({
+			params: {
+				slug: blog.slug,
+			},
+		});
+	});
+
 	return {
-		paths: [],
-		fallback: 'blocking',
+		paths: path,
+		fallback: false,
 	};
 }
