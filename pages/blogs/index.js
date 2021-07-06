@@ -1,4 +1,5 @@
 import Blogs from '../../components/Blogs';
+import { getAllArticles } from '../../utils/blogUtils';
 export default function Posts({ blog }) {
 	return (
 		<section>
@@ -7,17 +8,11 @@ export default function Posts({ blog }) {
 	);
 }
 export async function getStaticProps() {
-	const res = await fetch('https://dev.to/api/articles/me/published', {
-		headers: {
-			'api-key': process.env.devToAPIKey,
-		},
-	});
-
-	const data = await res.json();
+	const data = await getAllArticles();
 	return {
 		props: {
 			blog: data,
 		},
-		revalidate: 60,
+		revalidate: 21600,
 	};
 }
