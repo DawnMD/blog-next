@@ -62,7 +62,7 @@ const Contact = () => {
 								required></textarea>
 							<button
 								type='submit'
-								className='col-span-2 px-3 py-2 text-xl font-semibold tracking-wide bg-purple-500 rounded-md shadow-md md:w-48 md:justify-self-center bg-gradient-to-r from-red-500 animate-gradient-x '>
+								className='col-span-2 px-3 py-2 text-xl font-bold tracking-wide bg-purple-500 rounded-md shadow-md md:w-48 md:justify-self-center bg-gradient-to-r from-red-500 animate-gradient-x '>
 								Submit
 							</button>
 						</div>

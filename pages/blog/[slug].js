@@ -6,10 +6,17 @@ import {
 	readCache,
 	writeCache,
 } from '../../utils/blogUtils';
+import { NextSeo } from 'next-seo';
 
 export default function Post({ blog }) {
+	console.log(blog);
 	return (
 		<>
+			<NextSeo
+				title={blog.title}
+				description={blog.description}
+				openGraph={{ title: blog.title, description: blog.description }}
+			/>
 			<BlogDetail blog={blog} />
 		</>
 	);
