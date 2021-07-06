@@ -1,16 +1,18 @@
 import Blogs from '../../components/Blogs';
-import { getAllBlogs } from '../../utils/blogUtils';
-export default function Posts({ blogs }) {
+import { getAllArticles } from '../../utils/blogUtils';
+export default function Posts({ blog }) {
 	return (
-		<>
-			<Blogs blogs={blogs} />
-		</>
+		<section>
+			<Blogs blogs={blog} />
+		</section>
 	);
 }
 export async function getStaticProps() {
-	const blogs = getAllBlogs();
+	const data = await getAllArticles();
 	return {
-		props: { blogs },
-		revalidate: 86400,
+		props: {
+			blog: data,
+		},
+		revalidate: 21600,
 	};
 }

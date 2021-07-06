@@ -1,10 +1,18 @@
-import BlogHeader from './BlogHeader';
-import BlogBody from './BlogBody';
+import ReactMarkdown from 'react-markdown';
+import { sanitizeDevToMarkdown } from '../../utils/markdown';
+import rehypeRaw from 'rehype-raw';
+import rehypeSanitize from 'rehype-sanitize';
+import gfm from 'remark-gfm';
 const BlogDetail = ({ blog }) => {
+	const markdown = sanitizeDevToMarkdown(blog.body_markdown);
 	return (
-		<article className='mx-auto overflow-hidden bg-gray-100 rounded-md shadow-lg md:max-w-3xl md:my-3 lg:my-5 xl:max-w-5xl dark:bg-gray-900'>
-			<BlogHeader title={blog.title} image={blog.image} />
-			<BlogBody content={blog.content} />
+		<article className='py-8 mx-auto prose prose-xl dark:prose-light'>
+			<h1>{blog.title}</h1>
+			<ReactMarkdown
+				rehypePlugins={[rehypeRaw, rehypeSanitize]}
+				remarkPlugins={[gfm]}>
+				{markdown}
+			</ReactMarkdown>
 		</article>
 	);
 };

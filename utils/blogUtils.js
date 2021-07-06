@@ -1,35 +1,45 @@
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
 
-const pathDirectory = path.join(process.cwd(), 'content');
-
-export function getBlog(blog) {
-	const blogSlug = blog.replace(/\.md$/, '');
-	const blogPath = path.join(pathDirectory, `${blogSlug}.md`);
-	const blogContent = fs.readFileSync(blogPath, 'utf-8');
-	const { data, content } = matter(blogContent);
-	const parsedBlog = {
-		blogSlug,
-		...data,
-		content,
-	};
-	return parsedBlog;
-}
-
-export function getAllBlogs() {
-	const blogs = fs.readdirSync(pathDirectory);
-	const blogArray = blogs.map((blog) => {
-		return getBlog(blog);
+export async function getAllArticles() {
+	const res = await fetch('https://dev.to/api/articles/me/published', {
+		headers: {
+			'api-key': process.env.devToAPIKey,
+		},
 	});
-	const sortedBlogs = blogArray.sort((blogA, blogB) =>
-		blogA.date > blogB.data ? -1 : 1
-	);
-	return sortedBlogs;
+
+	const data = await res.json();
+	return data;
 }
 
-export function getFeaturedBlogs() {
-	const allBlogs = getAllBlogs();
-	const featuredBlogs = allBlogs.filter((blog) => blog.isFeatured);
-	return featuredBlogs;
+export function writeCache(data) {
+	fs.writeFileSync(
+		path.join(process.cwd(), 'devto.cache.js'),
+		JSON.stringify(data)
+	);
+}
+export function readCache() {
+	const cache = fs.readFileSync(
+		path.join(process.cwd(), 'devto.cache.js'),
+		'utf-8'
+	);
+	const cacheContents = JSON.parse(cache);
+	return cacheContents;
+}
+
+export function filterCacheBySlug(cache, slug) {
+	return cache.find((cachedArticle) => cachedArticle.slug === slug);
+}
+
+export function createPathParams(data) {
+	const path = [];
+	data.map((blog) => {
+		path.push({
+			params: {
+				slug: blog.slug,
+			},
+		});
+	});
+
+	return path;
 }
