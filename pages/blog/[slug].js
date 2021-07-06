@@ -9,7 +9,6 @@ import {
 import { NextSeo } from 'next-seo';
 
 export default function Post({ blog }) {
-	console.log(blog);
 	return (
 		<>
 			<NextSeo
@@ -30,7 +29,6 @@ export async function getStaticProps(context) {
 		props: {
 			blog,
 		},
-		revalidate: 21600,
 	};
 }
 export async function getStaticPaths() {

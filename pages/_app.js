@@ -4,7 +4,6 @@ import '../styles/globals.css';
 import Layout from '../components/Layout';
 import { useEffect } from 'react';
 function MyApp({ Component, pageProps, router }) {
-	console.log(router);
 	const url = `https://mainak.vercel.app${router.route}`;
 	useEffect(() => {
 		// On page load or when changing themes, best to add inline in `head` to avoid FOUC
