@@ -14,13 +14,13 @@ export async function getAllArticles() {
 
 export function writeCache(data) {
 	fs.writeFileSync(
-		path.join(process.cwd(), 'devto.cache.js'),
+		path.join(process.cwd(), 'content', 'devto.cache.js'),
 		JSON.stringify(data)
 	);
 }
 export function readCache() {
 	const cache = fs.readFileSync(
-		path.join(process.cwd(), 'devto.cache.js'),
+		path.join(process.cwd(), 'content', 'devto.cache.js'),
 		'utf-8'
 	);
 	const cacheContents = JSON.parse(cache);
