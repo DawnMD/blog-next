@@ -22,6 +22,7 @@
     "eslint-config-next": "11.0.1",
     "next-seo": "^4.26.0",
     "postcss": "^8.3.5",
+    "rehype-highlight": "^4.1.0",
     "rehype-raw": "^5.1.0",
     "rehype-sanitize": "^4.0.0",
     "remark-gfm": "^1.0.0",
