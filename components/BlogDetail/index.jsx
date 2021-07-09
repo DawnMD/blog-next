@@ -11,12 +11,13 @@ const customMarkdown = {
 		if (node.children[0].tagName === 'img') {
 			const image = node.children[0];
 			return (
-				<div>
+				<div className='m-auto'>
 					<Image
 						src={image.properties.src}
 						alt={image.alt}
-						width={700}
-						height={107}
+						width={600}
+						height={500}
+						objectFit='contain'
 					/>
 				</div>
 			);
@@ -38,7 +39,7 @@ const BlogDetail = ({ blog }) => {
 				<h1>{blog.title}</h1>
 				<p className='text-gray-400'>{formatDate}</p>
 				<ReactMarkdown
-					components={customMarkdown}
+					// components={customMarkdown}
 					rehypePlugins={[rehypeRaw, rehypeSanitize]}
 					remarkPlugins={[gfm]}>
 					{markdown}
