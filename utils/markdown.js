@@ -9,3 +9,30 @@ export const sanitizeDevToMarkdown = (markdown) => {
 	const addSpaceAfterHeaderHashtagRegex = /##(?=[a-z|A-Z])/g;
 	return correctedMarkdown.replace(addSpaceAfterHeaderHashtagRegex, '$& ');
 };
+
+export const customRenderMarkdown = () => {
+	return {
+		p(paragraph) {
+			const { node } = paragraph;
+
+			if (node.children[0].tagName === 'img') {
+				const image = node.children[0];
+				return (
+					<div>
+						<figure>
+							<img
+								src={image.properties.src}
+								alt={image.properties.alt}
+								className='mx-auto'
+							/>
+							<figcaption className='text-center'>
+								{image.properties.alt}
+							</figcaption>
+						</figure>
+					</div>
+				);
+			}
+			return <p>{paragraph.children}</p>;
+		},
+	};
+};

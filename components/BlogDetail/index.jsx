@@ -3,43 +3,18 @@ import { sanitizeDevToMarkdown } from '../../utils/markdown';
 import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 import gfm from 'remark-gfm';
-import Image from 'next/image';
-const customMarkdown = {
-	p(paragraph) {
-		const { node } = paragraph;
-
-		if (node.children[0].tagName === 'img') {
-			const image = node.children[0];
-			return (
-				<div className='m-auto'>
-					<Image
-						src={image.properties.src}
-						alt={image.alt}
-						width={600}
-						height={500}
-						objectFit='contain'
-					/>
-				</div>
-			);
-		}
-		return <p>{paragraph.children}</p>;
-	},
-};
+import { customRenderMarkdown } from '../../utils/markdown';
+import { formatDate } from '../../utils/helpers';
 const BlogDetail = ({ blog }) => {
 	const markdown = sanitizeDevToMarkdown(blog.body_markdown);
-	const formatDate = new Date(blog.published_at).toLocaleDateString('en-US', {
-		weekday: 'long',
-		day: '2-digit',
-		month: 'long',
-		year: 'numeric',
-	});
+	const date = formatDate(blog.published_at);
 	return (
 		<>
 			<article className='py-8 mx-auto prose md:prose-lg lg:prose-lg xl:prose-xl dark:prose-light'>
 				<h1>{blog.title}</h1>
-				<p className='text-gray-400'>{formatDate}</p>
+				<p className='text-gray-400'>{date}</p>
 				<ReactMarkdown
-					// components={customMarkdown}
+					components={customRenderMarkdown()}
 					rehypePlugins={[rehypeRaw, rehypeSanitize]}
 					remarkPlugins={[gfm]}>
 					{markdown}
