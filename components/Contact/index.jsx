@@ -1,30 +1,24 @@
 import { useState } from 'react';
+import emailjs from 'emailjs-com';
 const Contact = () => {
 	const [formResult, setFormResult] = useState();
 	const onFormSubmit = async (event) => {
 		event.preventDefault();
-		const form = event.target;
-		const data = new FormData(form);
-		const xhr = new XMLHttpRequest();
-		xhr.open(form.method, form.action);
-		xhr.setRequestHeader('Accept', 'application/json');
-		xhr.onreadystatechange = () => {
-			if (xhr.readyState !== XMLHttpRequest.DONE) return;
-			if (xhr.status === 200) {
-				form.reset();
-				setFormResult('ok');
-			} else {
-				setFormResult('error');
-			}
-		};
-		xhr.send(data);
+		const status = await emailjs.sendForm(
+			process.env.EmailServiceId,
+			process.env.EmailTemplateId,
+			event.target,
+			process.env.EmailUserId
+		);
+		if (status.text === 'OK') {
+			setFormResult('ok');
+		} else {
+			setFormResult('error');
+		}
 	};
 	return (
 		<>
-			<form
-				onSubmit={(event) => onFormSubmit(event)}
-				method='POST'
-				action='https://formspree.io/f/xwkwaaaw'>
+			<form onSubmit={onFormSubmit}>
 				<div className='max-w-2xl p-4 mx-auto bg-gray-300 rounded-lg shadow-lg dark:bg-gray-900'>
 					{!formResult && (
 						<div className='grid grid-cols-2 gap-y-8'>
@@ -68,10 +62,14 @@ const Contact = () => {
 						</div>
 					)}
 					{formResult === 'error' && (
-						<p>Ooops! There was an error. Try again later.</p>
+						<p className='text-xl font-medium text-center'>
+							Ooops! There was an error. Try again later.
+						</p>
 					)}
 					{formResult === 'ok' && (
-						<p>I received your message. I&apos;ll get back to you ASAP.</p>
+						<p className='text-xl font-medium text-center'>
+							I received your message. I&apos;ll get back to you ASAP.
+						</p>
 					)}
 				</div>
 			</form>
