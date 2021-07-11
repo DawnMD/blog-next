@@ -1,4 +1,4 @@
-import List from '../Shared/List';
+import List from '../shared/List';
 const Blogs = ({ blogs }) => {
 	return (
 		<section className='flex flex-col gap-4 md:gap-6'>

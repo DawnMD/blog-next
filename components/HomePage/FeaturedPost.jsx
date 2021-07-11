@@ -1,4 +1,4 @@
-import List from '../Shared/List';
+import List from '../shared/List';
 const FeaturedPost = ({ blogs }) => {
 	return (
 		<section className='m-6 space-y-6'>

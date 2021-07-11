@@ -1,4 +1,4 @@
-import SvgCircle from '../Shared/Svg/SvgCircle';
+import SvgCircle from '../shared/Svg/SvgCircle';
 const Skills = () => {
 	const skills = [
 		{
