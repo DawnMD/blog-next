@@ -16,7 +16,7 @@ export default function SvgCircle(props) {
 				pathLength: finalPathLength,
 				transition: {
 					duration: 1,
-					ease: 'easeIn',
+					ease: 'easeInOut',
 				},
 			});
 		}
@@ -34,13 +34,13 @@ export default function SvgCircle(props) {
 				className='w-24 m-2 overflow-visible antialiased'
 				ref={ref}>
 				<motion.path
-					stroke='#C1c1c1'
+					className={`stroke-current text-gray-400`}
 					fill='none'
 					strokeWidth='5'
 					d='M43.25.25a43,43,0,1,1-43,43,43,43,0,0,1,43-43'
 				/>
 				<motion.path
-					stroke='#301240'
+					className={`${props.color} stroke-current`}
 					fill='none'
 					strokeWidth='7.5'
 					animate={animation}
@@ -50,9 +50,8 @@ export default function SvgCircle(props) {
 					x='50%'
 					y='50%'
 					textAnchor='middle'
-					fill='white'
-					dy='.3rem'
-					className='font-medium'>
+					dy='.45rem'
+					className='font-bold fill-current '>
 					{`${props.score} %`}
 				</text>
 			</motion.svg>

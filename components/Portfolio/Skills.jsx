@@ -1,4 +1,4 @@
-import SvgCircle from './SvgCircle';
+import SvgCircle from '../Shared/Svg/SvgCircle';
 const Skills = () => {
 	const skills = [
 		{
@@ -60,7 +60,7 @@ const Skills = () => {
 						<div
 							className='flex items-center gap-4 px-6 py-4 bg-gray-100 rounded-lg shadow-lg dark:bg-gray-900'
 							key={skill.tech}>
-							<SvgCircle score={skill.score} />
+							<SvgCircle score={skill.score} color={skill.color} />
 							<div>
 								<h3
 									className={`text-2xl font-bold tracking-wider ${skill.color}`}>

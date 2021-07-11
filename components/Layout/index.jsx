@@ -1,5 +1,5 @@
-import Navbar from '../shared/Navbar';
-// import Footer from '../shared/Footer';
+import Navbar from '../Shared/Navbar';
+// import Footer from '../Shared/Footer';
 
 export default function Layout(props) {
 	return (
