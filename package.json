@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "emailjs-com": "^3.2.0",
+    "framer-motion": "^4.1.17",
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-intersection-observer": "^8.32.0",
     "react-markdown": "^6.0.2",
     "react-syntax-highlighter": "^15.4.3"
   },
