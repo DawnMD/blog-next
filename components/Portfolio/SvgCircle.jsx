@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 export default function SvgCircle(props) {
 	const animation = useAnimation();
+	const finalPathLength = props.score / 100;
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0.2,
@@ -12,7 +13,7 @@ export default function SvgCircle(props) {
 	useEffect(() => {
 		if (inView) {
 			animation.start({
-				pathLength: props.score / 100,
+				pathLength: finalPathLength,
 				transition: {
 					duration: 1,
 					ease: 'easeIn',
@@ -37,7 +38,6 @@ export default function SvgCircle(props) {
 					fill='none'
 					strokeWidth='5'
 					d='M43.25.25a43,43,0,1,1-43,43,43,43,0,0,1,43-43'
-					fill='none'
 				/>
 				<motion.path
 					stroke='#301240'
@@ -45,7 +45,6 @@ export default function SvgCircle(props) {
 					strokeWidth='7.5'
 					animate={animation}
 					d='M43.25.25a43,43,0,1,1-43,43,43,43,0,0,1,43-43'
-					fill='none'
 				/>
 				<text
 					x='50%'
