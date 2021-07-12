@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 const variants = {
-	hidden: { opacity: 0, x: -200, y: 0 },
-	enter: { opacity: 1, x: 0, y: 0 },
-	exit: { opacity: 0, x: 0, y: -100 },
+	hidden: { opacity: 0 },
+	enter: { opacity: 1 },
 };
 const AnimateHOC = (props) => {
 	return (
@@ -10,9 +9,8 @@ const AnimateHOC = (props) => {
 			<motion.main
 				initial='hidden'
 				animate='enter'
-				exit='exit'
 				variants={variants}
-				transition={{ type: 'linear' }}
+				transition={{ ease: 'easeIn', duration: 0.2 }}
 				className='m-4 space-y-4 md:m-6 md:space-y-6'>
 				{props.children}
 			</motion.main>
