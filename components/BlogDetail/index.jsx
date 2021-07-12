@@ -1,8 +1,10 @@
 import ReactMarkdown from 'react-markdown';
-import { sanitizeDevToMarkdown } from '../../utils/markdown';
+import {
+	sanitizeDevToMarkdown,
+	customRenderMarkdown,
+} from '../../utils/markdown';
 import rehypeSanitize from 'rehype-sanitize';
 import gfm from 'remark-gfm';
-import { customRenderMarkdown } from '../../utils/markdown';
 import { formatDate } from '../../utils/helpers';
 const BlogDetail = ({ blog }) => {
 	const markdown = sanitizeDevToMarkdown(blog.body_markdown);
