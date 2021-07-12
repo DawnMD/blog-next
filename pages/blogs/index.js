@@ -12,9 +12,7 @@ export default function Posts({ blog }) {
 				description={description}
 				openGraph={{ title, description }}
 			/>
-			<section>
-				<Blogs blogs={blog} />
-			</section>
+			<Blogs blogs={blog} />
 		</AnimationHOC>
 	);
 }
