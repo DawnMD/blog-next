@@ -1,38 +1,22 @@
 import { useEffect, useState } from 'react';
-
-const isDark = () =>
-	(localStorage && localStorage.theme === 'dark') ||
-	(!('theme' in localStorage) &&
-		window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-const getThemeString = (isDark) => (isDark ? 'dark' : 'light');
-
+import { useTheme } from 'next-themes';
 const ThemeSwitch = () => {
-	const [isDarkMode, setDarkMode] = useState(false);
-
+	const [mounted, setMounted] = useState(false);
+	const { theme, setTheme } = useTheme();
 	const toggleMode = () => {
-		localStorage.theme = getThemeString(!isDarkMode);
-		if (localStorage.theme === 'dark') {
-			document.documentElement.classList.remove('light');
-			document.documentElement.classList.add('dark');
+		if (theme === 'light') {
+			setTheme('dark');
 		} else {
-			document.documentElement.classList.remove('dark');
-			document.documentElement.classList.add('light');
+			setTheme('light');
 		}
-		setDarkMode(!isDarkMode);
 	};
-
-	useEffect(() => {
-		setDarkMode(isDark());
-	}, []);
-
-	const darkModeActive =
-		process.browser && document.documentElement.classList.contains('dark');
+	useEffect(() => setMounted(true), []);
+	if (!mounted) return null;
 	return (
 		<>
 			<button className='w-10 h-10 focus:outline-none' onClick={toggleMode}>
 				<span className='sr-only'>Color mode switch button</span>
-				{darkModeActive ? (
+				{theme === 'dark' ? (
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						className='w-6 h-6 mx-auto text-yellow-500'
