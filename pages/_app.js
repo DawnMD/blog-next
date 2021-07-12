@@ -3,6 +3,7 @@ import { DefaultSeo } from 'next-seo';
 import '../styles/globals.css';
 import Layout from '../components/Layout';
 import { useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 function MyApp({ Component, pageProps, router }) {
 	const url = `https://mainak.vercel.app${router.route}`;
 	useEffect(() => {
@@ -53,7 +54,12 @@ function MyApp({ Component, pageProps, router }) {
 				}}
 				canonical={url}
 			/>
-			<Component {...pageProps} />
+			<AnimatePresence
+				exitBeforeEnter
+				initial={false}
+				onExitComplete={() => window.scrollTo(0, 0)}>
+				<Component {...pageProps} />
+			</AnimatePresence>
 		</Layout>
 	);
 }

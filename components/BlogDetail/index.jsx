@@ -1,6 +1,5 @@
 import ReactMarkdown from 'react-markdown';
 import { sanitizeDevToMarkdown } from '../../utils/markdown';
-import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
 import gfm from 'remark-gfm';
 import { customRenderMarkdown } from '../../utils/markdown';
@@ -15,7 +14,7 @@ const BlogDetail = ({ blog }) => {
 				<p className='text-gray-400'>{date}</p>
 				<ReactMarkdown
 					components={customRenderMarkdown()}
-					rehypePlugins={[rehypeRaw, rehypeSanitize]}
+					rehypePlugins={[rehypeSanitize]}
 					remarkPlugins={[gfm]}>
 					{markdown}
 				</ReactMarkdown>

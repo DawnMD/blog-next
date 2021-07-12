@@ -25,7 +25,7 @@ export default function SvgCircle(props) {
 				pathLength: 0,
 			});
 		}
-	}, [inView]);
+	}, [inView, animation, finalPathLength]);
 	return (
 		<div>
 			<motion.svg

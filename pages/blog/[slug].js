@@ -7,17 +7,18 @@ import {
 	writeCache,
 } from '../../utils/blogUtils';
 import { NextSeo } from 'next-seo';
+import AnimationHOC from '../../components/Layout/AnimationHOC';
 
 export default function Post({ blog }) {
 	return (
-		<>
+		<AnimationHOC>
 			<NextSeo
 				title={blog.title}
 				description={blog.description}
 				openGraph={{ title: blog.title, description: blog.description }}
 			/>
 			<BlogDetail blog={blog} />
-		</>
+		</AnimationHOC>
 	);
 }
 
