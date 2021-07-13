@@ -3,7 +3,7 @@ import SvgAbout from '../shared/Svg/SvgAbout';
 const About = () => {
 	return (
 		<Section title='About'>
-			<div className='flex flex-col items-center justify-center gap-4 md:flex-row'>
+			<div className='flex flex-col items-center justify-center w-full gap-4 md:gap-8 lg:justify-evenly md:flex-row'>
 				<div>
 					<SvgAbout />
 				</div>

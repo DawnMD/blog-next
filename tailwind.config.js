@@ -5,6 +5,9 @@ module.exports = {
 	darkMode: 'class', // or 'media' or 'class'
 	theme: {
 		extend: {
+			content: {
+				quote: "'“'",
+			},
 			fontFamily: {
 				sans: ["'Barlow'", ...defaultFonts.fontFamily.sans],
 			},

@@ -12,7 +12,7 @@ const Education = () => {
 			degree: 'Higher Secondary',
 			duration: 'March 2015 - March 2017',
 			descp: 'Science with Computer Science',
-			outcome: 'CGPA: 6.1',
+			outcome: '61.8% on best of 5',
 		},
 	];
 	return (
