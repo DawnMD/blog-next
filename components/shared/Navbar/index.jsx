@@ -14,10 +14,10 @@ const Nav = (props) => {
 	};
 	return (
 		<>
-			<header className='sticky top-0 left-0 z-10 flex items-center justify-between w-full p-4 text-lg font-medium bg-gray-100 shadow-xl bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur-md md:text-xl dark:bg-gray-900'>
+			<header className='sticky top-0 left-0 z-10 flex items-center justify-between w-full p-4 text-lg font-medium bg-gray-100 shadow-xl bg-opacity-70 dark:bg-opacity-70 backdrop-filter backdrop-blur-md md:text-xl dark:bg-gray-900'>
 				<span className='text-2xl font-bold text-transparent bg-purple-500 bg-gradient-to-r from-red-500 bg-clip-text animate-gradient-x md:text-3xl '>
 					<Link href='/' scroll={false}>
-						<a onClick={onLinkClick}>MD</a>
+						<a onClick={onLinkClick}>MD.</a>
 					</Link>
 				</span>
 				<nav className='flex items-center md:gap-4'>
@@ -61,7 +61,7 @@ const Nav = (props) => {
 				</nav>
 			</header>
 			{mobileNav && (
-				<nav className='fixed z-10 w-full px-4 pb-4 text-xl font-medium tracking-wide bg-gray-100 shadow-md dark:bg-gray-900 md:hidden md:invisible bg-opacity-95'>
+				<nav className='fixed z-10 w-full px-4 pb-4 text-xl font-medium tracking-wide bg-gray-100 shadow-md dark:bg-gray-900 md:hidden md:invisible bg-opacity-70 dark:bg-opacity-70 backdrop-filter backdrop-blur-md'>
 					<ul className='flex flex-col justify-center space-y-2'>
 						<li>
 							<Link href='/blogs' scroll={false}>

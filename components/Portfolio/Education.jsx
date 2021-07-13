@@ -1,3 +1,5 @@
+import SectionHeading from '../shared/SectionHeading';
+
 const Education = () => {
 	const education = [
 		{
@@ -16,11 +18,7 @@ const Education = () => {
 		},
 	];
 	return (
-		<section
-			id='education'
-			className='flex flex-col items-center gap-4 tracking-wide md:gap-6'>
-			<h2 className='text-3xl font-bold lg:text-4xl'>Education</h2>
-			<div className='h-1 mx-auto bg-purple-500 rounded-lg w-36 bg-gradient-to-r from-red-500 animate-gradient-x'></div>
+		<SectionHeading title='Education'>
 			<div className='grid w-full gap-4 md:grid-cols-2 md:grid-flow-col'>
 				{education.map((edu) => {
 					return (
@@ -47,7 +45,7 @@ const Education = () => {
 					);
 				})}
 			</div>
-		</section>
+		</SectionHeading>
 	);
 };
 export default Education;

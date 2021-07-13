@@ -10,6 +10,7 @@ const Hero = (props) => {
 						width={350}
 						height={350}
 						className='rounded-full'
+						alt='Mainak Das'
 					/>
 				</div>
 				<div className='flex flex-col gap-2 text-center w-80'>
