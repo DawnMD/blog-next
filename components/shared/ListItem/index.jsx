@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import NoScrollLink from '../NoScrollLink';
 import { formatDate } from '../../../utils/helpers';
 import HeartIcon from '../Icons/HeartIcon';
 import ReactionIcon from '../Icons/ReactionIcon';
@@ -6,8 +6,8 @@ import WatchIcon from '../Icons/WatchIcon';
 const ListItem = ({ blog }) => {
 	const date = formatDate(blog.published_at);
 	return (
-		<li className=''>
-			<Link href={`/blog/${blog.slug}`} scroll={false}>
+		<li>
+			<NoScrollLink href={`/blog/${blog.slug}`}>
 				<a>
 					<article className='flex flex-col gap-2 px-4 py-2 bg-gray-100 rounded-md shadow-lg cursor-pointer hover:shadow-xl dark:bg-gray-900'>
 						<h3 className='text-4xl font-bold tracking-wide'>{blog.title}</h3>
@@ -41,7 +41,7 @@ const ListItem = ({ blog }) => {
 						</div>
 					</article>
 				</a>
-			</Link>
+			</NoScrollLink>
 		</li>
 	);
 };

@@ -1,4 +1,4 @@
-import Typist from 'react-text-typist';
+import { Typewriter } from 'react-simple-typewriter';
 import Image from 'next/image';
 const Hero = (props) => {
 	return (
@@ -23,11 +23,17 @@ const Hero = (props) => {
 					</h1>
 					<h2 className='w-full text-2xl'>
 						I&apos;m a{' '}
-						<Typist
-							className='text-3xl font-semibold'
-							sentences={['Frontend', 'Javascript', 'React']}
-							cursorSmooth={true}
-						/>{' '}
+						<span className='text-3xl font-semibold'>
+							<Typewriter
+								words={['Frontend', 'Javascript', 'React']}
+								loop={false}
+								cursor
+								cursorStyle='|'
+								typeSpeed={70}
+								deleteSpeed={50}
+								delaySpeed={1000}
+							/>
+						</span>{' '}
 						developer.
 					</h2>
 				</div>
