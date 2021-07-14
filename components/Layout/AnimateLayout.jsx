@@ -13,7 +13,7 @@ const AnimateHOC = (props) => {
 				exit='exit'
 				variants={variants}
 				transition={{ type: 'linear' }}
-				className='m-4 space-y-4 md:m-6 md:space-y-6'>
+				className='flex flex-col gap-4 m-4 md:m-6 md:gap-6'>
 				{props.children}
 			</motion.main>
 		</>
