@@ -1,17 +1,17 @@
 import Contact from '../../components/Contact';
 import { NextSeo } from 'next-seo';
-import AnimateHOC from '../../components/Layout/AnimationHOC';
+import AnimateLayout from '../../components/Layout/AnimateLayout';
 const title = `Contact`;
 const description = `Get in touch 😉`;
 export default function ContactPage() {
 	return (
-		<AnimateHOC>
+		<AnimateLayout>
 			<NextSeo
 				title={title}
 				description={description}
 				openGraph={{ title, description }}
 			/>
 			<Contact />
-		</AnimateHOC>
+		</AnimateLayout>
 	);
 }
