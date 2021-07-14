@@ -11,6 +11,7 @@ const Hero = (props) => {
 						height={350}
 						className='rounded-full'
 						alt='Mainak Das'
+						priority
 					/>
 				</div>
 				<div className='flex flex-col gap-2 text-center w-80'>

@@ -7,11 +7,11 @@ import { AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 function MyApp({ Component, pageProps, router }) {
 	const [mounted, setMounted] = useState(false);
-	const url = `https://mainak.vercel.app${router.route}`;
 	useEffect(() => {
 		setMounted(true);
 	}, []);
 	if (!mounted) return null;
+	const url = `${window.location.origin}${router.route}`;
 	return (
 		<ThemeProvider attribute='class' disableTransitionOnChange>
 			<Head>

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 export const sanitizeDevToMarkdown = (markdown) => {
 	let correctedMarkdown = '';
 
@@ -18,17 +19,13 @@ export const customRenderMarkdown = () => {
 			if (node.children[0].tagName === 'img') {
 				const image = node.children[0];
 				return (
-					<div>
-						<figure>
-							<img
-								src={image.properties.src}
-								alt={image.properties.alt}
-								className='mx-auto'
-							/>
-							<figcaption className='text-center'>
-								{image.properties.alt}
-							</figcaption>
-						</figure>
+					<div className='relative w-64 h-80'>
+						<Image
+							src={image.properties.src}
+							alt={image.properties.alt}
+							layout='fill'
+							objectFit='contain'
+						/>
 					</div>
 				);
 			}
