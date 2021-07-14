@@ -30,8 +30,6 @@ module.exports = {
 			textColor: {
 				tailwind: '#06B6D4',
 				redux: '#764abc',
-				html: '#E65100',
-				css: '#0277BD',
 				react: '#61dafb',
 				node: '#026e00',
 				mongo: '#13aa52',
@@ -40,7 +38,7 @@ module.exports = {
 				light: {
 					css: [
 						{
-							color: theme('colors.gray.300'),
+							color: theme('colors.gray.200'),
 							'[class~="lead"]': {
 								color: theme('colors.gray.200'),
 							},

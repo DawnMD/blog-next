@@ -19,14 +19,14 @@ export const customRenderMarkdown = () => {
 			if (node.children[0].tagName === 'img') {
 				const image = node.children[0];
 				return (
-					<div className='relative w-64 h-80'>
-						<Image
+					<figure className='text-center'>
+						<img
+							className='mx-auto'
 							src={image.properties.src}
 							alt={image.properties.alt}
-							layout='fill'
-							objectFit='contain'
 						/>
-					</div>
+						<figcaption>{image.properties.alt}</figcaption>
+					</figure>
 				);
 			}
 			return <p>{paragraph.children}</p>;

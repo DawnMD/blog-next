@@ -15,13 +15,18 @@ const Nav = (props) => {
 	return (
 		<>
 			<header
-				className={`sticky top-0 left-0 z-10 flex items-center justify-between w-full p-4 text-lg font-medium bg-gray-100 ${
+				className={`sticky top-0 left-0 z-10 flex items-center justify-between w-full p-4 sm:px-16 md:px-36 lg:px-52 xl:px-80 2xl:px-96 text-lg font-medium bg-gray-100 ${
 					!mobileNav &&
 					'shadow-xl bg-opacity-70 dark:bg-opacity-70 backdrop-filter backdrop-blur-md'
 				}   md:text-xl dark:bg-gray-900`}>
 				<span className='text-2xl font-bold text-transparent bg-purple-500 bg-gradient-to-r from-red-500 bg-clip-text animate-gradient-x md:text-3xl '>
 					<NoScrollLink href='/'>
-						<a onClick={onLinkClick}>MD.</a>
+						<a onClick={onLinkClick}>
+							<span className='lg:hidden lg:invisible'>MD.</span>
+							<span className='invisible hidden lg:visible lg:block'>
+								Mainak Das
+							</span>
+						</a>
 					</NoScrollLink>
 				</span>
 				<nav className='flex items-center md:gap-4'>
@@ -46,11 +51,6 @@ const Nav = (props) => {
 								className={`block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out ${
 									mobileNav && 'rotate-45'
 								} ${!mobileNav && '-translate-y-1.5'}`}></span>
-							<span
-								aria-hidden='true'
-								className={`block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out ${
-									mobileNav && 'opacity-0'
-								}`}></span>
 							<span
 								aria-hidden='true'
 								className={`block absolute  h-0.5 w-5 bg-current transform transition duration-500 ease-in-out  ${

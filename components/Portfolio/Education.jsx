@@ -19,7 +19,7 @@ const Education = () => {
 	];
 	return (
 		<SectionHeading title='Education'>
-			<div className='grid w-full gap-4 md:grid-cols-2 md:grid-flow-col'>
+			<div className='flex flex-col gap-4 lg:gap-6'>
 				{education.map((edu) => {
 					return (
 						<div

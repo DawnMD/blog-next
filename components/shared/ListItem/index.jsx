@@ -8,34 +8,36 @@ const ListItem = ({ blog }) => {
 	return (
 		<li>
 			<NoScrollLink href={`/blog/${blog.slug}`}>
-				<article className='flex flex-col gap-2 px-4 py-2 bg-gray-100 rounded-md shadow-lg cursor-pointer hover:shadow-xl dark:bg-gray-900'>
-					<h3 className='text-4xl font-bold tracking-wide'>{blog.title}</h3>
-					<div className='text-sm font-semibold text-gray-600 dark:text-gray-200'>
+				<article className='flex flex-col gap-2 p-3 bg-gray-100 rounded-md shadow-lg cursor-pointer dark:bg-gray-900'>
+					<h3 className='text-xl font-bold tracking-wide lg:text-3xl'>
+						{blog.title}
+					</h3>
+					<div className='text-sm font-semibold text-gray-600 lg:text-lg dark:text-gray-200'>
 						{date}
 					</div>
 					<small className='flex gap-1'>
 						{blog.tag_list.map((tag, tagIdx) => (
 							<span key={tagIdx} className='flex items-center p-1 text-sm'>
-								<span className='text-lg italic text-gray-400 font-base'>
+								<span className='text-sm italic text-gray-400 lg:text-lg font-base'>
 									#
 								</span>
-								<span className='font-medium'>{tag}</span>
+								<span className='font-medium lg:text-lg'>{tag}</span>
 							</span>
 						))}
 					</small>
-					<p className='text-xl font-medium'>{blog.description}</p>
+					<p className='lg:text-xl'>{blog.description}</p>
 					<div className='flex gap-6'>
-						<small className='flex gap-1 text-sm'>
-							<WatchIcon className='items-center w-5 h-5' />
-							<span>{blog.page_views_count}</span>
+						<small className='flex items-center gap-1 text-sm lg:text-lg'>
+							<WatchIcon className='w-4 h-4 ' />
+							<div>{blog.page_views_count}</div>
 						</small>
-						<small className='flex gap-1 text-sm'>
-							<CommentIcon className='items-center w-5 h-5' />
-							<span>{blog.comments_count}</span>
+						<small className='flex items-center gap-1 text-sm'>
+							<CommentIcon className='w-4 h-4' />
+							<div>{blog.comments_count}</div>
 						</small>
-						<small className='flex gap-1 text-sm'>
-							<HeartIcon className='items-center w-5 h-5' />
-							<span>{blog.public_reactions_count}</span>
+						<small className='flex items-center gap-1 text-sm'>
+							<HeartIcon className='w-4 h-4' />
+							<div>{blog.public_reactions_count}</div>
 						</small>
 					</div>
 				</article>
