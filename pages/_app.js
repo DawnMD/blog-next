@@ -5,6 +5,7 @@ import '../styles/globals.css';
 import { ThemeProvider } from 'next-themes';
 import { AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import Footer from '../components/shared/Footer';
 function MyApp({ Component, pageProps, router }) {
 	const [mounted, setMounted] = useState(false);
 	useEffect(() => {
@@ -53,6 +54,7 @@ function MyApp({ Component, pageProps, router }) {
 				onExitComplete={() => window.scrollTo(0, 0)}>
 				<Component {...pageProps} key={url} />
 			</AnimatePresence>
+			<Footer />
 		</ThemeProvider>
 	);
 }
