@@ -6,10 +6,10 @@ const Footer = () => {
 				<SocialIcons />
 			</div>
 			<div className='text-sm text-gray-500 dark:text-gray-300'>
-				Say Hello at{' '}
+				Say hello at{' '}
 				<a
 					href='mailto:mainakdas104@gmail.com?subject=Hello'
-					className='hover:text-gray-900 dark:hover:text-gray-50'>
+					className='text-base font-medium hover:text-gray-900 dark:hover:text-gray-50'>
 					mainakdas104@gmail.com
 				</a>
 			</div>
@@ -21,7 +21,7 @@ const Footer = () => {
 					Powered by{' '}
 					<a
 						href='https://docs.forem.com/api/'
-						className='font-medium hover:text-gray-900 dark:hover:text-gray-50'>
+						className='font-semibold  hover:text-gray-900 dark:hover:text-gray-50'>
 						Dev.to API
 					</a>
 				</p>

@@ -27,7 +27,7 @@ const ListItem = ({ blog }) => {
 					</small>
 					<p className='lg:text-xl'>{blog.description}</p>
 					<div className='flex gap-6'>
-						<small className='flex items-center gap-1 text-sm lg:text-lg'>
+						<small className='flex items-center gap-1 text-sm'>
 							<WatchIcon className='w-4 h-4 ' />
 							<div>{blog.page_views_count}</div>
 						</small>
