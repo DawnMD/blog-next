@@ -19,7 +19,9 @@ const Testimonials = (props) => {
 	return (
 		<Section title='Testimonials'>
 			{data.map(({ company, person, designation, words }) => (
-				<figure className='relative flex flex-col gap-2 px-6 py-3 lg:gap-4'>
+				<figure
+					className='relative flex flex-col gap-2 px-6 py-3 lg:gap-4'
+					key={person}>
 					<blockquote className='font-serif italic before:absolute before:top-0 before:left-0 before:text-6xl before:content-quote'>
 						<p className='pl-2 text-xl font-bold tracking-wide xl:text-2xl'>
 							{words}
