@@ -1,4 +1,4 @@
-// const defaultFonts = require('tailwindcss/defaultTheme');
+const defaultFonts = require('tailwindcss/defaultTheme');
 module.exports = {
 	mode: 'jit',
 	purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
@@ -8,9 +8,9 @@ module.exports = {
 			content: {
 				quote: "'“'",
 			},
-			// fontFamily: {
-			// 	sans: ["'Barlow'", ...defaultFonts.fontFamily.sans],
-			// },
+			fontFamily: {
+				sans: ["'Barlow'", ...defaultFonts.fontFamily.sans],
+			},
 			fontSize: ['hover'],
 			animation: {
 				'gradient-x': 'gradient-x 3s ease infinite',
