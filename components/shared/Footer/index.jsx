@@ -9,7 +9,7 @@ const Footer = () => {
 				Say hello at{' '}
 				<a
 					href='mailto:mainakdas104@gmail.com?subject=Hello'
-					className='text-base font-medium hover:text-gray-900 dark:hover:text-gray-50'>
+					className='font-semibold tracking-wider hover:text-gray-900 dark:hover:text-gray-50'>
 					mainakdas104@gmail.com
 				</a>
 			</div>
@@ -21,7 +21,7 @@ const Footer = () => {
 					Powered by{' '}
 					<a
 						href='https://docs.forem.com/api/'
-						className='font-semibold  hover:text-gray-900 dark:hover:text-gray-50'>
+						className='font-semibold hover:text-gray-900 dark:hover:text-gray-50'>
 						Dev.to API
 					</a>
 				</p>
