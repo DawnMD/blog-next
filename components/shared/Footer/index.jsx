@@ -9,19 +9,20 @@ const Footer = () => {
 				Say hello at{' '}
 				<a
 					href='mailto:mainakdas104@gmail.com?subject=Hello'
-					className='font-semibold tracking-wider hover:text-gray-900 dark:hover:text-gray-50'>
+					className='font-semibold tracking-wider hover:text-black dark:hover:text-white'>
 					mainakdas104@gmail.com
 				</a>
 			</div>
 			<div className='flex flex-col items-center text-sm text-gray-500 dark:text-gray-300'>
 				<p>
-					Made with ❤️ by <span className='font-bold'>Mainak Das</span>
+					Made with ❤️ by{' '}
+					<span className='font-bold tracking-wide'>Mainak Das</span>
 				</p>
 				<p>
 					Powered by{' '}
 					<a
 						href='https://docs.forem.com/api/'
-						className='font-semibold hover:text-gray-900 dark:hover:text-gray-50'>
+						className='font-semibold hover:text-black dark:hover:text-white'>
 						Dev.to API
 					</a>
 				</p>
