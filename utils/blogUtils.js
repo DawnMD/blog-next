@@ -45,3 +45,17 @@ export function createPathParams(data) {
 
 	return path;
 }
+
+export function getMaxLikedBlog(data) {
+	const blog = data.reduce((a, b) => {
+		return a.public_reactions_count > b.public_reactions_count ? a : b;
+	});
+	return blog;
+}
+
+export function getRecentBlog(data) {
+	const blog = data.reduce((a, b) => {
+		return new Date(a.published_at) > new Date(b.published_at) ? a : b;
+	});
+	return blog;
+}
