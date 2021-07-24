@@ -52,7 +52,7 @@ const timelineDatas = [
 			{
 				heading: 'Learned How to Program',
 				caption:
-					'The one whom I saw writing some secret code-like languages, taught me the basics of how to write a program on C. From that moment I knew it was gonna be interesting uphill.',
+					'My friend&apos;s brother taught me the basics on how to write a program on C, from that moment I knew it was gonna be interesting uphill.',
 			},
 		],
 	},
@@ -62,7 +62,7 @@ const timelineDatas = [
 			{
 				heading: 'Started Knowing About Programming 🙇🏽‍♂️',
 				caption:
-					'By watching a friend&apos;s brother writing something which back then I thought was some secret code language, my interest in learning that particular language started developing.',
+					'By watching my friend&apos;s brother writing something which back then I thought was some secret code language, my interest in learning that particular language started developing.',
 			},
 		],
 	},
