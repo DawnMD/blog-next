@@ -2,6 +2,7 @@ import SectionHeading from '../shared/SectionHeading';
 import HeartIcon from '../shared/Icons/HeartIcon';
 import ClockIcon from '../shared/Icons/ClockIcon';
 import NoScrollLink from '../shared/NoScrollLink';
+import { formatDate } from '../../utils/helpers';
 const Featured = (props) => {
 	const { mostRecent, mostLiked } = props.featured;
 	return (
@@ -13,11 +14,14 @@ const Featured = (props) => {
 						<NoScrollLink href={`/blog/${mostRecent.slug}`}>
 							<a className='flex flex-col gap-1'>
 								<div className='flex items-center gap-2'>
-									<ClockIcon className='w-5 h-5 text-yellow-600 dark:text-yellow-400' />
+									<ClockIcon className='w-4 h-4 text-yellow-600 dark:text-yellow-400' />
 									<h3 className='text-xl font-semibold lg:text-2xl'>
 										{mostRecent.title}
 									</h3>
 								</div>
+								<small className='pl-6 text-gray-500 dark:text-gray-300'>
+									{formatDate(mostRecent.published_at)}
+								</small>
 								<p className='pl-6 text-gray-600 dark:text-gray-200 lg:text-lg'>
 									{mostRecent.description}
 								</p>
@@ -30,11 +34,14 @@ const Featured = (props) => {
 						<NoScrollLink href={`/blog/${mostLiked.slug}`}>
 							<a className='flex flex-col gap-1'>
 								<div className='flex items-center gap-2'>
-									<HeartIcon className='w-5 h-5 text-red-700 dark:text-red-400' />
+									<HeartIcon className='w-4 h-4 text-red-700 dark:text-red-400' />
 									<h3 className='text-xl font-semibold lg:text-2xl'>
 										{mostLiked.title}
 									</h3>
 								</div>
+								<small className='pl-6 text-gray-500 dark:text-gray-300'>
+									{formatDate(mostLiked.published_at)}
+								</small>
 								<p className='pl-6 text-gray-600 dark:text-gray-200 lg:text-lg'>
 									{mostLiked.description}
 								</p>
