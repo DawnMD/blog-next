@@ -12,7 +12,7 @@ const ListItem = ({ blog }) => {
 					<h3 className='text-xl font-bold tracking-wide lg:text-3xl'>
 						{blog.title}
 					</h3>
-					<div className='text-sm font-semibold text-gray-600 lg:text-lg dark:text-gray-200'>
+					<div className='text-sm font-semibold text-gray-600 lg:text-lg dark:text-gray-300'>
 						{date}
 					</div>
 					<small className='flex gap-1'>
@@ -28,16 +28,16 @@ const ListItem = ({ blog }) => {
 					<p className='lg:text-xl'>{blog.description}</p>
 					<div className='flex gap-6'>
 						<small className='flex items-center gap-1 text-sm'>
+							<HeartIcon className='w-4 h-4' />
+							<div>{blog.public_reactions_count}</div>
+						</small>
+						<small className='flex items-center gap-1 text-sm'>
 							<WatchIcon className='w-4 h-4 ' />
 							<div>{blog.page_views_count}</div>
 						</small>
 						<small className='flex items-center gap-1 text-sm'>
 							<CommentIcon className='w-4 h-4' />
 							<div>{blog.comments_count}</div>
-						</small>
-						<small className='flex items-center gap-1 text-sm'>
-							<HeartIcon className='w-4 h-4' />
-							<div>{blog.public_reactions_count}</div>
 						</small>
 					</div>
 				</article>

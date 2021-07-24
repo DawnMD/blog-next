@@ -22,7 +22,7 @@ const Nav = (props) => {
 				<span className='text-2xl font-bold text-transparent bg-purple-500 bg-gradient-to-r from-red-500 bg-clip-text animate-gradient-x md:text-3xl '>
 					<NoScrollLink href='/'>
 						<a onClick={onLinkClick}>
-							<span className='lg:hidden lg:invisible'>MD.</span>
+							<span className='lg:hidden lg:invisible'>MD</span>
 							<span className='invisible hidden lg:visible lg:block'>
 								Mainak Das
 							</span>

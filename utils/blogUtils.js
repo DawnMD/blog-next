@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { filterResponse } from './helpers';
 
 export async function getAllArticles() {
 	const res = await fetch('https://dev.to/api/articles/me/published', {
@@ -9,7 +10,8 @@ export async function getAllArticles() {
 	});
 
 	const data = await res.json();
-	return data;
+	const filterArticles = data.map((article) => filterResponse(article));
+	return filterArticles;
 }
 
 export function writeCache(data) {
