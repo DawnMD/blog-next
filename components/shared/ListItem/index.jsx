@@ -32,12 +32,12 @@ const ListItem = ({ blog }) => {
 							<div>{blog.public_reactions_count}</div>
 						</small>
 						<small className='flex items-center gap-1 text-sm'>
-							<WatchIcon className='w-4 h-4 ' />
-							<div>{blog.page_views_count}</div>
-						</small>
-						<small className='flex items-center gap-1 text-sm'>
 							<CommentIcon className='w-4 h-4' />
 							<div>{blog.comments_count}</div>
+						</small>
+						<small className='flex items-center gap-1 text-sm'>
+							<WatchIcon className='w-4 h-4 ' />
+							<div>{blog.page_views_count}</div>
 						</small>
 					</div>
 				</article>
