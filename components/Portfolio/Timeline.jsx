@@ -11,24 +11,24 @@ const timelineDatas = [
 					'Graduated from Adamas University acquiring a <strong>CGPA of 7.25</strong>',
 			},
 			{
-				heading: 'Second Internship',
+				heading: 'Second Internship 💡💡',
 				caption:
-					`<i>Why not learn how the frontend company works and develop my skills at the same time?</i></br> Snagged my second internship from a frontend company where I got the chance to learn about the advanced stuff in the frontend.`,
+					`<i>Why not learn how the frontend company works and develop my skills at the same time?</i></br> Worked as an intern in APlus Topper, where I got the opportunity to learn about various frontend processes the company operates.`,
 			},
 		],
 	},
 	{
 		year: 2020,
 		timelineProgress: [
-			{
-				heading: 'Landed First Internship',
-				caption:
-					'After learning programming and frontend for few months, felt like I understood most of the programming. My interviewing skills were subpar but somehow I landed my first ever internship.',
-			},
+			// {
+			// 	heading: 'Grabbed First Internship 💡',
+			// 	caption:
+			// 		'After learning programming and frontend in web development for few months,my programming skills had evolved.',
+			// },
 			{
 				heading: 'Started Learning Frontend Technologies',
 				caption:
-					'During the pandemic, I saw some random videos on youtube about how some normal people making cool-looking websites with React.Js. Researched some more on those topics and found out about HTML, CSS, JavaScript. Started learning more about those immediately.',
+					'During the pandemic, I saw some videos on youtube about how people make cool websites with React.Js. Researched some more on those topics like HTML, CSS, JavaScript had caught my interest and motivated to start learning theses languages.',
 			},
 		],
 	},
@@ -41,7 +41,7 @@ const timelineDatas = [
 			},
 			{
 				heading: 'Graduated High School 🎒',
-				caption: `Graduated with a score of 61.8% on best of five from Bidhannar
+				caption: `Graduated with a score of 61.8% from Bidhannar
 						Municipal School. Acquired <strong>B+</strong> grade.`,
 			},
 		],
@@ -50,7 +50,7 @@ const timelineDatas = [
 		year: 2016,
 		timelineProgress: [
 			{
-				heading: 'Learned How to Program',
+				heading: 'Learnt How to do Programming',
 				caption:
 					'My friend&apos;s brother taught me the basics on how to write a program on C, from that moment I knew it was gonna be interesting uphill.',
 			},
