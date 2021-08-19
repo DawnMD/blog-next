@@ -8,12 +8,12 @@ const timelineDatas = [
 			{
 				heading: 'Graduated University 👨🏽‍🎓',
 				caption:
-					'Got my graduate degree and ended my college days acquiring a total <strong>CGPA of 7.25</strong>.',
+					'Graduated from Adamas University acquiring a <strong>CGPA of 7.25</strong>',
 			},
 			{
 				heading: 'Second Internship',
 				caption:
-					'Why not learn how the frontend company works and develop my skills at the same time? Snagged my second internship with a frontend company where I got the chance to learn about the advanced stuff in the frontend.',
+					`<i>Why not learn how the frontend company works and develop my skills at the same time?</i></br> Snagged my second internship from a frontend company where I got the chance to learn about the advanced stuff in the frontend.`,
 			},
 		],
 	},
@@ -42,7 +42,7 @@ const timelineDatas = [
 			{
 				heading: 'Graduated High School 🎒',
 				caption: `Graduated with a score of 61.8% on best of five from Bidhannar
-						Municipal School. Acquired <strong>A</strong> grade.`,
+						Municipal School. Acquired <strong>B+</strong> grade.`,
 			},
 		],
 	},
