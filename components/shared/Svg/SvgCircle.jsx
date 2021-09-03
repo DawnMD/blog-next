@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 export default function SvgCircle(props) {
 	const animation = useAnimation();
-	const finalPathLength = props.score / 100;
+	const finalPathLength = props.score / 10;
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0.2,
@@ -52,7 +52,7 @@ export default function SvgCircle(props) {
 					textAnchor='middle'
 					dy='.45rem'
 					className='font-bold fill-current '>
-					{`${props.score} %`}
+					{`${props.score}/10`}
 				</text>
 			</motion.svg>
 		</div>
