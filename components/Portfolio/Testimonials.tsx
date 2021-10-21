@@ -1,4 +1,4 @@
-import Section from '../shared/SectionHeading';
+import Section from '../shared/SectionHeading/SectionHeading';
 import { testimonialData } from '../../data/testimonialData';
 
 const Testimonials = (): JSX.Element => {

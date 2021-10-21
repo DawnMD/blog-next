@@ -1,6 +1,6 @@
 import { Blog } from '../../types/blogType';
-import List from '../shared/List';
-import Section from '../shared/SectionHeading';
+import List from '../shared/List/List';
+import Section from '../shared/SectionHeading/SectionHeading';
 
 interface BlogsProps {
   blogs: Blog[];

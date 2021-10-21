@@ -1,5 +1,5 @@
 import TimelineIcon from '../shared/Icons/TimelineIcon';
-import Section from '../shared/SectionHeading';
+import Section from '../shared/SectionHeading/SectionHeading';
 import parse from 'html-react-parser';
 import { timelineData } from '../../data/timelineData';
 

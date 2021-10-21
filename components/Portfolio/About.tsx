@@ -1,4 +1,4 @@
-import Section from '../shared/SectionHeading';
+import Section from '../shared/SectionHeading/SectionHeading';
 
 const About = (): JSX.Element => {
   return (

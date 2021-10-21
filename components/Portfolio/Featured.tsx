@@ -1,7 +1,7 @@
-import SectionHeading from '../shared/SectionHeading';
+import SectionHeading from '../shared/SectionHeading/SectionHeading';
 import HeartIcon from '../shared/Icons/HeartIcon';
 import ClockIcon from '../shared/Icons/ClockIcon';
-import NoScrollLink from '../shared/NoScrollLink';
+import NoScrollLink from '../shared/NoScrollLink/NoScrollLink';
 import { formatDate } from '../../utils/helpers';
 import { Blog } from '../../types/blogType';
 

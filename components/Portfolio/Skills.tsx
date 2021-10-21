@@ -1,4 +1,4 @@
-import SectionHeading from '../shared/SectionHeading';
+import SectionHeading from '../shared/SectionHeading/SectionHeading';
 import SvgCircle from '../shared/Svg/SvgCircle';
 import { skillsData } from '../../data/skillsData';
 
