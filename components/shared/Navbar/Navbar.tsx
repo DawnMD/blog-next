@@ -1,4 +1,4 @@
-import NoScrollLink from '../NoScrollLink';
+import NoScrollLink from '../NoScrollLink/NoScrollLink';
 import { useState } from 'react';
 import ThemeSwitch from '../Icons/ThemeSwitch';
 
