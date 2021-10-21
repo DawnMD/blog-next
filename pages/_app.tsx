@@ -2,6 +2,7 @@ import Navbar from '../components/shared/Navbar/Navbar';
 import type { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
 import '../styles/globals.css';
+import 'tailwindcss/tailwind.css';
 import { ThemeProvider } from 'next-themes';
 import { AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
