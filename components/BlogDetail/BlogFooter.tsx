@@ -2,7 +2,7 @@ interface BlogFooterProps {
   url: string;
 }
 
-const BlogFooter = ({ url }: BlogFooterProps) => {
+const BlogFooter = ({ url }: BlogFooterProps): JSX.Element => {
   return (
     <footer className='text-xl font-medium text-center underline group'>
       <a

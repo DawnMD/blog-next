@@ -13,7 +13,7 @@ interface MarkdownProps {
   title: string;
 }
 
-const Markdown = ({ children, dateISO, title }: MarkdownProps) => {
+const Markdown = ({ children, dateISO, title }: MarkdownProps): JSX.Element => {
   const markdown = sanitizeDevToMarkdown(children);
   const date = formatDate(dateISO);
 
