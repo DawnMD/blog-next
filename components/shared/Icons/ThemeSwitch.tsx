@@ -19,7 +19,9 @@ const ThemeSwitch = (): JSX.Element | null => {
 
   return (
     <>
-      <button className='w-10 h-10 focus:outline-none' onClick={toggleMode}>
+      <button
+        className='w-10 h-10 transition-all bg-gray-200 rounded-md dark:bg-gray-600 hover:ring-2 ring-gray-300'
+        onClick={toggleMode}>
         <span className='sr-only'>Color mode switch button</span>
         {theme === 'dark' ? (
           <svg
