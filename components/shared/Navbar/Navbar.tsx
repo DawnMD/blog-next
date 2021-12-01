@@ -1,48 +1,49 @@
 import NoScrollLink from '../NoScrollLink/NoScrollLink';
-import { useState } from 'react';
 import ThemeSwitch from '../Icons/ThemeSwitch';
+import { motion, useCycle, AnimatePresence } from 'framer-motion';
+
+const sideVariants = {
+  closed: {
+    transition: {
+      staggerChildren: 0.2,
+      staggerDirection: -1,
+    },
+  },
+  open: {
+    transition: {
+      staggerChildren: 0.2,
+      staggerDirection: 1,
+    },
+  },
+};
+
+const itemVariants = {
+  closed: {
+    opacity: 0,
+  },
+  open: { opacity: 1 },
+};
 
 const Navbar = (): JSX.Element => {
-  const [mobileNav, setMobileNav] = useState<boolean>(false);
+  const [open, cycleOpen] = useCycle(false, true);
 
-  const toggleMobileNav = (): void => {
-    setMobileNav(!mobileNav);
-  };
-
-  const onLinkClick = (): void => {
-    if (mobileNav) {
-      setMobileNav(false);
+  const toggleNav = (): void => {
+    if (open) {
+      cycleOpen();
+      document.body.style.overflow = '';
+    } else {
+      cycleOpen();
+      document.body.style.overflow = 'hidden';
     }
-    return;
   };
 
   return (
     <>
-      <header
-        className={`sticky top-0 left-0 z-10 flex items-center justify-between w-full p-4 sm:px-16 md:px-36 lg:px-52 xl:px-80 2xl:px-96 text-lg font-medium bg-gray-100 ${
-          !mobileNav &&
-          'shadow-xl bg-opacity-70 dark:bg-opacity-70 backdrop-filter backdrop-blur-md'
-        }   md:text-xl dark:bg-gray-900`}>
-        <span className='text-2xl font-bold text-transparent bg-purple-500 bg-gradient-to-r from-red-500 bg-clip-text animate-gradient-x md:text-3xl '>
-          <NoScrollLink href='/'>
-            <a onClick={onLinkClick}>
-              <span className='lg:hidden lg:invisible'>MD</span>
-              <span className='invisible hidden lg:visible lg:block'>
-                Mainak Das
-              </span>
-            </a>
-          </NoScrollLink>
-        </span>
-        <nav className='flex items-center md:gap-4'>
-          <ul className='items-center invisible hidden space-x-4 md:flex md:visible'>
-            <li>
-              <NoScrollLink href='/blogs'>Blogs</NoScrollLink>
-            </li>
-          </ul>
-          <ThemeSwitch />
+      <header className='relative w-full px-8'>
+        <div className='flex items-center justify-between max-w-2xl py-8 mx-auto'>
           <button
-            className='relative w-10 h-10 focus:outline-none md:invisible md:hidden'
-            onClick={toggleMobileNav}>
+            className='relative w-8 h-8 md:invisible md:hidden'
+            onClick={toggleNav}>
             <span className='sr-only'>
               Open navbar menu on mobile screen button
             </span>
@@ -50,28 +51,83 @@ const Navbar = (): JSX.Element => {
               <span
                 aria-hidden='true'
                 className={`block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out ${
-                  mobileNav && 'rotate-45'
-                } ${!mobileNav && '-translate-y-1.5'}`}></span>
+                  open && 'rotate-45'
+                } ${!open && '-translate-y-1.5'}`}></span>
               <span
                 aria-hidden='true'
                 className={`block absolute  h-0.5 w-5 bg-current transform transition duration-500 ease-in-out  ${
-                  mobileNav && '-rotate-45'
-                } ${!mobileNav && 'translate-y-1.5'}`}></span>
+                  open && '-rotate-45'
+                } ${!open && 'translate-y-1.5'}`}></span>
             </div>
           </button>
-        </nav>
+          <nav className='invisible hidden md:visible md:block'>
+            <ul className='flex gap-2'>
+              <li>
+                <NoScrollLink href='/'>
+                  <a>Home</a>
+                </NoScrollLink>
+              </li>
+              <li>
+                <NoScrollLink href='/blogs'>
+                  <a>Blogs</a>
+                </NoScrollLink>
+              </li>
+            </ul>
+          </nav>
+          <ThemeSwitch />
+        </div>
+        <AnimatePresence>
+          {open && (
+            <motion.nav
+              initial={{ width: 0 }}
+              animate={{ width: '100%' }}
+              exit={{
+                width: 0,
+                transition: { delay: 0.25, duration: 0.25 },
+              }}
+              transition={{ type: 'keyframes' }}
+              className='absolute left-0 w-full min-h-screen px-8 pb-16 transition-opacity bg-gray-100 dark:bg-gray-900'>
+              <motion.ul
+                initial='closed'
+                animate='open'
+                exit='closed'
+                variants={sideVariants}
+                className='flex flex-col gap-5'>
+                <motion.li
+                  variants={itemVariants}
+                  id='1'
+                  className='text-sm font-semibold text-gray-900 border-b border-gray-300 dark:border-gray-700 dark:text-gray-100'>
+                  <NoScrollLink href='/'>
+                    <a onClick={() => cycleOpen()} className='flex w-auto pb-4'>
+                      Home
+                    </a>
+                  </NoScrollLink>
+                </motion.li>
+                <motion.li
+                  variants={itemVariants}
+                  id='2'
+                  className='text-sm font-semibold text-gray-900 border-b border-gray-300 dark:border-gray-700 dark:text-gray-100'>
+                  <NoScrollLink href='/blogs'>
+                    <a onClick={() => cycleOpen()} className='flex w-auto pb-4'>
+                      Blogs
+                    </a>
+                  </NoScrollLink>
+                </motion.li>
+                <motion.li
+                  variants={itemVariants}
+                  id='3'
+                  className='text-sm font-semibold text-gray-900 border-b border-gray-300 dark:border-gray-700 dark:text-gray-100'>
+                  <NoScrollLink href='/top-tracks'>
+                    <a onClick={() => cycleOpen()} className='flex w-auto pb-4'>
+                      Top Tracks
+                    </a>
+                  </NoScrollLink>
+                </motion.li>
+              </motion.ul>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </header>
-      {mobileNav && (
-        <nav className='fixed z-10 w-full px-4 pb-4 text-xl font-medium tracking-wide bg-gray-100 shadow-md dark:bg-gray-900 md:hidden md:invisible'>
-          <ul className='flex flex-col justify-center space-y-2'>
-            <li>
-              <NoScrollLink href='/blogs'>
-                <a onClick={onLinkClick}>Blogs</a>
-              </NoScrollLink>
-            </li>
-          </ul>
-        </nav>
-      )}
     </>
   );
 };
