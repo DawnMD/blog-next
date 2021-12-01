@@ -1,6 +1,6 @@
 import NoScrollLink from '../NoScrollLink/NoScrollLink';
 import ThemeSwitch from '../Icons/ThemeSwitch';
-import { motion, useCycle, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const sideVariants = {
@@ -86,9 +86,9 @@ const Navbar = (): JSX.Element => {
         <AnimatePresence>
           {open && (
             <motion.nav
-              initial={{ display: 'hidden' }}
-              animate={{ display: 'block' }}
-              exit={{ transition: { duration: 0.2 } }}
+              initial={{ display: 'hidden', opacity: 0 }}
+              animate={{ display: 'block', opacity: 1 }}
+              exit={{ transition: { duration: 0.2 }, opacity: 0 }}
               transition={{ type: 'keyframes' }}
               className='absolute left-0 w-full min-h-screen px-8 pb-16 transition-opacity bg-gray-100 dark:bg-gray-900'>
               <motion.ul
