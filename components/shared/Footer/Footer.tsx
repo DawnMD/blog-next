@@ -2,7 +2,7 @@ import SocialIcons from '../Icons/SocialIcons';
 
 const Footer = (): JSX.Element => {
   return (
-    <footer className='flex flex-col items-center w-full gap-2 pb-6'>
+    <footer className='flex flex-col items-center w-full gap-2 px-8 pb-8'>
       <div className='my-3'>
         <SocialIcons />
       </div>
