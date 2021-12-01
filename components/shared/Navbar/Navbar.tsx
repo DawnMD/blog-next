@@ -1,6 +1,7 @@
 import NoScrollLink from '../NoScrollLink/NoScrollLink';
 import ThemeSwitch from '../Icons/ThemeSwitch';
 import { motion, useCycle, AnimatePresence } from 'framer-motion';
+import { useEffect } from 'react';
 
 const sideVariants = {
   closed: {
@@ -36,6 +37,12 @@ const Navbar = (): JSX.Element => {
       document.body.style.overflow = 'hidden';
     }
   };
+
+  useEffect(() => {
+    return function cleanup() {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   return (
     <>
