@@ -1,7 +1,7 @@
 import NoScrollLink from '../NoScrollLink/NoScrollLink';
 import ThemeSwitch from '../Icons/ThemeSwitch';
 import { motion, useCycle, AnimatePresence } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const sideVariants = {
   closed: {
@@ -26,14 +26,14 @@ const itemVariants = {
 };
 
 const Navbar = (): JSX.Element => {
-  const [open, cycleOpen] = useCycle(false, true);
+  const [open, setOpen] = useState<boolean>(false);
 
   const toggleNav = (): void => {
     if (open) {
-      cycleOpen();
+      setOpen(!open);
       document.body.style.overflow = '';
     } else {
-      cycleOpen();
+      setOpen(!open);
       document.body.style.overflow = 'hidden';
     }
   };
@@ -86,12 +86,9 @@ const Navbar = (): JSX.Element => {
         <AnimatePresence>
           {open && (
             <motion.nav
-              initial={{ width: 0 }}
-              animate={{ width: '100%' }}
-              exit={{
-                width: 0,
-                transition: { delay: 0.25, duration: 0.25 },
-              }}
+              initial={{ display: 'hidden' }}
+              animate={{ display: 'block' }}
+              exit={{ transition: { duration: 0.2 } }}
               transition={{ type: 'keyframes' }}
               className='absolute left-0 w-full min-h-screen px-8 pb-16 transition-opacity bg-gray-100 dark:bg-gray-900'>
               <motion.ul
@@ -105,7 +102,7 @@ const Navbar = (): JSX.Element => {
                   id='1'
                   className='text-sm font-semibold text-gray-900 border-b border-gray-300 dark:border-gray-700 dark:text-gray-100'>
                   <NoScrollLink href='/'>
-                    <a onClick={() => cycleOpen()} className='flex w-auto pb-4'>
+                    <a onClick={toggleNav} className='flex w-auto pb-4'>
                       Home
                     </a>
                   </NoScrollLink>
@@ -115,7 +112,7 @@ const Navbar = (): JSX.Element => {
                   id='2'
                   className='text-sm font-semibold text-gray-900 border-b border-gray-300 dark:border-gray-700 dark:text-gray-100'>
                   <NoScrollLink href='/blogs'>
-                    <a onClick={() => cycleOpen()} className='flex w-auto pb-4'>
+                    <a onClick={toggleNav} className='flex w-auto pb-4'>
                       Blogs
                     </a>
                   </NoScrollLink>
@@ -125,7 +122,7 @@ const Navbar = (): JSX.Element => {
                   id='3'
                   className='text-sm font-semibold text-gray-900 border-b border-gray-300 dark:border-gray-700 dark:text-gray-100'>
                   <NoScrollLink href='/top-tracks'>
-                    <a onClick={() => cycleOpen()} className='flex w-auto pb-4'>
+                    <a onClick={toggleNav} className='flex w-auto pb-4'>
                       Top Tracks
                     </a>
                   </NoScrollLink>
