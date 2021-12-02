@@ -46,7 +46,7 @@ const Navbar = (): JSX.Element => {
 
   return (
     <>
-      <header className='relative w-full px-8'>
+      <header className='relative w-full'>
         <div className='flex items-center justify-between max-w-2xl py-8 mx-auto'>
           <button
             className='relative w-8 h-8 md:invisible md:hidden'
@@ -90,7 +90,7 @@ const Navbar = (): JSX.Element => {
               animate={{ display: 'block', opacity: 1 }}
               exit={{ transition: { duration: 0.2 }, opacity: 0 }}
               transition={{ type: 'keyframes' }}
-              className='absolute left-0 w-full min-h-screen px-8 pb-16 transition-opacity bg-gray-100 dark:bg-gray-900'>
+              className='absolute left-0 z-10 w-full min-h-screen pb-16 pl-2 transition-opacity bg-gray-100 dark:bg-gray-900'>
               <motion.ul
                 initial='closed'
                 animate='open'
