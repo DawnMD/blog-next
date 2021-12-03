@@ -1,7 +1,8 @@
-import NoScrollLink from '../NoScrollLink/NoScrollLink';
 import ThemeSwitch from '../Icons/ThemeSwitch';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import MobileNavItem from './MobileNavItem';
+import NavItem from './NavItem';
 
 const sideVariants = {
   closed: {
@@ -16,13 +17,6 @@ const sideVariants = {
       staggerDirection: 1,
     },
   },
-};
-
-const itemVariants = {
-  closed: {
-    opacity: 0,
-  },
-  open: { opacity: 1 },
 };
 
 const Navbar = (): JSX.Element => {
@@ -67,18 +61,12 @@ const Navbar = (): JSX.Element => {
                 } ${!open && 'translate-y-1.5'}`}></span>
             </div>
           </button>
-          <nav className='invisible hidden md:visible md:block'>
+          <nav className='invisible hidden text-gray-600 dark:text-gray-400 md:visible md:block'>
             <ul className='flex gap-2'>
-              <li>
-                <NoScrollLink href='/'>
-                  <a>Home</a>
-                </NoScrollLink>
-              </li>
-              <li>
-                <NoScrollLink href='/blogs'>
-                  <a>Blogs</a>
-                </NoScrollLink>
-              </li>
+              <NavItem href='/'>Home</NavItem>
+              <NavItem href='/timeline'>Timeline</NavItem>
+              <NavItem href='/blogs'>Blogs</NavItem>
+              <NavItem href='/top'>Top Track</NavItem>
             </ul>
           </nav>
           <ThemeSwitch />
@@ -87,46 +75,31 @@ const Navbar = (): JSX.Element => {
           {open && (
             <motion.nav
               initial={{ display: 'hidden', opacity: 0 }}
-              animate={{ display: 'block', opacity: 1 }}
-              exit={{ transition: { duration: 0.2 }, opacity: 0 }}
-              transition={{ type: 'keyframes' }}
-              className='absolute left-0 z-10 w-full min-h-screen pb-16 pl-2 transition-opacity bg-gray-100 dark:bg-gray-900'>
+              animate={{
+                display: 'block',
+                opacity: 1,
+              }}
+              exit={{ transition: { duration: 0.1 }, opacity: 0 }}
+              transition={{ type: 'keyframes', duration: 0.1 }}
+              className='absolute left-0 right-0 z-10 w-full min-h-screen pb-16 pl-2 transition-opacity bg-gray-100 dark:bg-gray-900'>
               <motion.ul
                 initial='closed'
                 animate='open'
                 exit='closed'
                 variants={sideVariants}
                 className='flex flex-col gap-5'>
-                <motion.li
-                  variants={itemVariants}
-                  id='1'
-                  className='text-sm font-semibold text-gray-900 border-b border-gray-300 dark:border-gray-700 dark:text-gray-100'>
-                  <NoScrollLink href='/'>
-                    <a onClick={toggleNav} className='flex w-auto pb-4'>
-                      Home
-                    </a>
-                  </NoScrollLink>
-                </motion.li>
-                <motion.li
-                  variants={itemVariants}
-                  id='2'
-                  className='text-sm font-semibold text-gray-900 border-b border-gray-300 dark:border-gray-700 dark:text-gray-100'>
-                  <NoScrollLink href='/blogs'>
-                    <a onClick={toggleNav} className='flex w-auto pb-4'>
-                      Blogs
-                    </a>
-                  </NoScrollLink>
-                </motion.li>
-                <motion.li
-                  variants={itemVariants}
-                  id='3'
-                  className='text-sm font-semibold text-gray-900 border-b border-gray-300 dark:border-gray-700 dark:text-gray-100'>
-                  <NoScrollLink href='/top-tracks'>
-                    <a onClick={toggleNav} className='flex w-auto pb-4'>
-                      Top Tracks
-                    </a>
-                  </NoScrollLink>
-                </motion.li>
+                <MobileNavItem id='1' onClick={toggleNav} href='/'>
+                  Home
+                </MobileNavItem>
+                <MobileNavItem id='2' onClick={toggleNav} href='/timeline'>
+                  Timeline
+                </MobileNavItem>
+                <MobileNavItem id='3' onClick={toggleNav} href='/blogs'>
+                  Blogs
+                </MobileNavItem>
+                <MobileNavItem id='4' onClick={toggleNav} href='/top'>
+                  Top Tracks
+                </MobileNavItem>
               </motion.ul>
             </motion.nav>
           )}
