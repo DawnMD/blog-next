@@ -1,38 +1,32 @@
 const defaultFonts = require('tailwindcss/defaultTheme');
 
 module.exports = {
+  mode: 'jit',
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
+      colors: {
+        'blue-opaque': 'rgb(13 42 148 / 18%)',
+        codemancers: '#0356ff',
+        gray: {
+          0: '#fff',
+          100: '#fafafa',
+          200: '#eaeaea',
+          300: '#999999',
+          400: '#888888',
+          500: '#666666',
+          600: '#444444',
+          700: '#333333',
+          800: '#222222',
+          900: '#111111',
+        },
+      },
       content: {
         quote: "'“'",
       },
       fontFamily: {
-        sans: ["'Barlow'", ...defaultFonts.fontFamily.sans],
-      },
-      fontSize: ['hover'],
-      animation: {
-        'gradient-x': 'gradient-x 3s ease infinite',
-      },
-      keyframes: {
-        'gradient-x': {
-          '0%, 100%': {
-            'background-size': '200% 200%',
-            'background-position': 'left center',
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center',
-          },
-        },
-      },
-      textColor: {
-        tailwind: '#06B6D4',
-        redux: '#764abc',
-        react: '#61dafb',
-        node: '#026e00',
-        mongo: '#13aa52',
+        sans: ["'Inter'", ...defaultFonts.fontFamily.sans],
       },
       typography: (theme) => ({
         light: {
@@ -97,10 +91,22 @@ module.exports = {
           ],
         },
       }),
+      keyframes: {
+        music: {
+          '10%': { transform: 'scaleY(0.3)' },
+          '30%': { transform: 'scaleY(1)' },
+          '60%': { transform: 'scaleY(0.5)' },
+          '80%': { transform: 'scaleY(0.75)' },
+          '100%': { transform: 'scaleY(0.6)' },
+        },
+      },
+      animation: {
+        'music-wave': 'music 2.2s ease infinite alternate',
+      },
     },
   },
   variants: {
-    extend: { typography: ['dark'], animation: ['hover'] },
+    extend: { typography: ['dark'] },
   },
   plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
 };

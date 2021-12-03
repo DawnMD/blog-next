@@ -1,8 +1,11 @@
+import SpotifyNowPlaying from './SpotifyNowPlaying';
+
 const Footer = (): JSX.Element => {
   return (
     <footer className='flex flex-col gap-6 pb-8 md:w-[42rem] md:mx-auto text-sm mw-full'>
       <hr className='w-full mb-2 border-gray-200 border-1 dark:border-gray-800' />
       {/* Spotify */}
+      <SpotifyNowPlaying />
       <div className='text-sm text-gray-400'>
         <ul className='flex flex-col gap-3'>
           <li>
