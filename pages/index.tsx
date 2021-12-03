@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import AnimateLayout from '../components/Layout/AnimateLayout';
 import Portfolio from '../components/Portfolio';
+import Skills from '../components/Skills';
 import { Blog } from '../types/blogType';
 import {
   getMaxLikedBlog,
@@ -28,7 +29,10 @@ export default function Home({ featured }: HomeProps) {
         description={description}
         openGraph={{ title, description }}
       />
-      <Portfolio />
+      <div className='flex flex-col gap-16'>
+        <Portfolio />
+        <Skills />
+      </div>
     </AnimateLayout>
   );
 }
