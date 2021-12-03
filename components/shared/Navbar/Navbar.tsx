@@ -81,7 +81,7 @@ const Navbar = (): JSX.Element => {
               }}
               exit={{ transition: { duration: 0.1 }, opacity: 0 }}
               transition={{ type: 'keyframes', duration: 0.1 }}
-              className='absolute left-0 right-0 z-10 w-full min-h-screen pb-16 pl-2 transition-opacity bg-gray-100 dark:bg-gray-900'>
+              className='absolute left-0 right-0 z-10 w-full min-h-screen pb-16 pl-2 pr-8 transition-opacity bg-gray-100 dark:bg-gray-900'>
               <motion.ul
                 initial='closed'
                 animate='open'
