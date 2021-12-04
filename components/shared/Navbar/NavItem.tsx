@@ -17,7 +17,7 @@ const NavItem = ({ key, href, children }: NavItemProps): JSX.Element => {
   return (
     <li
       className={classnames(
-        'px-3 py-1 transition rounded-md hover:bg-gray-200 dark:hover:bg-gray-800',
+        'px-3 py-1 transition-all rounded-md hover:bg-gray-200 dark:hover:bg-gray-800',
         {
           'font-semibold text-gray-800 dark:text-gray-200': selected,
         }
