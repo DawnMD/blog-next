@@ -40,8 +40,8 @@ const Navbar = (): JSX.Element => {
 
   return (
     <>
-      <header className='relative w-full'>
-        <div className='flex items-center justify-between max-w-2xl py-8 mx-auto'>
+      <header className='relative w-full '>
+        <div className='flex items-center justify-between max-w-[43.5rem] py-8 mx-auto'>
           <button
             className='relative w-8 h-8 md:invisible md:hidden'
             onClick={toggleNav}>
