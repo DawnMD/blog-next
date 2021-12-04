@@ -12,7 +12,7 @@ import {
 const Skills = (): JSX.Element => {
   return (
     <section className='flex flex-col gap-4'>
-      <h3 className='text-2xl font-bold tracking-tight md:text-4xl '>
+      <h3 className='text-2xl font-bold tracking-tight md:text-4xl'>
         Techstack I know
       </h3>
       <p className='text-gray-400'>Techs & frameworks I mostly like to use.</p>
