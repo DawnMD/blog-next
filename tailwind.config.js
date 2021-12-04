@@ -1,4 +1,4 @@
-const defaultFonts = require('tailwindcss/defaultTheme');
+const { spacing, fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
   mode: 'jit',
@@ -30,9 +30,30 @@ module.exports = {
         quote: "'“'",
       },
       fontFamily: {
-        sans: ["'Inter'", ...defaultFonts.fontFamily.sans],
+        sans: ["'Inter'", ...fontFamily.sans],
       },
       typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.gray.700'),
+            a: {
+              color: theme('colors.blue.500'),
+              '&:hover': {
+                color: theme('colors.blue.700'),
+              },
+              code: { color: theme('colors.blue.400') },
+            },
+            'h2,h3,h4': {
+              'scroll-margin-top': spacing[32],
+            },
+            thead: {
+              borderBottomColor: theme('colors.gray.200'),
+            },
+            code: { color: theme('colors.pink.500') },
+            'blockquote p:first-of-type::before': false,
+            'blockquote p:last-of-type::after': false,
+          },
+        },
         light: {
           css: [
             {
@@ -41,55 +62,55 @@ module.exports = {
                 color: theme('colors.gray.200'),
               },
               a: {
-                color: theme('colors.white'),
+                color: theme('colors.blue.400'),
+                '&:hover': {
+                  color: theme('colors.blue.600'),
+                },
+                code: { color: theme('colors.blue.400') },
               },
-              strong: {
-                color: theme('colors.white'),
+              strong: { color: theme('colors.gray.100') },
+              ol: {
+                li: {
+                  '&:before': { color: theme('colors.gray.500') },
+                },
               },
-              'ol > li::before': {
+              ul: {
+                li: {
+                  '&:before': { backgroundColor: theme('colors.gray.500') },
+                },
+              },
+              hr: { borderColor: theme('colors.gray.700') },
+              blockquote: {
+                borderLeftColor: theme('colors.gray.700'),
                 color: theme('colors.gray.300'),
               },
-              'ul > li::before': {
-                backgroundColor: theme('colors.gray.500'),
-              },
-              hr: {
-                borderColor: theme('colors.gray.100'),
-              },
-              blockquote: {
-                color: theme('colors.gray.100'),
-                borderLeftColor: theme('colors.gray.500'),
-              },
               h1: {
-                color: theme('colors.white'),
+                color: theme('colors.gray.100'),
               },
-              h2: {
-                color: theme('colors.white'),
-              },
-              h3: {
-                color: theme('colors.white'),
-              },
-              h4: {
-                color: theme('colors.white'),
+              'h2,h3,h4': {
+                color: theme('colors.gray.100'),
               },
               'figure figcaption': {
                 color: theme('colors.gray.300'),
               },
               code: {
-                color: theme('colors.white'),
+                color: theme('colors.gray.100'),
               },
               'a code': {
-                color: theme('colors.white'),
+                color: theme('colors.gray.100'),
               },
               pre: {
                 color: theme('colors.gray.100'),
                 backgroundColor: theme('colors.gray.700'),
               },
               thead: {
-                color: theme('colors.white'),
-                borderBottomColor: theme('colors.gray.300'),
+                color: theme('colors.gray.100'),
+                borderBottomColor: theme('colors.gray.600'),
               },
-              'tbody tr': {
-                borderBottomColor: theme('colors.gray.500'),
+              tbody: {
+                tr: {
+                  borderBottomColor: theme('colors.gray.700'),
+                },
               },
             },
           ],
