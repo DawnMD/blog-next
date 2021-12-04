@@ -23,7 +23,7 @@ const AnimateLayout = ({ children }: LayoutProps): JSX.Element => {
         transition={{ type: 'keyframes' }}
         className='flex flex-col h-screen gap-4 px-8 '>
         <Navbar />
-        <div className='flex-1 max-w-2xl mx-auto'>{children}</div>
+        <div className='flex-1'>{children}</div>
         <Footer />
       </motion.main>
     </>

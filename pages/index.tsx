@@ -31,7 +31,7 @@ export default function Home({ featured }: HomeProps) {
         description={description}
         openGraph={{ title, description }}
       />
-      <div className='flex flex-col gap-16 mb-16'>
+      <div className='flex flex-col max-w-2xl gap-16 mx-auto mb-16'>
         <Portfolio />
         <Skills />
         <FeaturedBlogs featured={featured} />
