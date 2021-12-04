@@ -21,6 +21,10 @@ module.exports = {
           800: '#222222',
           900: '#111111',
         },
+        amber: '#FACC15',
+        orange: '#FB923C',
+        pink: '#EC4899',
+        rose: '#F43F5E',
       },
       content: {
         quote: "'“'",

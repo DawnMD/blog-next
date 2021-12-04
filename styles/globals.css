@@ -3,6 +3,10 @@
 @tailwind utilities;
 @tailwind components;
 
+html {
+  scroll-behavior: smooth;
+}
+
 .animation-delay-2 {
   animation-delay: -2.2s;
 }
