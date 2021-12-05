@@ -30,6 +30,31 @@ export interface SpotifyNowPlayingResponse {
   };
 }
 
+export interface SpotifyTopTrack {
+  id: string;
+  name: string;
+  album: {
+    name: string;
+    image: AlbumImage;
+  };
+  songUrl: string;
+  artist: string;
+}
+export interface SpotifyTopResponse {
+  items: {
+    id: string;
+    album: {
+      name: string;
+      images: AlbumImage[];
+    };
+    artists: Artist[];
+    external_urls: {
+      spotify: string;
+    };
+    name: string;
+  }[];
+}
+
 export interface SpotifyToken {
   access_token: string;
   token_type: string;

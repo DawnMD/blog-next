@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SpotifyNowPlayingSong } from '../types/spotify';
+import { SpotifyNowPlayingSong, SpotifyTopTrack } from '../types/spotify';
 import { basicSpotifyAuthKey } from '../utils/spotify';
 
 export const spotifyAccount = axios.create({
@@ -14,9 +14,16 @@ export const spotifyAPI = axios.create({
   baseURL: 'https://api.spotify.com/v1',
 });
 
-export const spotifyFetcher = async (
+export const spotifyNowPlayingFetcher = async (
   url: string
 ): Promise<SpotifyNowPlayingSong> => {
+  const { data } = await axios.get(`/api/spotify${url}`);
+  return data;
+};
+
+export const spotifyTopTrackFetcher = async (
+  url: string
+): Promise<SpotifyTopTrack[]> => {
   const { data } = await axios.get(`/api/spotify${url}`);
   return data;
 };
