@@ -21,7 +21,7 @@
     "@types/node": "^16.11.2",
     "@types/react": "^17.0.31",
     "autoprefixer": "^10.3.7",
-    "eslint": "8.0.1",
+    "eslint": "^8.0.1",
     "eslint-config-next": "11.1.2",
     "framer-motion": "^4.1.17",
     "next-seo": "^4.28.1",
