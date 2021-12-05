@@ -1,10 +1,6 @@
 import { NextApiResponse } from 'next';
 import { spotifyAccount, spotifyAPI } from '../../../apis/spotify';
-import {
-  SpotifyTopResponse,
-  SpotifyToken,
-  SpotifyTopTrack,
-} from '../../../types/spotify';
+import { SpotifyTopResponse, SpotifyToken } from '../../../types/spotify';
 
 const handler = async (_, res: NextApiResponse) => {
   const { data: tokenData } = await spotifyAccount.post<SpotifyToken>(
@@ -18,7 +14,7 @@ const handler = async (_, res: NextApiResponse) => {
   const { token_type, access_token } = tokenData;
 
   const { data: topTracksData } = await spotifyAPI.get<SpotifyTopResponse>(
-    '/me/top/tracks?time_range=medium_term&limit=10',
+    '/me/top/tracks',
     {
       headers: {
         Authorization: `${token_type} ${access_token}`,
@@ -26,20 +22,16 @@ const handler = async (_, res: NextApiResponse) => {
     }
   );
 
-  const topTracks: SpotifyTopTrack[] = [];
-
-  topTracksData.items.map((track) =>
-    topTracks.push({
-      id: track.id,
-      name: track.name,
-      album: {
-        name: track.album.name,
-        image: track.album.images[0],
-      },
-      songUrl: track.external_urls.spotify,
-      artist: track.artists.map((_artist) => _artist.name).join(', '),
-    })
-  );
+  const topTracks = topTracksData.items.slice(0, 10).map((track) => ({
+    id: track.id,
+    name: track.name,
+    album: {
+      name: track.album.name,
+      image: track.album.images[0],
+    },
+    songUrl: track.external_urls.spotify,
+    artist: track.artists.map((_artist) => _artist.name).join(', '),
+  }));
 
   res.setHeader(
     'Cache-Control',
