@@ -3,15 +3,13 @@ import useSWR from 'swr';
 import { spotifyTopTrackFetcher } from '../apis/spotify';
 import AnimateLayout from '../components/Layout/AnimateLayout';
 import { SpotifyTopTrack } from '../types/spotify';
-import NextImage from 'next/image';
-import NextLink from 'next/link';
 import SongItem from '../components/SongItem';
 
 const title = 'My spotify top tracks';
 const description = 'Songs I listen whole day or while I am coding';
 
 const TopTracks = (): JSX.Element => {
-  const { data: tracks, error } = useSWR<SpotifyTopTrack[]>(
+  const { data: tracks } = useSWR<SpotifyTopTrack[]>(
     '/top-tracks',
     spotifyTopTrackFetcher
   );
