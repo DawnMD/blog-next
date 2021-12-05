@@ -1,12 +1,12 @@
 import useSWR from 'swr';
-import { spotifyFetcher } from '../../../apis/spotify';
+import { spotifyNowPlayingFetcher } from '../../../apis/spotify';
 import { SpotifyNowPlayingSong } from '../../../types/spotify';
 import AnimatedBars from './AnimatedBars';
 
 const SpotifyNowPlaying = (): JSX.Element => {
   const { data: nowPlaying } = useSWR<SpotifyNowPlayingSong>(
     '/now-playing',
-    spotifyFetcher
+    spotifyNowPlayingFetcher
   );
 
   return (
