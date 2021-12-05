@@ -18,3 +18,14 @@ html {
 .animation-delay-4 {
   animation-delay: -4.2s;
 }
+
+@layer components {
+  .prose img {
+    @apply w-full mx-auto rounded-md shadow;
+  }
+
+  .prose figure,
+  .prose figcaption {
+    @apply !m-0;
+  }
+}

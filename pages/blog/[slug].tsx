@@ -17,6 +17,7 @@ import {
   customRenderMarkdown,
   sanitizeDevToMarkdown,
 } from '../../utils/markdown';
+import NextImage from 'next/image';
 
 interface PostProps {
   blog: Blog;
@@ -34,10 +35,21 @@ export default function Post({ blog }: PostProps): JSX.Element {
         <h1 className='mb-4 text-3xl font-bold tracking-tight md:text-5xl '>
           {blog.title}
         </h1>
-        <p className='flex flex-col text-sm text-gray-700 md:gap-2 md:flex-row md:items-center md:justify-between dark:text-gray-300'>
-          <span>Mainak Das / {formatDate(blog.published_at)}</span>
-          <span>{blog.page_views_count} views</span>
-        </p>
+        <div className='flex flex-col text-sm text-gray-700 md:gap-2 md:flex-row md:items-center md:justify-between dark:text-gray-300'>
+          <div className='flex items-center gap-2'>
+            <span className='invisible hidden md:visible md:flex md:items-center'>
+              <NextImage
+                width={36}
+                height={36}
+                className='rounded-full'
+                loading='eager'
+                src='/images/home/potrait.JPG'
+              />
+            </span>
+            <span>Mainak Das / {formatDate(blog.published_at)}</span>
+          </div>
+          <span>{blog.page_views_count.toLocaleString('en')} views</span>
+        </div>
         <div className='w-full prose md:prose-lg dark:prose-light'>
           <ReactMarkdown
             components={customRenderMarkdown()}
