@@ -66,7 +66,7 @@ const Navbar = (): JSX.Element => {
               <NavItem href='/'>Home</NavItem>
               <NavItem href='/timeline'>Timeline</NavItem>
               <NavItem href='/blogs'>Blogs</NavItem>
-              <NavItem href='/top'>Top Track</NavItem>
+              <NavItem href='/top'>Top Tracks</NavItem>
             </ul>
           </nav>
           <ThemeSwitch />
