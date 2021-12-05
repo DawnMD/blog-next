@@ -1,3 +1,5 @@
+import NextImage from 'next/image';
+
 export const sanitizeDevToMarkdown = (markdown) => {
   let correctedMarkdown = '';
 
@@ -19,12 +21,17 @@ export const customRenderMarkdown = () => {
         const image = node.children[0];
         return (
           <figure className='text-center'>
-            <img
+            <NextImage
               className='mx-auto'
               src={image.properties.src}
               alt={image.properties.alt}
+              width={800}
+              height={400}
+              loading='lazy'
             />
-            <figcaption>{image.properties.alt}</figcaption>
+            <figcaption className='m-0 text-sm text-gray-600 dark:text-gray-400'>
+              {image.properties.alt}
+            </figcaption>
           </figure>
         );
       }
