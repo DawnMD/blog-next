@@ -10,7 +10,7 @@ const SpotifyNowPlaying = (): JSX.Element => {
   );
 
   return (
-    <div className='flex items-center justify-between'>
+    <div className='flex items-center justify-between gap-4'>
       <div className='inline-flex flex-col w-full max-w-full truncate sm:flex-row'>
         {nowPlaying?.songUrl ? (
           <a
