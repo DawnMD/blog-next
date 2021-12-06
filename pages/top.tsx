@@ -1,4 +1,3 @@
-import { NextSeo } from 'next-seo';
 import useSWR from 'swr';
 import { spotifyTopTrackFetcher } from '../apis/spotify';
 import AnimateLayout from '../components/Layout/AnimateLayout';
@@ -15,52 +14,8 @@ const TopTracks = (): JSX.Element => {
     spotifyTopTrackFetcher
   );
 
-  const renderTracksUI = () => {
-    if (error) {
-      return (
-        <h2 className='flex gap-2 text-lg font-medium md:text-xl'>
-          Something went wrong. Please try after sometime.
-        </h2>
-      );
-    }
-
-    if (!error && !tracks) {
-      return (
-        <h2 className='flex gap-2 text-lg font-medium md:text-xl animate-pulse'>
-          Loading <LoadingIcon />
-        </h2>
-      );
-    }
-
-    if (tracks) {
-      return (
-        <div className='flex flex-col gap-6 mt-2'>
-          {tracks?.map((track) => (
-            <SongItem
-              key={track.id}
-              songTitle={track.name}
-              songUrl={track.songUrl}
-              albumTitle={track.album.name}
-              albumImage={{
-                url: track.album.image.url,
-                height: track.album.image.height,
-                width: track.album.image.width,
-              }}
-              artists={track.artist}
-            />
-          ))}
-        </div>
-      );
-    }
-  };
-
   return (
-    <AnimateLayout>
-      <NextSeo
-        title={title}
-        description={description}
-        openGraph={{ title, description }}
-      />
+    <AnimateLayout title={title} description={description}>
       <section className='flex flex-col max-w-2xl gap-4 mx-auto mb-16'>
         <h1 className='text-3xl font-bold tracking-tight md:text-5xl'>
           Spotify Top Tracks
@@ -70,7 +25,34 @@ const TopTracks = (): JSX.Element => {
           as testing, that can be tedious or boring. Music can help to keep the
           brain alert and prevent it from switching off.
         </p>
-        {renderTracksUI()}
+        {error && (
+          <h2 className='flex gap-2 text-lg font-medium md:text-xl'>
+            Something went wrong. Please try after sometime.
+          </h2>
+        )}
+        {!error && !tracks && (
+          <h2 className='flex gap-2 text-lg font-medium md:text-xl animate-pulse'>
+            Loading <LoadingIcon />
+          </h2>
+        )}
+        {tracks && (
+          <div className='flex flex-col gap-6 mt-2'>
+            {tracks?.map((track) => (
+              <SongItem
+                key={track.id}
+                songTitle={track.name}
+                songUrl={track.songUrl}
+                albumTitle={track.album.name}
+                albumImage={{
+                  url: track.album.image.url,
+                  height: track.album.image.height,
+                  width: track.album.image.width,
+                }}
+                artists={track.artist}
+              />
+            ))}
+          </div>
+        )}
       </section>
     </AnimateLayout>
   );

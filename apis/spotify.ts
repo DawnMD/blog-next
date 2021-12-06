@@ -1,14 +1,31 @@
 import axios from 'axios';
-import { SpotifyNowPlayingSong, SpotifyTopTrack } from '../types/spotify';
+import { URLSearchParams } from 'url';
+import {
+  SpotifyNowPlayingSong,
+  SpotifyToken,
+  SpotifyTopTrack,
+} from '../types/spotify';
 import { basicSpotifyAuthKey } from '../utils/spotify';
 
-export const spotifyAccount = axios.create({
-  baseURL: 'https://accounts.spotify.com',
-  headers: {
-    Authorization: `Basic ${basicSpotifyAuthKey}`,
-    'Content-Type': 'application/x-www-form-urlencoded',
-  },
-});
+export const getSpotifyTokens = async () => {
+  const { data: tokenData } = await axios.post<SpotifyToken>(
+    'https://accounts.spotify.com/api/token',
+    new URLSearchParams({
+      grant_type: 'refresh_token',
+      refresh_token: process.env.SPOTIFY_REFRESH_TOKEN as string,
+    }),
+    {
+      headers: {
+        Authorization: `Basic ${basicSpotifyAuthKey}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    }
+  );
+
+  const { token_type, access_token } = tokenData;
+
+  return { access_token, token_type };
+};
 
 export const spotifyAPI = axios.create({
   baseURL: 'https://api.spotify.com/v1',

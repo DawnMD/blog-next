@@ -1,4 +1,3 @@
-import { NextSeo } from 'next-seo';
 import AnimateLayout from '../components/Layout/AnimateLayout';
 import { timelineData } from '../data/timelineData';
 import parse from 'html-react-parser';
@@ -8,12 +7,7 @@ const description = 'Things I did and achieved.';
 
 const Timeline = (): JSX.Element => {
   return (
-    <AnimateLayout>
-      <NextSeo
-        title='Home'
-        description={description}
-        openGraph={{ title, description }}
-      />
+    <AnimateLayout title={title} description={description}>
       <section className='flex flex-col max-w-2xl gap-4 mx-auto mb-16'>
         <h1 className='text-3xl font-bold tracking-tight md:text-5xl'>
           Timeline

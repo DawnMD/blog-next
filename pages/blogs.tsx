@@ -1,5 +1,4 @@
 import { getAllArticles } from '../utils/blogUtils';
-import { NextSeo } from 'next-seo';
 import AnimateLayout from '../components/Layout/AnimateLayout';
 import { Blog } from '../types/blogType';
 import BlogLink from '../components/BlogLink';
@@ -13,12 +12,7 @@ interface PostsProps {
 
 export default function Posts({ blogs }: PostsProps) {
   return (
-    <AnimateLayout>
-      <NextSeo
-        title={title}
-        description={description}
-        openGraph={{ title, description }}
-      />
+    <AnimateLayout title={title} description={description}>
       <section className='flex flex-col max-w-2xl gap-4 mx-auto mb-16'>
         <h1 className='text-3xl font-bold tracking-tight md:text-5xl'>Blogs</h1>
         <p className='text-gray-600 dark:text-gray-400'>

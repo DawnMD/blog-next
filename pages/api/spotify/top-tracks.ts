@@ -1,17 +1,9 @@
 import { NextApiResponse } from 'next';
-import { spotifyAccount, spotifyAPI } from '../../../apis/spotify';
-import { SpotifyTopResponse, SpotifyToken } from '../../../types/spotify';
+import { getSpotifyTokens, spotifyAPI } from '../../../apis/spotify';
+import { SpotifyTopResponse } from '../../../types/spotify';
 
 const handler = async (_, res: NextApiResponse) => {
-  const { data: tokenData } = await spotifyAccount.post<SpotifyToken>(
-    '/api/token',
-    new URLSearchParams({
-      grant_type: 'refresh_token',
-      refresh_token: process.env.SPOTIFY_REFRESH_TOKEN as string,
-    })
-  );
-
-  const { token_type, access_token } = tokenData;
+  const { token_type, access_token } = await getSpotifyTokens();
 
   const { data: topTracksData } = await spotifyAPI.get<SpotifyTopResponse>(
     '/me/top/tracks',

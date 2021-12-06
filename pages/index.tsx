@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next';
-import { NextSeo } from 'next-seo';
 import FeaturedBlogs from '../components/FeaturedBlogs';
 import AnimateLayout from '../components/Layout/AnimateLayout';
 import Portfolio from '../components/Portfolio';
@@ -25,12 +24,7 @@ interface HomeProps {
 
 export default function Home({ featured }: HomeProps) {
   return (
-    <AnimateLayout>
-      <NextSeo
-        title='Home'
-        description={description}
-        openGraph={{ title, description }}
-      />
+    <AnimateLayout title={title} description={description}>
       <div className='flex flex-col max-w-2xl gap-16 mx-auto mb-16'>
         <Portfolio />
         <Skills />
