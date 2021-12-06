@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { NextSeo } from 'next-seo';
+import { ReactNode } from 'react';
 import Footer from '../shared/Footer/Footer';
 import Navbar from '../shared/Navbar/Navbar';
 
@@ -9,12 +11,23 @@ const variants = {
 };
 
 interface LayoutProps {
-  children: JSX.Element[];
+  title: string;
+  description: string;
+  children: ReactNode;
 }
 
-const AnimateLayout = ({ children }: LayoutProps): JSX.Element => {
+const AnimateLayout = ({
+  title,
+  description,
+  children,
+}: LayoutProps): JSX.Element => {
   return (
     <>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{ title, description }}
+      />
       <motion.main
         initial='hidden'
         animate='enter'

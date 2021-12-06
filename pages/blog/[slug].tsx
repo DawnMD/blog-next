@@ -1,4 +1,3 @@
-import { NextSeo } from 'next-seo';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
@@ -25,12 +24,7 @@ interface PostProps {
 
 export default function Post({ blog }: PostProps): JSX.Element {
   return (
-    <AnimateLayout>
-      <NextSeo
-        title={blog.title}
-        description={blog.description}
-        openGraph={{ title: blog.title, description: blog.description }}
-      />
+    <AnimateLayout title={blog.title} description={blog.description}>
       <section className='flex flex-col w-full max-w-2xl gap-4 mx-auto mb-16'>
         <h1 className='mb-4 text-3xl font-bold tracking-tight md:text-5xl '>
           {blog.title}

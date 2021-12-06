@@ -19,12 +19,6 @@
     "noUnusedParameters": true,
     "noImplicitAny": false
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "utils/markdown.js",
-    "utils/markdown.js"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/markdown.js"],
   "exclude": ["node_modules"]
 }

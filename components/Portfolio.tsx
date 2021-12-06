@@ -11,6 +11,7 @@ const Portfolio = (): JSX.Element => {
           height={180}
           width={180}
           priority
+          loading='eager'
         />
       </div>
       <div className='flex flex-col gap-4'>
