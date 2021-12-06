@@ -1,8 +1,9 @@
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
 interface NoScrollLinkProps {
   href: string;
-  children: JSX.Element[] | JSX.Element | string;
+  children: ReactNode;
 }
 
 const NoScrollLink = ({ children, href }: NoScrollLinkProps): JSX.Element => {
