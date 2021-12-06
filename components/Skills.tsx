@@ -1,4 +1,5 @@
 import {
+  Docker,
   ExpressJS,
   Mongo,
   Next,
@@ -18,7 +19,7 @@ const Skills = (): JSX.Element => {
       <p className='text-gray-600 dark:text-gray-400'>
         Techs & frameworks I mostly like to use.
       </p>
-      <div className='flex items-center gap-3 md:gap-5 lg:gap-7'>
+      <div className='flex flex-wrap items-center gap-3 md:gap-5 lg:gap-7'>
         <NodeJS />
         <TypeScript />
         <Tailwind />
@@ -27,6 +28,7 @@ const Skills = (): JSX.Element => {
         <Next />
         <ExpressJS />
         <Mongo />
+        <Docker />
       </div>
     </section>
   );
