@@ -5,11 +5,11 @@ export const timelineData = [
       {
         heading: 'Graduated University 👨🏽‍🎓',
         caption:
-          'Graduated from Adamas University acquiring a <strong>CGPA of 7.25</strong>',
+          'Graduated from Adamas University acquiring a <strong>CGPA of 7.25</strong>.',
       },
       {
         heading: 'Second Internship 💡💡',
-        caption: `<i>Why not learn how the frontend company works and develop my skills at the same time?</i></br> Worked as an intern in APlus Topper, where I got the opportunity to learn about various frontend processes the company operates.`,
+        caption: `<em>Why not learn how the frontend company works and develop my skills at the same time?</em></br> Worked as an intern in <strong>APlus Topper</strong>, where I got the opportunity to learn about various frontend processes the company operates.`,
       },
     ],
   },

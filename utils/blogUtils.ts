@@ -63,3 +63,10 @@ export function getRecentBlog(data: Blog[]): Blog {
   });
   return blog;
 }
+
+export function getMostViewed(data: Blog[]): Blog {
+  const blog = data.reduce((a, b) => {
+    return a.page_views_count > b.page_views_count ? a : b;
+  });
+  return blog;
+}
