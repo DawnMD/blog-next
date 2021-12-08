@@ -1,7 +1,4 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import ReactMarkdown from 'react-markdown';
-import gfm from 'remark-gfm';
-import rehypeSanitize from 'rehype-sanitize';
 import {
   createPathParams,
   filterCacheBySlug,
@@ -10,24 +7,37 @@ import {
   writeCache,
 } from '../../utils/blogUtils';
 import AnimateLayout from '../../components/Layout/AnimateLayout';
-import { Blog } from '../../types/blogType';
 import { formatDate } from '../../utils/helpers';
-import {
-  customRenderMarkdown,
-  sanitizeDevToMarkdown,
-} from '../../utils/markdown';
 import NextImage from 'next/image';
+import { serialize } from 'next-mdx-remote/serialize';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { sanitizeDevToMarkdown } from '../../utils/markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeCodeTitles from 'rehype-code-titles';
+import rehypePrism from 'rehype-prism-plus';
 
 interface PostProps {
-  blog: Blog;
+  markdown: MDXRemoteSerializeResult;
+  url: string;
+  published: string;
+  title: string;
+  description: string;
+  pageView: number;
 }
 
-export default function Post({ blog }: PostProps): JSX.Element {
+export default function Post({
+  markdown,
+  title,
+  description,
+  published,
+  url,
+  pageView,
+}: PostProps): JSX.Element {
   return (
-    <AnimateLayout title={blog.title} description={blog.description}>
+    <AnimateLayout title={title} description={description}>
       <section className='flex flex-col w-full max-w-2xl gap-4 mx-auto mb-16'>
         <h1 className='mb-4 text-3xl font-bold tracking-tight md:text-5xl '>
-          {blog.title}
+          {title}
         </h1>
         <div className='flex flex-col text-sm text-gray-700 md:gap-2 md:flex-row md:items-center md:justify-between dark:text-gray-300'>
           <div className='flex items-center gap-2'>
@@ -40,20 +50,15 @@ export default function Post({ blog }: PostProps): JSX.Element {
                 src='/images/home/potrait.JPG'
               />
             </span>
-            <span>Mainak Das / {formatDate(blog.published_at)}</span>
+            <span>Mainak Das / {formatDate(published)}</span>
           </div>
-          <span>{blog.page_views_count.toLocaleString('en')} views</span>
+          <span>{pageView.toLocaleString('en')} views</span>
         </div>
-        <div className='w-full prose md:prose-lg dark:prose-light'>
-          <ReactMarkdown
-            components={customRenderMarkdown()}
-            rehypePlugins={[rehypeSanitize]}
-            remarkPlugins={[gfm]}>
-            {sanitizeDevToMarkdown(blog.body_markdown)}
-          </ReactMarkdown>
+        <div className='w-full mt-4 prose md:prose-lg dark:prose-light'>
+          <MDXRemote {...markdown} />
         </div>
         <a
-          href={blog.url}
+          href={url}
           className='mt-2 text-center transition-all dark:hover:text-gray-500 hover:text-gray-600'>
           Read on Dev.to
         </a>
@@ -68,10 +73,29 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (slug) {
     const cacheContents = readCache();
     const blog = filterCacheBySlug(cacheContents, slug);
+    if (blog) {
+      const markdown = await serialize(
+        sanitizeDevToMarkdown(blog.body_markdown),
+        {
+          mdxOptions: {
+            remarkPlugins: [remarkGfm],
+            rehypePlugins: [rehypeCodeTitles, rehypePrism],
+          },
+        }
+      );
+      return {
+        props: {
+          markdown,
+          url: blog.url,
+          published: blog.published_at,
+          title: blog.title,
+          description: blog.description,
+          pageView: blog.page_views_count,
+        },
+      };
+    }
     return {
-      props: {
-        blog,
-      },
+      notFound: true,
     };
   }
 
