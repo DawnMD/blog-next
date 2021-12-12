@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import {
   createPathParams,
   filterCacheBySlug,
@@ -25,14 +25,14 @@ interface PostProps {
   pageView: number;
 }
 
-export default function Post({
+const Post: NextPage<PostProps> = ({
   markdown,
   title,
   description,
   published,
   url,
   pageView,
-}: PostProps): JSX.Element {
+}) => {
   return (
     <AnimateLayout title={title} description={description}>
       <section className='flex flex-col w-full max-w-2xl gap-4 mx-auto mb-16'>
@@ -65,7 +65,9 @@ export default function Post({
       </section>
     </AnimateLayout>
   );
-}
+};
+
+export default Post;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context.params?.slug as string;

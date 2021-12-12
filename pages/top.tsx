@@ -4,11 +4,12 @@ import AnimateLayout from '../components/Layout/AnimateLayout';
 import { SpotifyTopTrack } from '../types/spotify';
 import SongItem from '../components/SongItem';
 import LoadingIcon from '../components/shared/Icons/LoadingIcon';
+import { NextPage } from 'next';
 
 const title = 'My spotify top tracks';
 const description = 'Songs I listen whole day or while I am coding';
 
-const TopTracks = (): JSX.Element => {
+const TopTracks: NextPage = () => {
   const { data: tracks, error } = useSWR<SpotifyTopTrack[]>(
     '/top-tracks',
     spotifyTopTrackFetcher

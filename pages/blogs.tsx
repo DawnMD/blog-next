@@ -2,6 +2,7 @@ import { getAllArticles } from '../utils/blogUtils';
 import AnimateLayout from '../components/Layout/AnimateLayout';
 import { Blog } from '../types/blogType';
 import BlogLink from '../components/BlogLink';
+import { NextPage } from 'next';
 
 const title = `Blogs`;
 const description = `Articles I write in my free time. 📝`;
@@ -10,7 +11,7 @@ interface PostsProps {
   blogs: Blog[];
 }
 
-export default function Posts({ blogs }: PostsProps) {
+const Posts: NextPage<PostsProps> = ({ blogs }) => {
   return (
     <AnimateLayout title={title} description={description}>
       <section className='flex flex-col max-w-2xl gap-4 mx-auto mb-16'>
@@ -38,7 +39,10 @@ export default function Posts({ blogs }: PostsProps) {
       </section>
     </AnimateLayout>
   );
-}
+};
+
+export default Posts;
+
 export async function getStaticProps() {
   const data = await getAllArticles();
   return {
