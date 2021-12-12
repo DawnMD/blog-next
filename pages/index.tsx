@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import FeaturedBlogs from '../components/FeaturedBlogs';
 import AnimateLayout from '../components/Layout/AnimateLayout';
 import Portfolio from '../components/Portfolio';
@@ -22,7 +22,7 @@ interface HomeProps {
   };
 }
 
-export default function Home({ featured }: HomeProps) {
+const Home: NextPage<HomeProps> = ({ featured }) => {
   return (
     <AnimateLayout title={title} description={description}>
       <div className='flex flex-col max-w-2xl gap-16 mx-auto mb-16'>
@@ -32,7 +32,9 @@ export default function Home({ featured }: HomeProps) {
       </div>
     </AnimateLayout>
   );
-}
+};
+
+export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await getAllArticles();

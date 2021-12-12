@@ -1,3 +1,4 @@
+import { NextPage } from 'next';
 import AnimateLayout from '../components/Layout/AnimateLayout';
 import { timelineData } from '../data/timelineData';
 import parse from 'html-react-parser';
@@ -5,7 +6,7 @@ import parse from 'html-react-parser';
 const title = 'My Timeline';
 const description = 'Things I did and achieved.';
 
-const Timeline = (): JSX.Element => {
+const Timeline: NextPage = () => {
   return (
     <AnimateLayout title={title} description={description}>
       <section className='flex flex-col max-w-2xl gap-4 mx-auto mb-16'>
