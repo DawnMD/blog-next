@@ -11,6 +11,7 @@ const Footer = (): JSX.Element => {
             <a
               href='https://github.com/DawnMD'
               target='_blank'
+              rel='noreferrer'
               className='tracking-wide transition-all dark:hover:text-gray-500 hover:text-gray-600'>
               Github
             </a>
@@ -19,6 +20,7 @@ const Footer = (): JSX.Element => {
             <a
               href='https://dev.to/dawnind'
               target='_blank'
+              rel='noreferrer'
               className='tracking-wide transition-all dark:hover:text-gray-500 hover:text-gray-600'>
               Dev.to
             </a>
@@ -27,6 +29,7 @@ const Footer = (): JSX.Element => {
             <a
               href='https://www.linkedin.com/in/mainak1147/'
               target='_blank'
+              rel='noreferrer'
               className='tracking-wide transition-all dark:hover:text-gray-500 hover:text-gray-600'>
               LinkedIn
             </a>
@@ -38,7 +41,8 @@ const Footer = (): JSX.Element => {
           Made with love by{' '}
           <a
             className='font-semibold transition-all dark:hover:text-gray-300 hover:text-gray-500'
-            href='mailto:mainakdas104@gmail.com?subject=Hello'>
+            href='mailto:mainakdas104@gmail.com?subject=Hello'
+            rel='noreferrer'>
             Mainak Das
           </a>
         </p>
@@ -47,7 +51,8 @@ const Footer = (): JSX.Element => {
           <a
             className='font-semibold transition-all dark:hover:text-gray-300 hover:text-gray-500'
             href='https://dev.to'
-            target='_blank'>
+            target='_blank'
+            rel='noreferrer'>
             Dev.to
           </a>
         </p>

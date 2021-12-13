@@ -24,6 +24,7 @@ const Portfolio = (): JSX.Element => {
             <a
               className='text-xl font-bold text-codemancers'
               href='https://codemancers.com'
+              rel='noreferrer'
               target='_blank'>
               Codemancers
             </a>

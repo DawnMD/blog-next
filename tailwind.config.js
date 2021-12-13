@@ -1,8 +1,10 @@
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  mode: 'jit',
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
@@ -21,10 +23,6 @@ module.exports = {
           800: '#222222',
           900: '#111111',
         },
-        amber: '#FACC15',
-        orange: '#FB923C',
-        pink: '#EC4899',
-        rose: '#F43F5E',
       },
       content: {
         quote: "'“'",

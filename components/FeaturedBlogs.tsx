@@ -23,7 +23,7 @@ const FeaturedBlogs = ({ featured }: FeaturedBlogProps): JSX.Element => {
         <div className='flex flex-col flex-1 gap-4'>
           <p className='text-gray-600 dark:text-gray-400'>Most recent</p>
           <NoScrollLink href={`/blog/${featured.mostRecent.slug}`}>
-            <a className='h-full p-1 transition-all transform rounded-lg bg-gradient-to-br from-amber via-yellow-400 to-orange hover:scale-105'>
+            <a className='h-full p-1 transition-all transform rounded-lg bg-gradient-to-br from-yellow-400 to-orange-400 hover:scale-105'>
               <div className='relative flex flex-col justify-between h-full gap-4 p-4 bg-gray-100 rounded-lg dark:bg-gray-900'>
                 <h4 className='text-lg font-medium tracking-tight md:text-lg '>
                   {featured.mostRecent.title}
@@ -58,7 +58,7 @@ const FeaturedBlogs = ({ featured }: FeaturedBlogProps): JSX.Element => {
         <div className='flex flex-col flex-1 gap-4'>
           <p className='text-gray-600 dark:text-gray-400'>Most liked</p>
           <NoScrollLink href={`/blog/${featured.mostLiked.slug}`}>
-            <a className='h-full p-1 transition-all transform rounded-lg bg-gradient-to-br from-red-600 via-pink to-rose hover:scale-105'>
+            <a className='h-full p-1 transition-all transform rounded-lg bg-gradient-to-br from-red-600 to-pink-500 hover:scale-105'>
               <div className='relative flex flex-col justify-between h-full gap-4 p-4 bg-gray-100 rounded-lg dark:bg-gray-900'>
                 <h4 className='text-lg font-medium tracking-tight md:text-lg '>
                   {featured.mostLiked.title}
