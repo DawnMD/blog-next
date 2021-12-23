@@ -30,7 +30,7 @@ const Portfolio = (): JSX.Element => {
             </a>
           </h2>
         </div>
-        <p className='text-gray-600 dark:text-gray-400'>
+        <p className='text-neutral-600 dark:text-neutral-400'>
           Solved and created tutorials to educate and help others use various
           technologies for the first time or in a more efficient manner.
         </p>

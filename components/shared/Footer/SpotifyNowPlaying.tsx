@@ -14,21 +14,21 @@ const SpotifyNowPlaying = (): JSX.Element => {
       <div className='inline-flex flex-col w-full max-w-full truncate sm:flex-row'>
         {nowPlaying?.songUrl ? (
           <a
-            className='font-medium text-gray-800 truncate capsize dark:text-gray-200 max-w-max'
+            className='font-medium text-neutral-800 truncate capsize dark:text-neutral-200 max-w-max'
             href={nowPlaying.songUrl}
             target='_blank'
             rel='noopener noreferrer'>
             {nowPlaying.title}
           </a>
         ) : (
-          <p className='font-medium text-gray-800 capsize dark:text-gray-200'>
+          <p className='font-medium text-neutral-800 capsize dark:text-neutral-200'>
             Not Playing
           </p>
         )}
-        <span className='hidden mx-2 text-gray-500 capsize dark:text-gray-300 sm:block'>
+        <span className='hidden mx-2 text-neutral-500 capsize dark:text-neutral-300 sm:block'>
           {' – '}
         </span>
-        <p className='text-gray-500 truncate capsize dark:text-gray-300 max-w-max'>
+        <p className='text-neutral-500 truncate capsize dark:text-neutral-300 max-w-max'>
           {nowPlaying?.artist ?? 'Spotify'}
         </p>
       </div>

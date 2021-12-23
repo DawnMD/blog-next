@@ -13,7 +13,7 @@ const Timeline: NextPage = () => {
         <h1 className='text-3xl font-bold tracking-tight md:text-5xl'>
           Timeline
         </h1>
-        <p className='text-gray-600 dark:text-gray-400'>
+        <p className='text-neutral-600 dark:text-neutral-400'>
           Chronological moments and events since I learned about programming.
         </p>
         <div className='flex flex-col gap-6'>
@@ -29,7 +29,7 @@ const Timeline: NextPage = () => {
                   <h4 className='text-lg font-medium md:text-xl'>
                     {parse(data.heading)}
                   </h4>
-                  <p className='text-gray-600 dark:text-gray-400'>
+                  <p className='text-neutral-600 dark:text-neutral-400'>
                     {parse(data.caption)}
                   </p>
                 </div>

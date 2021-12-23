@@ -17,9 +17,9 @@ const NavItem = ({ key, href, children }: NavItemProps): JSX.Element => {
   return (
     <li
       className={classnames(
-        'px-3 py-1 transition-all rounded-md hover:bg-gray-200 dark:hover:bg-gray-800',
+        'px-3 py-1 transition-all rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-800',
         {
-          'font-semibold text-gray-800 dark:text-gray-200': selected,
+          'font-semibold text-neutral-800 dark:text-neutral-200': selected,
         }
       )}>
       <NoScrollLink key={key} href={href}>
