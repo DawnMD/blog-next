@@ -2,14 +2,14 @@ import NextImage from 'next/image';
 
 const Portfolio = (): JSX.Element => {
   return (
-    <section className='flex flex-col gap-2 md:flex-row-reverse'>
-      <div className='mb-4 w-44'>
+    <section className='flex flex-col gap-2 md:flex-row-reverse md:items-center'>
+      <div>
         <NextImage
           src='/images/home/potrait.JPG'
           className='rounded-full filter grayscale'
           alt='Mainak Das'
-          height={180}
-          width={180}
+          height={256}
+          width={256}
           priority
           loading='eager'
         />
@@ -20,7 +20,7 @@ const Portfolio = (): JSX.Element => {
             Mainak Das
           </h1>
           <h2>
-            Frontend Developer Intern at{' '}
+            Building Beautiful Web Experiences At{' '}
             <a
               className='text-xl font-bold text-codemancers'
               href='https://codemancers.com'
