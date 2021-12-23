@@ -39,7 +39,7 @@ const Post: NextPage<PostProps> = ({
         <h1 className='mb-4 text-3xl font-bold tracking-tight md:text-5xl '>
           {title}
         </h1>
-        <div className='flex flex-col text-sm text-gray-700 md:gap-2 md:flex-row md:items-center md:justify-between dark:text-gray-300'>
+        <div className='flex flex-col gap-2 text-sm text-neutral-700 md:flex-row md:items-center md:justify-between dark:text-neutral-300'>
           <div className='flex items-center gap-2'>
             <span className='invisible hidden md:visible md:flex md:items-center'>
               <NextImage
@@ -54,12 +54,12 @@ const Post: NextPage<PostProps> = ({
           </div>
           <span>{pageView.toLocaleString('en')} views</span>
         </div>
-        <div className='w-full mt-4 prose md:prose-lg dark:prose-light'>
+        <div className='w-full mt-4 prose md:prose-lg dark:prose-invert prose-neutral prose-img:mx-auto prose-img:rounded-lg prose-a:text-cyan-600 hover:prose-a:text-cyan-500 prose-a:transition-all dark:prose-a:text-cyan-500 dark:hover:prose-a:text-cyan-400 hover:prose-a:no-underline prose-pre:border prose-pre:border-neutral-200 prose-pre:bg-neutral-100 dark:prose-pre:border-neutral-700 dark:prose-pre:bg-neutral-900 prose-code:text-neutral-800 dark:prose-code:text-neutral-200 prose-code:px-1 prose-code:py-0.5 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-900'>
           <MDXRemote {...markdown} />
         </div>
         <a
           href={url}
-          className='mt-2 text-center transition-all dark:hover:text-gray-500 hover:text-gray-600'>
+          className='mt-2 text-center transition-all dark:hover:text-neutral-500 hover:text-neutral-600'>
           Read on Dev.to
         </a>
       </section>
