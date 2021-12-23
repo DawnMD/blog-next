@@ -21,7 +21,7 @@ const TopTracks: NextPage = () => {
         <h1 className='text-3xl font-bold tracking-tight md:text-5xl'>
           Spotify Top Tracks
         </h1>
-        <p className='text-gray-600 dark:text-gray-400'>
+        <p className='text-neutral-600 dark:text-neutral-400'>
           Developers often have to deal with arduous, repetitive problems such
           as testing, that can be tedious or boring. Music can help to keep the
           brain alert and prevent it from switching off.

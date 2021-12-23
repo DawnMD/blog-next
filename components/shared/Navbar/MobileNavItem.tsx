@@ -26,7 +26,7 @@ const MobileNavItem = ({
     <motion.li
       variants={itemVariants}
       id={id}
-      className='text-sm font-semibold text-gray-900 border-b border-gray-300 dark:border-gray-700 dark:text-gray-100'>
+      className='text-sm font-semibold text-neutral-900 border-b border-neutral-300 dark:border-neutral-700 dark:text-neutral-100'>
       <NoScrollLink href={href}>
         <a onClick={onClick} className='flex w-auto pb-4'>
           {children}

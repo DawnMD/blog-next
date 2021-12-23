@@ -61,7 +61,7 @@ const Navbar = (): JSX.Element => {
                 } ${!open && 'translate-y-1.5'}`}></span>
             </div>
           </button>
-          <nav className='invisible hidden text-gray-600 dark:text-gray-400 md:visible md:block'>
+          <nav className='invisible hidden text-neutral-600 dark:text-neutral-400 md:visible md:block'>
             <ul className='flex gap-2'>
               <NavItem href='/'>Home</NavItem>
               <NavItem href='/timeline'>Timeline</NavItem>
@@ -81,7 +81,7 @@ const Navbar = (): JSX.Element => {
               }}
               exit={{ transition: { duration: 0.1 }, opacity: 0 }}
               transition={{ type: 'keyframes', duration: 0.1 }}
-              className='absolute left-0 right-0 z-10 w-full min-h-screen pb-16 pl-2 pr-8 transition-opacity bg-gray-100 dark:bg-gray-900'>
+              className='absolute left-0 right-0 z-10 w-full min-h-screen pb-16 pl-2 pr-8 transition-opacity bg-neutral-100 dark:bg-neutral-900'>
               <motion.ul
                 initial='closed'
                 animate='open'

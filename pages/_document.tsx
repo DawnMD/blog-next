@@ -152,7 +152,7 @@ class MyDocument extends Document {
           <meta content='#ffffff' name='msapplication-TileColor' />
           <link rel='manifest' href='/static/favicons/site.webmanifest' />
         </Head>
-        <body className='text-gray-900 bg-gray-100 dark:bg-gray-900 dark:text-gray-100'>
+        <body className='text-neutral-900 bg-neutral-100 dark:bg-neutral-900 dark:text-neutral-100'>
           <Main />
           <NextScript />
         </body>
