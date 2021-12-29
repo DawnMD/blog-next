@@ -1,6 +1,16 @@
-export interface IAboutMe {
+export interface IIntro {
   aboutMes: { content: string }[];
+  currentRoles: CurrentRole[];
 }
+
+export type CurrentRole = {
+  roleIntro: string;
+  comapnyName: string;
+  comapnyColor: {
+    hex: string;
+  };
+  companyUrl: string;
+};
 
 type timelineInfos = {
   id: string;
