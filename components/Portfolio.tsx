@@ -1,10 +1,12 @@
 import NextImage from 'next/image';
+import { CurrentRole } from '../types/cmsTypes';
 
 interface PortfolioProps {
   about: string;
+  role: CurrentRole;
 }
 
-const Portfolio = ({ about }: PortfolioProps): JSX.Element => {
+const Portfolio = ({ about, role }: PortfolioProps): JSX.Element => {
   return (
     <section className='flex flex-col gap-2 md:flex-row-reverse md:items-center'>
       <div>
@@ -24,13 +26,14 @@ const Portfolio = ({ about }: PortfolioProps): JSX.Element => {
             Mainak Das
           </h1>
           <h2>
-            Building Beautiful Web Experiences At{' '}
+            {role.roleIntro} At{' '}
             <a
-              className='text-xl font-bold text-codemancers'
-              href='https://codemancers.com'
+              className='text-xl font-bold'
+              style={{ color: role.comapnyColor.hex }}
+              href={role.companyUrl}
               rel='noreferrer'
               target='_blank'>
-              Codemancers
+              {role.comapnyName}
             </a>
           </h2>
         </div>
