@@ -1,12 +1,14 @@
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import AnimateLayout from '../components/Layout/AnimateLayout';
-import { timelineData } from '../data/timelineData';
-import parse from 'html-react-parser';
+import graphCMS from '../utils/graphCMS';
+import { ITimeline, timelineBlocks } from '../types/cmsTypes';
 
 const title = 'My Timeline';
 const description = 'Things I did and achieved.';
 
-const Timeline: NextPage = () => {
+const Timeline: NextPage<{ timelineData: timelineBlocks[] }> = ({
+  timelineData,
+}) => {
   return (
     <AnimateLayout title={title} description={description}>
       <section className='flex flex-col max-w-2xl gap-4 mx-auto mb-16'>
@@ -17,21 +19,21 @@ const Timeline: NextPage = () => {
           Chronological moments and events since I learned about programming.
         </p>
         <div className='flex flex-col gap-6'>
-          {timelineData.map((item, tIdx) => (
-            <div key={`timeline-${tIdx}`} className='flex flex-col gap-3'>
+          {timelineData.map((item) => (
+            <div key={`timeline-${item.id}`} className='flex flex-col gap-3'>
               <h3 className='text-2xl font-bold tracking-tight md:text-4xl'>
-                {item.year}
+                {item.timelineYear}
               </h3>
-              {item.timelineProgress.map((data, pIdx) => (
+              {item.timelineInfos.map((data) => (
                 <div
-                  key={`timeline-${tIdx}-${pIdx}`}
+                  key={`timeline-${item.id}-${data.id}`}
                   className='flex flex-col gap-1'>
                   <h4 className='text-lg font-medium md:text-xl'>
-                    {parse(data.heading)}
+                    {data.title}
                   </h4>
-                  <p className='text-neutral-600 dark:text-neutral-400'>
-                    {parse(data.caption)}
-                  </p>
+                  <span className='text-neutral-600 dark:text-neutral-400'>
+                    {data.content[0]}
+                  </span>
                 </div>
               ))}
             </div>
@@ -43,3 +45,27 @@ const Timeline: NextPage = () => {
 };
 
 export default Timeline;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { timelines } = await graphCMS.request<ITimeline>(`{
+  timelines {
+    timelineBlocks(orderBy: timelineYear_DESC) {
+      id
+      timelineYear
+      timelineInfos(orderBy: sequence_DESC, where: {sequence_gt: 0}) {
+        sequence
+        id
+        title
+        content
+      }
+    }
+  }
+}
+`);
+
+  return {
+    props: {
+      timelineData: timelines[0].timelineBlocks,
+    },
+  };
+};
