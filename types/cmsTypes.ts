@@ -1,6 +1,7 @@
 export interface IIntro {
   aboutMes: { content: string }[];
   currentRoles: CurrentRole[];
+  portfolioPictures: { porfilePicture: { url: string }; pictureAlt: string }[];
 }
 
 export type CurrentRole = {
