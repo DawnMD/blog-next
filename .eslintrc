@@ -1,3 +1,7 @@
 {
-  "extends": ["next", "next/core-web-vitals"]
+  "extends": ["next", "next/core-web-vitals"],
+  //bug from NextJS, will be fixed after the framework is updated
+  "rules": {
+    "@next/next/no-document-import-in-page": "off"
+  }
 }
