@@ -24,13 +24,23 @@ interface HomeProps {
   };
   about: { content: string };
   currentRole: CurrentRole;
+  portfolioPicture: { porfilePicture: { url: string }; pictureAlt: string };
 }
 
-const Home: NextPage<HomeProps> = ({ featured, about, currentRole }) => {
+const Home: NextPage<HomeProps> = ({
+  featured,
+  about,
+  currentRole,
+  portfolioPicture,
+}) => {
   return (
     <AnimateLayout title={title} description={description}>
       <div className='flex flex-col max-w-2xl gap-16 mx-auto mb-16'>
-        <Portfolio about={about.content} role={currentRole} />
+        <Portfolio
+          about={about.content}
+          role={currentRole}
+          displayPicture={portfolioPicture}
+        />
         <Skills />
         <FeaturedBlogs featured={featured} />
       </div>
@@ -46,7 +56,14 @@ export const getStaticProps: GetStaticProps = async () => {
   const mostRecent = getRecentBlog(data);
   const mostViewed = getMostViewed(data);
 
-  const { aboutMes, currentRoles } = await graphCMS.request<IIntro>(`{
+  const { aboutMes, currentRoles, portfolioPictures } =
+    await graphCMS.request<IIntro>(`{
+    portfolioPictures{
+    porfilePicture {
+      url
+    }
+    pictureAlt
+  }
   aboutMes {
     content
   }
@@ -65,6 +82,7 @@ export const getStaticProps: GetStaticProps = async () => {
       featured: { mostRecent, mostLiked, mostViewed },
       about: aboutMes[0],
       currentRole: currentRoles[0],
+      portfolioPicture: portfolioPictures[0],
     },
   };
 };
