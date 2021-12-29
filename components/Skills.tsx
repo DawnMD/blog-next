@@ -1,6 +1,7 @@
 import {
   Docker,
   ExpressJS,
+  GraphQL,
   Mongo,
   Next,
   NodeJS,
@@ -27,6 +28,7 @@ const Skills = (): JSX.Element => {
         <Redux />
         <Next />
         <ExpressJS />
+        <GraphQL />
         <Mongo />
         <Docker />
       </div>
