@@ -5,6 +5,7 @@ module.exports = {
       'res.cloudinary.com',
       'dev-to-uploads.s3.amazonaws.com',
       'i.scdn.co',
+      'media.graphcms.com'
     ],
   },
 
