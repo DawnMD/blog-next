@@ -4,7 +4,7 @@ import AnimateLayout from '../components/Layout/AnimateLayout';
 import Portfolio from '../components/Portfolio';
 import Skills from '../components/Skills';
 import { Blog } from '../types/blogType';
-import { IAboutMe } from '../types/cmsTypes';
+import { IIntro, CurrentRole } from '../types/cmsTypes';
 import {
   getMaxLikedBlog,
   getRecentBlog,
@@ -23,13 +23,14 @@ interface HomeProps {
     mostViewed: Blog;
   };
   about: { content: string };
+  currentRole: CurrentRole;
 }
 
-const Home: NextPage<HomeProps> = ({ featured, about }) => {
+const Home: NextPage<HomeProps> = ({ featured, about, currentRole }) => {
   return (
     <AnimateLayout title={title} description={description}>
       <div className='flex flex-col max-w-2xl gap-16 mx-auto mb-16'>
-        <Portfolio about={about.content} />
+        <Portfolio about={about.content} role={currentRole} />
         <Skills />
         <FeaturedBlogs featured={featured} />
       </div>
@@ -45,9 +46,17 @@ export const getStaticProps: GetStaticProps = async () => {
   const mostRecent = getRecentBlog(data);
   const mostViewed = getMostViewed(data);
 
-  const { aboutMes } = await graphCMS.request<IAboutMe>(`{
+  const { aboutMes, currentRoles } = await graphCMS.request<IIntro>(`{
   aboutMes {
     content
+  }
+  currentRoles {
+    roleIntro
+    comapnyName
+    comapnyColor {
+      hex
+    }
+    companyUrl
   }
 }`);
 
@@ -55,6 +64,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       featured: { mostRecent, mostLiked, mostViewed },
       about: aboutMes[0],
+      currentRole: currentRoles[0],
     },
   };
 };
