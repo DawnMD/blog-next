@@ -4,20 +4,24 @@ import { CurrentRole } from '../types/cmsTypes';
 interface PortfolioProps {
   about: string;
   role: CurrentRole;
+  displayPicture: { porfilePicture: { url: string }; pictureAlt: string };
 }
 
-const Portfolio = ({ about, role }: PortfolioProps): JSX.Element => {
+const Portfolio = ({
+  about,
+  role,
+  displayPicture,
+}: PortfolioProps): JSX.Element => {
   return (
     <section className='flex flex-col gap-2 md:flex-row-reverse md:items-center'>
       <div>
         <NextImage
-          src='/images/home/potrait.JPG'
+          src={displayPicture.porfilePicture.url}
           className='rounded-full filter grayscale'
-          alt='Mainak Das'
+          alt={displayPicture.pictureAlt}
           height={256}
           width={256}
           priority
-          loading='eager'
         />
       </div>
       <div className='flex flex-col gap-4'>
