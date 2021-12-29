@@ -1,6 +1,10 @@
 import NextImage from 'next/image';
 
-const Portfolio = (): JSX.Element => {
+interface PortfolioProps {
+  about: string;
+}
+
+const Portfolio = ({ about }: PortfolioProps): JSX.Element => {
   return (
     <section className='flex flex-col gap-2 md:flex-row-reverse md:items-center'>
       <div>
@@ -30,10 +34,7 @@ const Portfolio = (): JSX.Element => {
             </a>
           </h2>
         </div>
-        <p className='text-neutral-600 dark:text-neutral-400'>
-          Solved and created tutorials to educate and help others use various
-          technologies for the first time or in a more efficient manner.
-        </p>
+        <p className='text-neutral-600 dark:text-neutral-400'>{about}</p>
       </div>
     </section>
   );
