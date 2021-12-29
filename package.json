@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "graphql-request": "^3.7.0",
     "next": "^12.0.7",
     "preact": "^10.6.2",
     "react": "^17.0.2",
@@ -24,7 +25,6 @@
     "eslint": "^8.0.1",
     "eslint-config-next": "11.1.2",
     "framer-motion": "^5.4.5",
-    "html-react-parser": "^1.4.2",
     "next-mdx-remote": "^3.0.8",
     "next-seo": "^4.28.1",
     "next-themes": "0.0.15",
