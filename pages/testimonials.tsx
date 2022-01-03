@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps = async () => {
       id
       testimonial
       testimonialAuthor
-      comapny
+      company
       authorType
     }
   }
