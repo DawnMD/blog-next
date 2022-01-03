@@ -66,6 +66,7 @@ const Navbar = (): JSX.Element => {
               <NavItem href='/'>Home</NavItem>
               <NavItem href='/timeline'>Timeline</NavItem>
               <NavItem href='/blogs'>Blogs</NavItem>
+              <NavItem href='/testimonials'>Testimonials</NavItem>
               <NavItem href='/top'>Top Tracks</NavItem>
             </ul>
           </nav>
@@ -97,7 +98,10 @@ const Navbar = (): JSX.Element => {
                 <MobileNavItem id='3' onClick={toggleNav} href='/blogs'>
                   Blogs
                 </MobileNavItem>
-                <MobileNavItem id='4' onClick={toggleNav} href='/top'>
+                <MobileNavItem id='4' onClick={toggleNav} href='/testimonials'>
+                  Testimonials
+                </MobileNavItem>
+                <MobileNavItem id='5' onClick={toggleNav} href='/top'>
                   Top Tracks
                 </MobileNavItem>
               </motion.ul>

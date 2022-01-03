@@ -8,12 +8,6 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
-      colors: {
-        codemancers: '#0356ff',
-      },
-      content: {
-        quote: "'“'",
-      },
       fontFamily: {
         sans: ["'Inter'", ...fontFamily.sans],
       },

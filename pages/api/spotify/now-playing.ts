@@ -26,7 +26,12 @@ const handler = async (_, res: NextApiResponse) => {
         },
       }
     );
-  if (!nowPlayingData.is_playing || status === 204 || status > 400) {
+  if (
+    nowPlayingData.currently_playing_type === 'episode' ||
+    !nowPlayingData.is_playing ||
+    status === 204 ||
+    status > 400
+  ) {
     return res.status(200).json({ isPlaying: false });
   }
 
