@@ -35,7 +35,7 @@ const Home: NextPage<HomeProps> = ({
 }) => {
   return (
     <AnimateLayout title={title} description={description}>
-      <div className='flex flex-col max-w-2xl gap-16 mx-auto mb-16'>
+      <section className='flex flex-col max-w-2xl gap-16 mx-auto mb-16'>
         <Portfolio
           about={about.content}
           role={currentRole}
@@ -43,7 +43,7 @@ const Home: NextPage<HomeProps> = ({
         />
         <Skills />
         <FeaturedBlogs featured={featured} />
-      </div>
+      </section>
     </AnimateLayout>
   );
 };
