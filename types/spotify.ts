@@ -17,6 +17,7 @@ type Artist = {
 
 export interface SpotifyNowPlayingResponse {
   is_playing: boolean;
+  currently_playing_type: string;
   item: {
     name: string;
     artists: Artist[];
