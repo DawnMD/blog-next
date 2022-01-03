@@ -28,3 +28,15 @@ export type timelineBlocks = {
 export interface ITimeline {
   timelines: { timelineBlocks: timelineBlocks[] }[];
 }
+
+export type TestimonialContent = {
+  id: string;
+  testimonial: string;
+  testimonialAuthor: string[];
+  comapny: string;
+  authorType: string;
+};
+
+export interface ITestimonial {
+  testimonials: { testimonialContents: TestimonialContent[] }[];
+}
