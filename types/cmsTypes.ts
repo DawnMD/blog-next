@@ -33,7 +33,7 @@ export type TestimonialContent = {
   id: string;
   testimonial: string;
   testimonialAuthor: string[];
-  comapny: string;
+  company: string;
   authorType: string;
 };
 
