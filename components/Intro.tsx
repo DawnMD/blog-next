@@ -1,9 +1,9 @@
 import NextImage from 'next/image';
-import { CurrentRole } from '../types/cmsTypes';
+import { Role } from '../types/graphcmsData';
 
 interface PortfolioProps {
   about: string;
-  role: CurrentRole;
+  role: Role;
   displayPicture: { porfilePicture: { url: string }; pictureAlt: string };
 }
 
