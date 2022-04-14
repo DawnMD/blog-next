@@ -9,7 +9,7 @@ interface SongItemProps {
   artists: string;
 }
 
-const SongItem = ({
+export const SongItem = ({
   albumImage,
   albumTitle,
   songTitle,
@@ -41,5 +41,3 @@ const SongItem = ({
     </NextLink>
   );
 };
-
-export default SongItem;

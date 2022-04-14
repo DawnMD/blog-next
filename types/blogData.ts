@@ -25,7 +25,6 @@ export interface FullBlog {
   body_markdown: string;
   positive_reactions_count: number;
   cover_image: string;
-  tag_list: string[];
   canonical_url: string;
   reading_time_minutes: number;
   user: User;
@@ -41,7 +40,6 @@ export type Blog = {
   public_reactions_count: number;
   published_at: string;
   slug: string;
-  tag_list: string[];
   title: string;
   url: string;
 };

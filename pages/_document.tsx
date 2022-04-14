@@ -5,7 +5,7 @@ class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
-          <link
+          {/* <link
             rel='preload'
             href='/fonts/inter-v7-latin-100.woff'
             as='font'
@@ -147,7 +147,7 @@ class MyDocument extends Document {
             type='image/png'
             sizes='16x16'
             href='/static/favicons/favicon-16x16.png'
-          />
+          /> */}
           <meta content='#111111' name='theme-color' />
           <meta content='#ffffff' name='msapplication-TileColor' />
           <link rel='manifest' href='/static/favicons/site.webmanifest' />

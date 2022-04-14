@@ -1,4 +1,4 @@
-import { Blog, FullBlog } from '../types/blogType';
+import { Blog, FullBlog } from '../types/blogData';
 
 export const formatDate = (date: string): string => {
   return new Date(date).toLocaleDateString('en-US', {
@@ -19,7 +19,6 @@ export function filterResponse(data: FullBlog): Blog {
     public_reactions_count: data.public_reactions_count,
     published_at: data.published_at,
     slug: data.slug,
-    tag_list: data.tag_list,
     title: data.title,
     url: data.url,
   };

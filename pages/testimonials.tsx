@@ -1,20 +1,20 @@
-import { GetStaticProps, NextPage } from 'next';
-import AnimateLayout from '../components/Layout/AnimateLayout';
-import Testimonial from '../components/Testimonial';
-import { ITestimonial, TestimonialContent } from '../types/cmsTypes';
-import graphCMS from '../utils/graphCMS';
+import type { NextPage, GetStaticProps } from 'next';
+import { Layout } from '../components/shared/Layout';
+import { Testimonial } from '../components/Testimonial';
+import { TestimonialBlock, TestimonialContent } from '../types/graphcmsData';
+import { graphcmsConnection } from '../utils/graphcmsConnection';
 
 const title = 'Testimonials';
 const description =
   'Some of the testimonials I got from the companies and people I worked with.';
 
-interface TestimonialProps {
+type TestimonialProps = {
   testimonials: TestimonialContent[];
-}
+};
 
 const Testimonials: NextPage<TestimonialProps> = ({ testimonials }) => {
   return (
-    <AnimateLayout title={title} description={description}>
+    <Layout title={title} description={description}>
       <section className='flex flex-col max-w-2xl gap-4 mx-auto mb-16'>
         <h1 className='text-3xl font-bold tracking-tight md:text-5xl'>
           Testimonials
@@ -34,14 +34,14 @@ const Testimonials: NextPage<TestimonialProps> = ({ testimonials }) => {
           ))}
         </div>
       </section>
-    </AnimateLayout>
+    </Layout>
   );
 };
 
 export default Testimonials;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { testimonials } = await graphCMS.request<ITestimonial>(`{
+  const { testimonials } = await graphcmsConnection.request<TestimonialBlock>(`{
   testimonials {
     testimonialContents(orderBy: sequence_DESC) {
       id

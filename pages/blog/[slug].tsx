@@ -6,7 +6,6 @@ import {
   readCache,
   writeCache,
 } from '../../utils/blogUtils';
-import AnimateLayout from '../../components/Layout/AnimateLayout';
 import { formatDate } from '../../utils/helpers';
 import NextImage from 'next/image';
 import { serialize } from 'next-mdx-remote/serialize';
@@ -15,9 +14,12 @@ import { sanitizeDevToMarkdown } from '../../utils/markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
+import { Layout } from '../../components/shared/Layout';
+import { graphcmsConnection } from '../../utils/graphcmsConnection';
 
 interface PostProps {
   markdown: MDXRemoteSerializeResult;
+  author: { name: string; imageUrl: string };
   url: string;
   published: string;
   title: string;
@@ -26,6 +28,7 @@ interface PostProps {
 }
 
 const Post: NextPage<PostProps> = ({
+  author,
   markdown,
   title,
   description,
@@ -34,7 +37,7 @@ const Post: NextPage<PostProps> = ({
   pageView,
 }) => {
   return (
-    <AnimateLayout title={title} description={description}>
+    <Layout title={title} description={description}>
       <section className='flex flex-col w-full max-w-2xl gap-4 mx-auto mb-16'>
         <h1 className='mb-4 text-3xl font-bold tracking-tight md:text-5xl '>
           {title}
@@ -47,7 +50,8 @@ const Post: NextPage<PostProps> = ({
                 height={36}
                 className='rounded-full'
                 loading='eager'
-                src='/images/home/potrait.JPG'
+                alt={author.name}
+                src={author.imageUrl}
               />
             </span>
             <span>Mainak Das / {formatDate(published)}</span>
@@ -56,14 +60,12 @@ const Post: NextPage<PostProps> = ({
         </div>
         <div className='w-full mt-4 prose md:prose-lg dark:prose-invert prose-neutral prose-img:mx-auto prose-img:rounded-lg prose-a:text-cyan-600 hover:prose-a:text-cyan-500 prose-a:transition-all dark:prose-a:text-cyan-500 dark:hover:prose-a:text-cyan-400 hover:prose-a:no-underline prose-pre:border prose-pre:border-neutral-200 prose-pre:bg-neutral-100 dark:prose-pre:border-neutral-700 dark:prose-pre:bg-neutral-900 prose-code:text-neutral-800 dark:prose-code:text-neutral-200 prose-code:px-1 prose-code:py-0.5 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-900'>
           <MDXRemote {...markdown} />
+          <a href={url} className='flex justify-center mt-2'>
+            Read on Dev.to
+          </a>
         </div>
-        <a
-          href={url}
-          className='mt-2 text-center transition-all dark:hover:text-neutral-500 hover:text-neutral-600'>
-          Read on Dev.to
-        </a>
       </section>
-    </AnimateLayout>
+    </Layout>
   );
 };
 
@@ -75,7 +77,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (slug) {
     const cacheContents = readCache();
     const blog = filterCacheBySlug(cacheContents, slug);
+
     if (blog) {
+      const { portfolioPictures } = await graphcmsConnection.request<{
+        portfolioPictures: {
+          porfilePicture: { url: string };
+          pictureAlt: string;
+        }[];
+      }>(`{
+  portfolioPictures {
+    porfilePicture {
+      url
+    }
+    pictureAlt
+  }
+}`);
+
       const markdown = await serialize(
         sanitizeDevToMarkdown(blog.body_markdown),
         {
@@ -87,6 +104,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
       );
       return {
         props: {
+          author: {
+            name: portfolioPictures[0].pictureAlt,
+            imageUrl: portfolioPictures[0].porfilePicture.url,
+          },
           markdown,
           url: blog.url,
           published: blog.published_at,

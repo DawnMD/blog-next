@@ -1,10 +1,10 @@
-import SpotifyNowPlaying from './SpotifyNowPlaying';
+import { SpotifyWidget } from './SpotifyWidget';
 
-const Footer = (): JSX.Element => {
+export const Footer = (): JSX.Element => {
   return (
     <footer className='flex flex-col w-full gap-6 pb-8 text-sm md:max-w-2xl md:mx-auto'>
       <hr className='w-full mb-2 border-neutral-200 border-1 dark:border-neutral-800' />
-      <SpotifyNowPlaying />
+      <SpotifyWidget />
       <div className='text-sm text-neutral-600 dark:text-neutral-400'>
         <ul className='flex flex-col gap-3'>
           <li>
@@ -12,7 +12,7 @@ const Footer = (): JSX.Element => {
               href='https://github.com/DawnMD'
               target='_blank'
               rel='noreferrer'
-              className='tracking-wide transition-all dark:hover:text-neutral-500 hover:text-neutral-600'>
+              className='tracking-wide transition-all dark:hover:text-neutral-300 hover:text-neutral-500'>
               Github
             </a>
           </li>
@@ -21,7 +21,7 @@ const Footer = (): JSX.Element => {
               href='https://dev.to/dawnind'
               target='_blank'
               rel='noreferrer'
-              className='tracking-wide transition-all dark:hover:text-neutral-500 hover:text-neutral-600'>
+              className='tracking-wide transition-all dark:hover:text-neutral-300 hover:text-neutral-500'>
               Dev.to
             </a>
           </li>
@@ -30,7 +30,7 @@ const Footer = (): JSX.Element => {
               href='https://www.linkedin.com/in/mainak1147/'
               target='_blank'
               rel='noreferrer'
-              className='tracking-wide transition-all dark:hover:text-neutral-500 hover:text-neutral-600'>
+              className='tracking-wide transition-all dark:hover:text-neutral-300 hover:text-neutral-500'>
               LinkedIn
             </a>
           </li>
@@ -60,4 +60,3 @@ const Footer = (): JSX.Element => {
     </footer>
   );
 };
-export default Footer;

@@ -5,7 +5,7 @@ interface TestimonialProps {
   company: string;
 }
 
-const Testimonial = ({
+export const Testimonial = ({
   testimonial,
   author,
   position,
@@ -24,5 +24,3 @@ const Testimonial = ({
     </div>
   );
 };
-
-export default Testimonial;

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SpotifyNowPlayingSong, SpotifyTopTrack } from '../types/spotify';
+import { SpotifyNowPlayingSong, SpotifyTopTrack } from '../types/spotifyData';
 import { basicSpotifyAuthKey } from '../utils/spotify';
 
 export const spotifyAccount = axios.create({

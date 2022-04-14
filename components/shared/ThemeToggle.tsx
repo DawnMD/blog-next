@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 
-const ThemeSwitch = (): JSX.Element | null => {
+export const ThemeToggle = (): JSX.Element | null => {
   const [mounted, setMounted] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
 
@@ -20,7 +20,7 @@ const ThemeSwitch = (): JSX.Element | null => {
   return (
     <>
       <button
-        className='w-10 h-10 transition-all bg-neutral-200 rounded-md dark:bg-neutral-600 hover:ring-2 ring-neutral-300'
+        className='w-10 h-10 transition-all rounded-md bg-neutral-200 dark:bg-neutral-600 hover:ring-2 ring-neutral-300'
         onClick={toggleMode}>
         <span className='sr-only'>Color mode switch button</span>
         {theme === 'dark' ? (
@@ -56,4 +56,3 @@ const ThemeSwitch = (): JSX.Element | null => {
     </>
   );
 };
-export default ThemeSwitch;

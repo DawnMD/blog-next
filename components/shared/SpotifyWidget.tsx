@@ -1,9 +1,9 @@
 import useSWR from 'swr';
-import { spotifyNowPlayingFetcher } from '../../../apis/spotify';
-import { SpotifyNowPlayingSong } from '../../../types/spotify';
-import AnimatedBars from './AnimatedBars';
+import { spotifyNowPlayingFetcher } from '../../apis/spotify';
+import { SpotifyNowPlayingSong } from '../../types/spotifyData';
+import { AnimatedBars } from './AnimatedBars';
 
-const SpotifyNowPlaying = (): JSX.Element => {
+export const SpotifyWidget = (): JSX.Element => {
   const { data: nowPlaying } = useSWR<SpotifyNowPlayingSong>(
     '/now-playing',
     spotifyNowPlayingFetcher
@@ -14,7 +14,7 @@ const SpotifyNowPlaying = (): JSX.Element => {
       <div className='inline-flex flex-col w-full max-w-full truncate sm:flex-row'>
         {nowPlaying?.songUrl ? (
           <a
-            className='font-medium text-neutral-800 truncate capsize dark:text-neutral-200 max-w-max'
+            className='font-medium truncate text-neutral-800 capsize dark:text-neutral-200 max-w-max'
             href={nowPlaying.songUrl}
             target='_blank'
             rel='noopener noreferrer'>
@@ -28,7 +28,7 @@ const SpotifyNowPlaying = (): JSX.Element => {
         <span className='hidden mx-2 text-neutral-500 capsize dark:text-neutral-300 sm:block'>
           {' – '}
         </span>
-        <p className='text-neutral-500 truncate capsize dark:text-neutral-300 max-w-max'>
+        <p className='truncate text-neutral-500 capsize dark:text-neutral-300 max-w-max'>
           {nowPlaying?.artist ?? 'Spotify'}
         </p>
       </div>
@@ -45,5 +45,3 @@ const SpotifyNowPlaying = (): JSX.Element => {
     </div>
   );
 };
-
-export default SpotifyNowPlaying;

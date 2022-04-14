@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* inter-100 - latin */
 @font-face {
   font-family: 'Inter';
@@ -79,10 +83,6 @@
   src: url(/fonts/inter-v7-latin-900.woff2) format('woff2'),
     url(/fonts/inter-v7-latin-900.woff) format('woff');
 }
-
-@tailwind base;
-@tailwind utilities;
-@tailwind components;
 
 html {
   scroll-behavior: smooth;

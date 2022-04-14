@@ -7,7 +7,7 @@ interface PortfolioProps {
   displayPicture: { porfilePicture: { url: string }; pictureAlt: string };
 }
 
-const Portfolio = ({
+export const Intro = ({
   about,
   role,
   displayPicture,
@@ -46,5 +46,3 @@ const Portfolio = ({
     </section>
   );
 };
-
-export default Portfolio;

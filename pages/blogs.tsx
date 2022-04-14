@@ -1,8 +1,8 @@
 import { getAllArticles } from '../utils/blogUtils';
-import AnimateLayout from '../components/Layout/AnimateLayout';
-import { Blog } from '../types/blogType';
-import BlogLink from '../components/BlogLink';
+import { Blog } from '../types/blogData';
 import { NextPage } from 'next';
+import { Layout } from '../components/shared/Layout';
+import { BlogCard } from '../components/BlogCard';
 
 const title = `Blogs`;
 const description = `Articles I write in my free time. 📝`;
@@ -13,7 +13,7 @@ interface PostsProps {
 
 const Posts: NextPage<PostsProps> = ({ blogs }) => {
   return (
-    <AnimateLayout title={title} description={description}>
+    <Layout title={title} description={description}>
       <section className='flex flex-col max-w-2xl gap-4 mx-auto mb-16'>
         <h1 className='text-3xl font-bold tracking-tight md:text-5xl'>Blogs</h1>
         <p className='text-neutral-600 dark:text-neutral-400'>
@@ -26,7 +26,7 @@ const Posts: NextPage<PostsProps> = ({ blogs }) => {
           </h3>
           <div className='flex flex-col gap-6'>
             {blogs.map((blog) => (
-              <BlogLink
+              <BlogCard
                 key={blog.id}
                 title={blog.title}
                 desc={blog.description}
@@ -37,7 +37,7 @@ const Posts: NextPage<PostsProps> = ({ blogs }) => {
           </div>
         </div>
       </section>
-    </AnimateLayout>
+    </Layout>
   );
 };
 

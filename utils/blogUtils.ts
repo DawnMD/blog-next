@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { Blog, FullBlog } from '../types/blogType';
+import { Blog, FullBlog } from '../types/blogData';
 import { filterResponse } from './helpers';
 
 type PathParam = { params: { slug: string } }[];

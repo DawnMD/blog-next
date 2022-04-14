@@ -1,16 +1,16 @@
 import { GetStaticProps, NextPage } from 'next';
-import AnimateLayout from '../components/Layout/AnimateLayout';
-import graphCMS from '../utils/graphCMS';
-import { ITimeline, timelineBlocks } from '../types/cmsTypes';
+import { Layout } from '../components/shared/Layout';
+import { ITimeline, TimelineBlocks } from '../types/graphcmsData';
+import { graphcmsConnection } from '../utils/graphcmsConnection';
 
 const title = 'My Timeline';
 const description = 'Things I did and achieved.';
 
-const Timeline: NextPage<{ timelineData: timelineBlocks[] }> = ({
+const Timeline: NextPage<{ timelineData: TimelineBlocks[] }> = ({
   timelineData,
 }) => {
   return (
-    <AnimateLayout title={title} description={description}>
+    <Layout title={title} description={description}>
       <section className='flex flex-col max-w-2xl gap-4 mx-auto mb-16'>
         <h1 className='text-3xl font-bold tracking-tight md:text-5xl'>
           Timeline
@@ -40,14 +40,14 @@ const Timeline: NextPage<{ timelineData: timelineBlocks[] }> = ({
           ))}
         </div>
       </section>
-    </AnimateLayout>
+    </Layout>
   );
 };
 
 export default Timeline;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { timelines } = await graphCMS.request<ITimeline>(`{
+  const { timelines } = await graphcmsConnection.request<ITimeline>(`{
   timelines {
     timelineBlocks(orderBy: timelineYear_DESC) {
       id

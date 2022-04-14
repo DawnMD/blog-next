@@ -1,8 +1,8 @@
 import { NextApiResponse } from 'next';
 import { spotifyAccount, spotifyAPI } from '../../../apis/spotify';
-import { SpotifyTopResponse, SpotifyToken } from '../../../types/spotify';
+import { SpotifyTopResponse, SpotifyToken } from '../../../types/spotifyData';
 
-const handler = async (_, res: NextApiResponse) => {
+const handler = async (_: any, res: NextApiResponse) => {
   const { data: tokenData } = await spotifyAccount.post<SpotifyToken>(
     '/api/token',
     new URLSearchParams({

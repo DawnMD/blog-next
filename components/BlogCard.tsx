@@ -1,15 +1,20 @@
-import NoScrollLink from './shared/NoScrollLink/NoScrollLink';
+import NextLink from 'next/link';
 
-interface BlogLinkProps {
+interface BlogCardProps {
   title: string;
   desc: string;
   views: number;
   slug: string;
 }
 
-const BlogLink = ({ title, desc, views, slug }: BlogLinkProps): JSX.Element => {
+export const BlogCard = ({
+  title,
+  desc,
+  views,
+  slug,
+}: BlogCardProps): JSX.Element => {
   return (
-    <NoScrollLink href={`/blog/${slug}`}>
+    <NextLink href={`/blog/${slug}`}>
       <a className='flex flex-col gap-4 transition-all transform md:gap-2 hover:scale-[1.015]'>
         <div className='flex flex-col md:flex-row md:justify-between'>
           <h4 className='text-lg font-medium md:text-xl'>{title}</h4>
@@ -19,8 +24,6 @@ const BlogLink = ({ title, desc, views, slug }: BlogLinkProps): JSX.Element => {
         </div>
         <p className='text-neutral-600 dark:text-neutral-400'>{desc}</p>
       </a>
-    </NoScrollLink>
+    </NextLink>
   );
 };
-
-export default BlogLink;
