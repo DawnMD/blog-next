@@ -15,8 +15,11 @@ import { sanitizeDevToMarkdown } from '../../utils/markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
+import graphCMS from '../../utils/graphCMS';
+import { gql } from 'graphql-request';
 
 interface PostProps {
+  author: { name: string; imageUrl: string };
   markdown: MDXRemoteSerializeResult;
   url: string;
   published: string;
@@ -27,6 +30,7 @@ interface PostProps {
 
 const Post: NextPage<PostProps> = ({
   markdown,
+  author,
   title,
   description,
   published,
@@ -46,8 +50,8 @@ const Post: NextPage<PostProps> = ({
                 width={36}
                 height={36}
                 className='rounded-full'
-                loading='eager'
-                src='/images/home/potrait.JPG'
+                alt={author.name}
+                src={author.imageUrl}
               />
             </span>
             <span>Mainak Das / {formatDate(published)}</span>
@@ -76,6 +80,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const cacheContents = readCache();
     const blog = filterCacheBySlug(cacheContents, slug);
     if (blog) {
+      const { portfolioPictures } = await graphCMS.request<{
+        portfolioPictures: {
+          porfilePicture: { url: string };
+          pictureAlt: string;
+        }[];
+      }>(gql`
+        {
+          portfolioPictures {
+            porfilePicture {
+              url
+            }
+            pictureAlt
+          }
+        }
+      `);
       const markdown = await serialize(
         sanitizeDevToMarkdown(blog.body_markdown),
         {
@@ -87,6 +106,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
       );
       return {
         props: {
+          author: {
+            name: portfolioPictures[0].pictureAlt,
+            imageUrl: portfolioPictures[0].porfilePicture.url,
+          },
           markdown,
           url: blog.url,
           published: blog.published_at,
