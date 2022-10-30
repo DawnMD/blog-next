@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@next/font": "^13.0.0",
+    "clsx": "^1.2.1",
+    "framer-motion": "^7.6.2",
     "next": "13.0.0",
     "next-seo": "^5.11.1",
     "react": "18.2.0",
