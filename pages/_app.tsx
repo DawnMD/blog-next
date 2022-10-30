@@ -1,13 +1,11 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { Inter } from '@next/font/google';
-
-const interVariable = Inter();
+import { Layout } from '@components/shared/Layout';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={interVariable.className}>
+    <Layout>
       <Component {...pageProps} />
-    </main>
+    </Layout>
   );
 }
