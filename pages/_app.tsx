@@ -1,43 +1,13 @@
-import type { AppProps } from 'next/app';
-import { DefaultSeo } from 'next-seo';
 import '../styles/globals.css';
-import { ThemeProvider } from 'next-themes';
-import { AnimatePresence } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import type { AppProps } from 'next/app';
+import { Inter } from '@next/font/google';
 
-function MyApp({ Component, pageProps, router }: AppProps) {
-  const [mounted, setMounted] = useState(false);
+const interVariable = Inter();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
-  const url = `${window.location.origin}${router.route}`;
-
+export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider attribute='class' disableTransitionOnChange>
-      <DefaultSeo
-        titleTemplate='%s | Mainak Das'
-        openGraph={{
-          type: 'website',
-          locale: 'en_IE',
-          url,
-          description: 'The personal website for Mainak Das.',
-          site_name: 'Mainak Das | mainak.vercel.app',
-          images: [],
-        }}
-        canonical={url}
-      />
-      <AnimatePresence
-        exitBeforeEnter
-        initial={false}
-        onExitComplete={() => window.scrollTo(0, 0)}>
-        <Component {...pageProps} key={url} />
-      </AnimatePresence>
-    </ThemeProvider>
+    <main className={interVariable.className}>
+      <Component {...pageProps} />
+    </main>
   );
 }
-
-export default MyApp;
