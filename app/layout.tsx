@@ -21,10 +21,10 @@ export default function RootLayout({
       */}
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       <head />
-      <body className='bg-black'>
-        <div className='bg-zinc-900 min-h-screen text-zinc-400'>
+      <body className='antialiased bg-black'>
+        <div className='min-h-screen bg-zinc-900 text-zinc-400'>
           <Navbar />
-          <main className='lg:max-w-7xl lg:mx-auto px-8'>{children}</main>
+          <main className='px-8 lg:max-w-7xl lg:mx-auto'>{children}</main>
           {/* footer */}
         </div>
       </body>
