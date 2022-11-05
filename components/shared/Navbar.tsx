@@ -1,32 +1,99 @@
 'use client';
 import NextLink from 'next/link';
-import { useState, Fragment } from 'react';
-import { ChevronDoubleDownIcon } from '@heroicons/react/24/solid';
+import { useState, Fragment, PropsWithChildren } from 'react';
+import {
+  ChevronDoubleDownIcon,
+  ChevronDoubleUpIcon,
+} from '@heroicons/react/24/solid';
 import { Dialog, Transition } from '@headlessui/react';
+import { usePathname } from 'next/navigation';
+import clsx from 'clsx';
+import { motion } from 'framer-motion';
+
+const MobileNavItem = ({
+  href,
+  children,
+}: PropsWithChildren<{ href: string }>) => {
+  const pathname = usePathname();
+  return (
+    <NextLink
+      href={href}
+      className={clsx(
+        'flex items-center justify-center py-4 font-semibold text-sm',
+        {
+          'text-zinc-400': pathname !== href,
+          'text-zinc-50': pathname === href,
+        }
+      )}>
+      {children}
+    </NextLink>
+  );
+};
+
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'Timeline', href: '/timeline' },
+  { name: 'Blogs', href: '/blogs' },
+  { name: 'Testimonials', href: '/testimonials' },
+];
 
 export const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedTab, setSelectedTab] = useState(
+    navigation.find(({ href }) => href === pathname)
+  );
 
   const openNav = () => setIsOpen(true);
   const closeNav = () => setIsOpen(false);
 
   return (
     <>
-      <header className='p-8 flex justify-between items-center'>
-        <NextLink href='/' className='font-heading text-2xl font-semibold'>
+      <header className='flex items-center justify-between p-8 lg:max-w-7xl lg:mx-auto'>
+        <NextLink
+          href='/'
+          className='text-2xl font-semibold font-heading text-zinc-50 lg:text-4xl'>
           MD.
         </NextLink>
         <button
-          className='flex items-center gap-4 bg-zinc-800 px-4 py-2 rounded-lg'
+          className='flex items-center gap-4 px-4 py-2 transition-all rounded-lg shadow bg-zinc-800 lg:hidden'
           onClick={openNav}>
           <span>Menu</span>
           <span>
-            <ChevronDoubleDownIcon className='h-4 w-4' />
+            {isOpen ? (
+              <ChevronDoubleUpIcon className='w-4 h-4' />
+            ) : (
+              <ChevronDoubleDownIcon className='w-4 h-4' />
+            )}
           </span>
         </button>
+        <nav className='hidden lg:block'>
+          <ul className='flex items-center gap-4'>
+            {navigation.map((nav) => (
+              <li
+                key={nav.href}
+                className='relative px-4 py-2 font-semibold'
+                onClick={() => setSelectedTab(nav)}>
+                <NextLink
+                  href={nav.href}
+                  className={clsx('relative z-10', {
+                    'text-zinc-50': nav.href === selectedTab?.href,
+                  })}>
+                  {nav.name}
+                </NextLink>
+                {nav.href === selectedTab?.href && (
+                  <motion.div
+                    className='absolute inset-0 rounded shadow bg-zinc-800'
+                    layoutId='navLayout'
+                  />
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
       </header>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as='div' className='relative z-10' onClose={closeNav}>
+        <Dialog as='div' className='relative z-10 lg:hidden' onClose={closeNav}>
           <Transition.Child
             as={Fragment}
             enter='ease-out duration-300'
@@ -39,7 +106,7 @@ export const Navbar = () => {
           </Transition.Child>
 
           <div className='fixed inset-0 overflow-y-auto'>
-            <div className='flex min-h-full items-center justify-center p-4 text-center'>
+            <div className='flex items-center justify-center min-h-full p-4 text-center'>
               <Transition.Child
                 as={Fragment}
                 enter='ease-out duration-300'
@@ -48,18 +115,25 @@ export const Navbar = () => {
                 leave='ease-in duration-200'
                 leaveFrom='opacity-100 scale-100'
                 leaveTo='opacity-0 scale-95'>
-                <Dialog.Panel className='w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
-                  <Dialog.Title
-                    as='h3'
-                    className='text-lg font-medium leading-6 text-gray-900'>
-                    Payment successful
-                  </Dialog.Title>
-                  <div className='mt-2'>
-                    <p className='text-sm text-gray-500'>
-                      Your payment has been successfully submitted. Weve sent
-                      you an email with all of the details of your order.
-                    </p>
-                  </div>
+                <Dialog.Panel className='w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform shadow-xl bg-zinc-800 rounded-2xl'>
+                  <nav>
+                    <ul className='divide-y divide-zinc-600'>
+                      <li>
+                        <MobileNavItem href='/'>Home</MobileNavItem>
+                      </li>
+                      <li>
+                        <MobileNavItem href='/timeline'>Timeline</MobileNavItem>
+                      </li>
+                      <li>
+                        <MobileNavItem href='/blogs'>Blogs</MobileNavItem>
+                      </li>
+                      <li>
+                        <MobileNavItem href='/dashboard'>
+                          Dashboard
+                        </MobileNavItem>
+                      </li>
+                    </ul>
+                  </nav>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
