@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { blogSchemaType } from 'schema/blogSchema';
 
 export const writeCache = (data: any) => {
   fs.writeFileSync(
@@ -8,4 +9,11 @@ export const writeCache = (data: any) => {
   );
 };
 
-export const readCache = () => {};
+export const readCache = () => {
+  const cache = fs.readFileSync(
+    path.join(process.cwd(), 'data', 'devtoBlogData.ts'),
+    'utf-8'
+  );
+  const cacheContents = JSON.parse(cache) as blogSchemaType;
+  return cacheContents;
+};
