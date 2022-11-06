@@ -49,7 +49,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <header className='flex items-center justify-between p-8 lg:max-w-7xl lg:mx-auto'>
+      <header className='flex items-center justify-between px-4 py-8 lg:max-w-7xl lg:mx-auto'>
         <NextLink
           href='/'
           className='text-2xl font-semibold font-heading text-zinc-50 lg:text-4xl'>
@@ -76,9 +76,12 @@ export const Navbar = () => {
                 onClick={() => setSelectedTab(nav)}>
                 <NextLink
                   href={nav.href}
-                  className={clsx('relative z-10', {
-                    'text-zinc-50': nav.href === selectedTab?.href,
-                  })}>
+                  className={clsx(
+                    'relative z-10 hover:text-zinc-50 transition-all duration-200',
+                    {
+                      'text-zinc-50': nav.href === selectedTab?.href,
+                    }
+                  )}>
                   {nav.name}
                 </NextLink>
                 {nav.href === selectedTab?.href && (
