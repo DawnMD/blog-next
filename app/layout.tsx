@@ -4,6 +4,7 @@ import { Navbar } from '../components/shared/Navbar';
 import axios from 'axios';
 import { writeCache } from 'utils/blogHelpers';
 import { blogSchema, blogSchemaType } from 'schema/blogSchema';
+import { Footer } from 'components/shared/Footer';
 
 const grotesk = Space_Grotesk({
   weight: 'variable',
@@ -41,7 +42,7 @@ export default async function RootLayout({
         <div className='min-h-screen bg-zinc-900 text-zinc-400'>
           <Navbar />
           <main className='px-4 pb-4 lg:max-w-7xl lg:mx-auto'>{children}</main>
-          {/* footer */}
+          <Footer />
         </div>
       </body>
     </html>
