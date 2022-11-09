@@ -1,3 +1,10 @@
+import {
+  BuildingOffice2Icon,
+  ChevronDoubleRightIcon,
+} from '@heroicons/react/24/solid';
+import { BlogCard } from 'components/BlogCard';
+import { WorkCard } from 'components/WorkCard';
+import { workExperience } from 'data/workExperience';
 import NextLink from 'next/link';
 import { readCache } from 'utils/blogHelpers';
 
@@ -7,9 +14,12 @@ export default async function Home() {
   const blogPosts = blogs.map((blog) => {
     return {
       title: blog.title,
-      shortDescription: blog.body_markdown,
+      shortDescription: blog.description,
+      publishedAt: blog.published_at,
+      slug: blog.slug,
     };
   });
+
   return (
     <div className='flex flex-col gap-6'>
       <div className='flex flex-col gap-2'>
@@ -107,6 +117,32 @@ export default async function Home() {
             />
           </svg>
         </NextLink>
+      </div>
+
+      {blogPosts.map((blog) => (
+        <BlogCard
+          title={blog.title}
+          description={blog.shortDescription}
+          publishedAt={blog.publishedAt}
+          slug={blog.slug}
+        />
+      ))}
+
+      <div className='flex flex-col gap-4 p-4 text-sm border rounded-lg border-zinc-600/40'>
+        <div className='flex items-center gap-2'>
+          <BuildingOffice2Icon className='w-8 h-8' />
+          <h4 className='text-lg font-semibold text-zinc-50 font-heading'>
+            Work
+          </h4>
+        </div>
+        {workExperience.map((exp, idx) => (
+          <WorkCard
+            key={idx}
+            company={exp.company}
+            duration={exp.duration}
+            title={exp.title}
+          />
+        ))}
       </div>
     </div>
   );
