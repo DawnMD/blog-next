@@ -39,9 +39,9 @@ export default async function RootLayout({
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       <head />
       <body className='antialiased bg-black'>
-        <div className='min-h-screen bg-zinc-900 text-zinc-400'>
+        <div className='min-h-screen bg-zinc-900 text-zinc-400 sm:max-w-3xl lg:max-w-7xl sm:mx-auto'>
           <Navbar />
-          <main className='px-4 pb-4 lg:max-w-7xl lg:mx-auto'>{children}</main>
+          <main className='px-4 pb-4 lg:px-16 sm:px-8'>{children}</main>
           <Footer />
         </div>
       </body>
