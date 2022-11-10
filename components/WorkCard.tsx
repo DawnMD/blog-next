@@ -13,7 +13,7 @@ export const WorkCard = ({ company, duration, title }: WorkCardProps) => {
         </span>
         <span className='text-xs'>{title}</span>
       </p>
-      <p>{duration}</p>
+      <p className='text-sm text-zinc-500'>{duration}</p>
     </div>
   );
 };
