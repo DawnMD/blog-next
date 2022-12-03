@@ -3,22 +3,10 @@ import { BlogCard } from 'components/BlogCard';
 import { WorkCard } from 'components/WorkCard';
 import { workExperience } from 'data/workExperience';
 import NextLink from 'next/link';
-import { readCache } from 'utils/blogHelpers';
 import NextImage from 'next/image';
+import { SpotifyNowPlaying } from 'components/SpotifyNowPlaying';
 
 export default async function Home() {
-  const blogs = readCache();
-
-  const blogPosts = blogs.map((blog) => {
-    return {
-      title: blog.title,
-      shortDescription: blog.description,
-      publishedAt: blog.published_at,
-      slug: blog.slug,
-      readingTime: blog.reading_time_minutes,
-    };
-  });
-
   return (
     <div className='grid gap-6 lg:grid-cols-2'>
       <div className='flex flex-col gap-6 mt-8 lg:mt-16 lg:col-span-2 sm:px-4 lg:px-8'>
@@ -126,17 +114,7 @@ export default async function Home() {
           </svg>
         </NextLink>
       </div>
-      <div className='flex flex-col gap-4 sm:px-8'>
-        {blogPosts.slice(0, 5).map((blog) => (
-          <BlogCard
-            title={blog.title}
-            description={blog.shortDescription}
-            publishedAt={blog.publishedAt}
-            slug={blog.slug}
-            readingTime={blog.readingTime}
-          />
-        ))}
-      </div>
+      <div className='flex flex-col gap-4 sm:px-8'>{/* Blogs here */}</div>
       <div className='flex flex-col gap-4 lg:self-start'>
         <div className='flex flex-col gap-4 p-4 text-sm border rounded-xl border-zinc-600/40 sm:mx-8 lg:mx-16'>
           <div className='flex items-center gap-2'>
@@ -154,6 +132,7 @@ export default async function Home() {
             />
           ))}
         </div>
+        <SpotifyNowPlaying />
       </div>
     </div>
   );
