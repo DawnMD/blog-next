@@ -14,7 +14,22 @@ module.exports = {
         sans: ['Inter', ...fontFamily.sans],
         heading: ['var(--font-grotesk)', ...fontFamily.sans],
       },
+      colors: {
+        spotify: '#1DB954',
+      },
+      keyframes: {
+        music: {
+          '10%': { transform: 'scaleY(0.3)' },
+          '30%': { transform: 'scaleY(1)' },
+          '60%': { transform: 'scaleY(0.5)' },
+          '80%': { transform: 'scaleY(0.75)' },
+          '100%': { transform: 'scaleY(0.6)' },
+        },
+      },
+      animation: {
+        'music-wave': 'music 2.2s ease infinite alternate',
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp')],
 };
