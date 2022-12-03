@@ -52,7 +52,8 @@ export const Navbar = () => {
       <header className='flex items-center justify-between px-4 py-8 sm:px-8 lg:px-16 lg:max-w-7xl lg:mx-auto'>
         <NextLink
           href='/'
-          className='text-2xl font-semibold font-heading text-zinc-50 lg:text-4xl'>
+          className='text-2xl font-semibold font-heading text-zinc-50 lg:text-4xl'
+          onClick={() => setSelectedTab(navigation[0])}>
           MD.
         </NextLink>
         <button
