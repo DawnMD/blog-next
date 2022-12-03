@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 export default function Timeline() {
   return (
     <div className='flex flex-col gap-6'>
