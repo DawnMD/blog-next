@@ -1,9 +1,6 @@
 import './globals.css';
 import { Space_Grotesk, Inter } from '@next/font/google';
 import { Navbar } from '../components/shared/Navbar';
-import axios from 'axios';
-import { writeCache } from 'utils/blogHelpers';
-import { blogSchema, blogSchemaType } from 'schema/blogSchema';
 import { Footer } from 'components/shared/Footer';
 
 const grotesk = Space_Grotesk({
@@ -17,19 +14,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { data } = (await axios.get(
-    'https://dev.to/api/articles/me/published',
-    {
-      headers: {
-        'api-key': process.env.DEV_TO_API_KEY,
-      },
-    }
-  )) as { data: blogSchemaType };
-
-  process.env.NODE_ENV === 'development'
-    ? writeCache(blogSchema.parse(data))
-    : writeCache(blogSchema.safeParse(data));
-
   return (
     <html lang='en' className={`${inter.className} ${grotesk.variable}`}>
       {/*
