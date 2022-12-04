@@ -38,6 +38,7 @@ export const SpotifyNowPlaying = () => {
         <NextLink
           href={nowPlaying.songUrl}
           target='_blank'
+          rel='noopener noreferrer'
           className='flex gap-4'>
           <NextImage
             alt={nowPlaying.title}
