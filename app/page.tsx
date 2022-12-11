@@ -1,5 +1,5 @@
 import { BuildingOffice2Icon } from '@heroicons/react/24/solid';
-import { BlogCard } from 'components/BlogCard';
+// import { BlogCard } from 'components/BlogCard';
 import { WorkCard } from 'components/WorkCard';
 import { workExperience } from 'data/workExperience';
 import NextLink from 'next/link';
@@ -9,14 +9,17 @@ import { SpotifyNowPlaying } from 'components/SpotifyNowPlaying';
 export default async function Home() {
   return (
     <div className='grid gap-6 lg:grid-cols-2'>
-      <div className='flex flex-col gap-6 mt-8 lg:mt-16 lg:col-span-2 sm:px-4 lg:px-8'>
+      <div className='flex justify-center lg:mt-16 lg:col-span-1 lg:col-start-2'>
         <NextImage
           alt='Mainak Das'
-          src='/images/Mainak-Passport.jpg'
-          height={72}
-          width={72}
-          className='rounded-full'
+          src='/images/portfolio_main.jpg'
+          width={500}
+          height={500}
+          priority
+          className='object-cover object-bottom max-w-xs shadow-xl rounded-2xl rotate-3 lg:max-w-sm max-h-80 lg:max-h-96'
         />
+      </div>
+      <div className='flex flex-col gap-6 mt-8 sm:px-4 lg:px-8 lg:col-start-1 lg:row-start-1'>
         <div className='flex flex-col gap-2'>
           <h1 className='text-5xl font-bold font-heading text-zinc-50'>
             Mainak Das
