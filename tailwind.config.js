@@ -11,7 +11,10 @@ module.exports = {
         calSans: ['var(--font-calSans)'],
         sans: ['var(--font-matter)'],
       },
+      colors: {
+        brand: '#adfa1d',
+      },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animate')],
 };
