@@ -1,0 +1,33 @@
+export default function TestimonialsPage() {
+  return (
+    <div className='flex flex-col gap-6'>
+      <h2 className='text-6xl font-calSans text-brand'>Testimonials</h2>
+      <p>Sometimes people&apos;s opinion defines you better than your own.</p>
+      <div className='flex flex-col gap-6'>
+        <div className='flex flex-col gap-2'>
+          <p className='text-lg font-bold md:text-2xl text-zinc-100'>
+            During his internship period with us we found him a person who is
+            reliable and able to ensure the assigned tasks are completed in a
+            timely manner.
+          </p>
+          <p className='text-sm font-semibold md:text-lg'>
+            - <span className='text-zinc-100'>Phani Ponapalli</span>{' '}
+            <span className='text-brand'>/</span>{' '}
+            <span>CEO & Founder, APlusTopper Pvt. Ltd.</span>
+          </p>
+        </div>
+        <div className='flex flex-col gap-2'>
+          <p className='text-lg font-bold md:text-2xl text-zinc-100'>
+            During the period of his internship program with us he was found
+            punctual, hardworking and inquisitive.
+          </p>
+          <p className='text-sm font-semibold md:text-lg'>
+            - <span className='text-zinc-100'>Subrata Mallick</span>{' '}
+            <span className='text-brand'>/</span>{' '}
+            <span>CEO & Founder, Next Generation Technocom Private Ltd.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
