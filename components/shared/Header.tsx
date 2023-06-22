@@ -36,7 +36,7 @@ export const Header = () => {
         <motion.svg
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 264.79 150.54'
-          className='text-white h-8 w-10 lg:h-10 lg:w-16'>
+          className='text-brand h-8 w-10 lg:h-10 lg:w-16'>
           <motion.path
             initial={{
               opacity: 0,
