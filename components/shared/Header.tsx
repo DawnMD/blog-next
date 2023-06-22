@@ -33,7 +33,40 @@ export const Header = () => {
       <Link
         href='/'
         className='text-2xl font-semibold font-calSans text-zinc-50 lg:text-4xl'>
-        MD.
+        <motion.svg
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 264.79 150.54'
+          className='text-white h-8 w-10 lg:h-10 lg:w-16'>
+          <motion.path
+            initial={{
+              opacity: 0,
+              pathLength: 0,
+            }}
+            animate={{
+              opacity: 1,
+              pathLength: 1,
+            }}
+            transition={{
+              duration: 0.5,
+              type: 'spring',
+              stiffness: 50,
+            }}
+            fill='currentColor'
+            d='M154.45 287.76H191l30.41 64.82c8.53 18 14.35 31.16 16.73 39.27 1.95-7.55 7-20.67 15.78-39.27l30.63-64.82h35.23V438.3H293v-88.69l-47.7 82.74a11.69 11.69 0 01-3 3.86 8.08 8.08 0 01-10.46 0 13.68 13.68 0 01-3.11-3.79l-46.03-82.55a16.48 16.48 0 00.07 1.87q.4 9 .41 23.49v63.07h-28.73z'
+            transform='translate(-154.45 -287.76)'></motion.path>
+          <motion.path
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              type: 'spring',
+              stiffness: 50,
+              delay: 0.5,
+            }}
+            fill='currentColor'
+            d='M340.38 408.16q24.74 0 36.6-12.69t11.85-34.08q0-21.4-11.85-34.3t-36.6-12.9h-19.51v94zm-40.8-120.4h44.36q24.75 0 41.64 9.44a60.91 60.91 0 0125.27 26q8.38 16.57 8.39 38.18 0 21.39-8.39 38a60.2 60.2 0 01-25.27 25.91 94.88 94.88 0 01-16.62 7 127.68 127.68 0 01-39.29 6H300z'
+            transform='translate(-154.45 -287.76)'></motion.path>
+        </motion.svg>
       </Link>
       <LayoutGroup>
         <nav className='md:flex items-center gap-4 hidden' id='nav'>
