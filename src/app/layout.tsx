@@ -4,6 +4,8 @@ import "@/styles/globals.css";
 import { TRPCReactProvider } from "@/trpc/react";
 import { ClerkProvider } from "@clerk/nextjs";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const CalSans = localFont({
   src: "../../public/fonts/CalSans/CalSans-SemiBold.woff2",
@@ -52,6 +54,8 @@ export default function RootLayout({
                 {children}
               </main>
               <Footer />
+              <Analytics />
+              <SpeedInsights />
             </TRPCReactProvider>
           </div>
         </body>
