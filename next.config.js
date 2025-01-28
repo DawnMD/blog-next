@@ -18,7 +18,9 @@ const config = {
       },
     ],
   },
-  transpilePackages: ["next-mdx-remote"],
+  experimental: {
+    reactCompiler: true,
+  },
 };
 
 export default config;

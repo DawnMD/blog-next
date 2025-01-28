@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@clerk/nextjs':
         specifier: ^6.10.3
-        version: 6.10.3(next@15.1.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 6.10.3(next@15.1.6(babel-plugin-react-compiler@19.0.0-beta-27714ef-20250124)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.54.2(react@18.3.1))
@@ -52,10 +52,13 @@ importers:
         version: 15.5.13
       '@vercel/analytics':
         specifier: ^1.4.1
-        version: 1.4.1(next@15.1.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        version: 1.4.1(next@15.1.6(babel-plugin-react-compiler@19.0.0-beta-27714ef-20250124)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@vercel/speed-insights':
         specifier: ^1.1.0
-        version: 1.1.0(next@15.1.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        version: 1.1.0(next@15.1.6(babel-plugin-react-compiler@19.0.0-beta-27714ef-20250124)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      babel-plugin-react-compiler:
+        specifier: 19.0.0-beta-27714ef-20250124
+        version: 19.0.0-beta-27714ef-20250124
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -73,7 +76,7 @@ importers:
         version: 0.474.0(react@18.3.1)
       next:
         specifier: ^15.0.1
-        version: 15.1.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 15.1.6(babel-plugin-react-compiler@19.0.0-beta-27714ef-20250124)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       parse-numeric-range:
         specifier: ^1.3.0
         version: 1.3.0
@@ -160,8 +163,20 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
+  '@babel/helper-string-parser@7.25.9':
+    resolution: {integrity: sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/helper-validator-identifier@7.25.9':
+    resolution: {integrity: sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ==}
+    engines: {node: '>=6.9.0'}
+
   '@babel/runtime@7.26.7':
     resolution: {integrity: sha512-AOPI3D+a8dXnja+iwsUqGRjr1BbZIe771sXdapOtYI531gSqpi92vXivKcq2asu/DFpdl1ceFAKZyRzK2PCVcQ==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.26.7':
+    resolution: {integrity: sha512-t8kDRGrKXyp6+tjUh7hw2RLyclsW4TRoRvRHtSyAX9Bb5ldlFh+90YAYY6awRXrlB4G5G2izNeGySpATlFzmOg==}
     engines: {node: '>=6.9.0'}
 
   '@clerk/backend@1.23.8':
@@ -959,6 +974,9 @@ packages:
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
     engines: {node: '>= 0.4'}
+
+  babel-plugin-react-compiler@19.0.0-beta-27714ef-20250124:
+    resolution: {integrity: sha512-1AnF/dlvbIJzAjw5jEbDx7csHx772VP9AtrEg2CgUUD6MIu24j5ShxmBZ0tpfdb2pZtLVwcsoGylfZTzUoCr9w==}
 
   bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
@@ -2797,9 +2815,18 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
+  '@babel/helper-string-parser@7.25.9': {}
+
+  '@babel/helper-validator-identifier@7.25.9': {}
+
   '@babel/runtime@7.26.7':
     dependencies:
       regenerator-runtime: 0.14.1
+
+  '@babel/types@7.26.7':
+    dependencies:
+      '@babel/helper-string-parser': 7.25.9
+      '@babel/helper-validator-identifier': 7.25.9
 
   '@clerk/backend@1.23.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -2820,14 +2847,14 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       tslib: 2.4.1
 
-  '@clerk/nextjs@6.10.3(next@15.1.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@clerk/nextjs@6.10.3(next@15.1.6(babel-plugin-react-compiler@19.0.0-beta-27714ef-20250124)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@clerk/backend': 1.23.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@clerk/clerk-react': 5.22.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@clerk/shared': 2.20.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@clerk/types': 4.44.1
       crypto-js: 4.2.0
-      next: 15.1.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next: 15.1.6(babel-plugin-react-compiler@19.0.0-beta-27714ef-20250124)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       server-only: 0.0.1
@@ -3405,14 +3432,14 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@vercel/analytics@1.4.1(next@15.1.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+  '@vercel/analytics@1.4.1(next@15.1.6(babel-plugin-react-compiler@19.0.0-beta-27714ef-20250124)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     optionalDependencies:
-      next: 15.1.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next: 15.1.6(babel-plugin-react-compiler@19.0.0-beta-27714ef-20250124)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
 
-  '@vercel/speed-insights@1.1.0(next@15.1.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+  '@vercel/speed-insights@1.1.0(next@15.1.6(babel-plugin-react-compiler@19.0.0-beta-27714ef-20250124)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     optionalDependencies:
-      next: 15.1.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next: 15.1.6(babel-plugin-react-compiler@19.0.0-beta-27714ef-20250124)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
 
   acorn-jsx@5.3.2(acorn@8.14.0):
@@ -3530,6 +3557,10 @@ snapshots:
   axe-core@4.10.2: {}
 
   axobject-query@4.1.0: {}
+
+  babel-plugin-react-compiler@19.0.0-beta-27714ef-20250124:
+    dependencies:
+      '@babel/types': 7.26.7
 
   bail@2.0.2: {}
 
@@ -4939,7 +4970,7 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next@15.1.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  next@15.1.6(babel-plugin-react-compiler@19.0.0-beta-27714ef-20250124)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@next/env': 15.1.6
       '@swc/counter': 0.1.3
@@ -4959,6 +4990,7 @@ snapshots:
       '@next/swc-linux-x64-musl': 15.1.6
       '@next/swc-win32-arm64-msvc': 15.1.6
       '@next/swc-win32-x64-msvc': 15.1.6
+      babel-plugin-react-compiler: 19.0.0-beta-27714ef-20250124
       sharp: 0.33.5
     transitivePeerDependencies:
       - '@babel/core'
