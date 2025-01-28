@@ -23,6 +23,7 @@ const navigation = [
   { name: "About", href: "/about" },
   { name: "Blogs", href: "/blogs" },
   { name: "Testimonials", href: "/testimonials" },
+  { name: "Guestbook", href: "/guestbook" },
 ];
 
 export const Header = () => {
