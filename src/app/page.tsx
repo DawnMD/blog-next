@@ -6,10 +6,9 @@ import {
   LinkedInLogoIcon,
   TwitterLogoIcon,
 } from "@radix-ui/react-icons";
-import Link from "next/link";
-import ProfilePicture from "../../public/images/portfolio_main.jpg";
-import Image from "next/image";
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Mainak Das | Web Developer",
@@ -21,14 +20,16 @@ export default function Home() {
     <div className="grid gap-6 lg:grid-cols-2">
       <div className="flex justify-center lg:col-span-1 lg:col-start-2">
         <Image
-          src={ProfilePicture}
+          src={`https://github.com/dawnmd.png`}
           alt="Mainak Das"
+          width={400}
+          height={400}
           className="max-h-80 max-w-xs rounded-xl object-cover object-bottom shadow-xl lg:max-h-96 lg:max-w-sm"
         />
       </div>
       <div className="mt-8 flex flex-col gap-6 lg:col-start-1 lg:row-start-1 lg:px-8">
         <div className="flex flex-col gap-2">
-          <h1 className="font-calSans text-brand text-5xl">Mainak Das</h1>
+          <h1 className="font-calSans text-5xl text-brand">Mainak Das</h1>
           <h2 className="text-3xl font-semibold text-neutral-200">
             Web Developer, Blogger
           </h2>
@@ -96,12 +97,12 @@ export default function Home() {
       <div className="flex flex-col gap-4 lg:self-start">
         <div className="flex flex-col gap-4 rounded-xl border border-neutral-600/40 p-4 text-sm lg:mx-16">
           <div className="flex items-center gap-2">
-            <DashboardIcon className="text-brand h-8 w-8" />
+            <DashboardIcon className="h-8 w-8 text-brand" />
             <h4 className="font-calSans text-lg text-neutral-50">Work</h4>
           </div>
           <div className="flex items-center justify-between">
             <p className="flex flex-col gap-1">
-              <span className="font-calSans max-w-[150px] text-neutral-50">
+              <span className="max-w-[150px] font-calSans text-neutral-50">
                 Codemancers
               </span>
               <span className="text-xs">Frontend Developer</span>
@@ -110,7 +111,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between">
             <p className="flex flex-col gap-1">
-              <span className="font-calSans max-w-[150px] text-neutral-50">
+              <span className="max-w-[150px] font-calSans text-neutral-50">
                 Codemancers
               </span>
               <span className="text-xs">Frontend Developer Intern</span>
@@ -119,7 +120,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between">
             <p className="flex flex-col gap-1">
-              <span className="font-calSans max-w-[150px] text-neutral-50">
+              <span className="max-w-[150px] font-calSans text-neutral-50">
                 CXDeployer
               </span>
               <span className="text-xs">Fullstack Developer Intern</span>
@@ -128,7 +129,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between">
             <p className="flex flex-col gap-1">
-              <span className="font-calSans max-w-[150px] text-neutral-50">
+              <span className="max-w-[150px] font-calSans text-neutral-50">
                 APlus Topper
               </span>
               <span className="text-xs">Frontend Developer Intern</span>
@@ -137,7 +138,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between">
             <p className="flex flex-col gap-1">
-              <span className="font-calSans max-w-[150px] text-neutral-50">
+              <span className="max-w-[150px] font-calSans text-neutral-50">
                 Next Generation Technocom Pvt. Ltd.
               </span>
               <span className="text-xs">Application Developer Intern</span>
