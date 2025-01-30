@@ -6,7 +6,6 @@ import { ImageResponse } from "next/og";
 // No need to install it.
 
 export const runtime = "edge";
-export const dynamic = "force-static";
 
 type BlogPost = {
   title: string;
