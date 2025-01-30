@@ -53,6 +53,9 @@ export async function generateMetadata({
   return {
     title: blogDetailData.title,
     description: blogDetailData.description,
+    openGraph: {
+      images: [`/api/og?id=${id}`],
+    },
   } satisfies Metadata;
 }
 
