@@ -1,8 +1,6 @@
 import { Footer } from "@/components/shared/Footer";
 import { Header } from "@/components/shared/Header";
 import "@/styles/globals.css";
-import { TRPCReactProvider } from "@/trpc/react";
-import { ClerkProvider } from "@clerk/nextjs";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -42,24 +40,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${CalSans.variable} ${Matter.variable} bg-black font-sans antialiased`}
-        >
-          <div className="flex min-h-dvh flex-col bg-neutral-900 text-neutral-400 sm:mx-auto sm:max-w-3xl lg:max-w-7xl">
-            <TRPCReactProvider>
-              <Header />
-              <main className="grow px-4 pb-4 sm:px-8 lg:mx-auto lg:max-w-7xl lg:px-16">
-                {children}
-              </main>
-              <Footer />
-              <Analytics />
-              <SpeedInsights />
-            </TRPCReactProvider>
-          </div>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body
+        className={`${CalSans.variable} ${Matter.variable} bg-black font-sans antialiased`}
+      >
+        <div className="flex min-h-dvh flex-col bg-neutral-900 text-neutral-400 sm:mx-auto sm:max-w-3xl lg:max-w-7xl">
+          <Header />
+          <main className="grow px-4 pb-4 sm:px-8 lg:mx-auto lg:max-w-7xl lg:px-16">
+            {children}
+          </main>
+          <Footer />
+          <Analytics />
+          <SpeedInsights />
+        </div>
+      </body>
+    </html>
   );
 }
