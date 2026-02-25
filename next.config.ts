@@ -1,4 +1,8 @@
-const config = {
+import type { NextConfig } from "next";
+
+const config: NextConfig = {
+  // Next.js 16: opt-in cache + Partial Prerendering (PPR)
+  cacheComponents: true,
   images: {
     remotePatterns: [
       {

@@ -4,8 +4,7 @@ import dayjs from "dayjs";
 import { ImageResponse } from "next/og";
 // App router includes @vercel/og.
 // No need to install it.
-
-export const runtime = "edge";
+// Note: runtime = "edge" is not used when cacheComponents is enabled.
 
 type BlogPost = {
   title: string;
@@ -19,7 +18,9 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get("id");
 
-  const blogDetailResponse = await fetch(`https://dev.to/api/articles/${id}`);
+  const blogDetailResponse = await fetch(`https://dev.to/api/articles/${id}`, {
+    next: { revalidate: 6400800 },
+  });
 
   if (!blogDetailResponse.ok) {
     return new Response(`Failed to generate the image`, {

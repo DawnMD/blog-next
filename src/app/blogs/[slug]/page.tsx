@@ -13,6 +13,8 @@ import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
 import typescript from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
 import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkGfm from "remark-gfm";
+import { Suspense } from "react";
+import { cacheLife, cacheTag } from "next/cache";
 SyntaxHighlighter.registerLanguage("tsx", tsx);
 SyntaxHighlighter.registerLanguage("typescript", typescript);
 SyntaxHighlighter.registerLanguage("scss", scss);
@@ -28,8 +30,15 @@ type BlogPost = {
   body_markdown: string;
 };
 
-export const dynamic = "force-static";
-export const revalidate = 6400800;
+async function getBlogPost(articleId: string) {
+  "use cache";
+  cacheLife("days");
+  cacheTag(`blog-${articleId}`);
+
+  const res = await fetch(`https://dev.to/api/articles/${articleId}`);
+  if (!res.ok) return null;
+  return (await res.json()) as BlogPost;
+}
 
 export async function generateMetadata({
   params,
@@ -39,16 +48,12 @@ export async function generateMetadata({
   }>;
 }) {
   const { slug } = await params;
-  //the id is the last part of the slug
   const id = slug.split("-")[slug.split("-").length - 1];
+  const blogDetailData = await getBlogPost(id);
 
-  const blogDetailResponse = await fetch(`https://dev.to/api/articles/${id}`);
-
-  if (!blogDetailResponse.ok) {
+  if (!blogDetailData) {
     notFound();
   }
-
-  const blogDetailData = (await blogDetailResponse.json()) as BlogPost;
 
   return {
     title: blogDetailData.title,
@@ -59,16 +64,18 @@ export async function generateMetadata({
   } satisfies Metadata;
 }
 
-export default async function BlogPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const id = slug.split("-")[slug.split("-").length - 1];
-  const blogDetailResponse = await fetch(`https://dev.to/api/articles/${id}`);
+async function BlogArticleContent({ slug }: { slug: string }) {
+  "use cache";
+  cacheLife("days");
 
-  const blogDetailData = (await blogDetailResponse.json()) as BlogPost;
+  const id = slug.split("-")[slug.split("-").length - 1];
+  const blogDetailData = await getBlogPost(id);
+
+  if (!blogDetailData) {
+    notFound();
+  }
+
+  cacheTag(`blog-${id}`);
 
   return (
     <article className="flex flex-col gap-4">
@@ -158,5 +165,45 @@ export default async function BlogPage({
         </Markdown>
       </div>
     </article>
+  );
+}
+
+function ArticleFallback() {
+  return (
+    <article className="flex flex-col gap-4" aria-busy="true">
+      <div className="flex flex-col gap-2">
+        <div className="mt-6 h-10 w-3/4 animate-pulse rounded bg-neutral-700" />
+        <div className="flex justify-between">
+          <div className="h-4 w-32 animate-pulse rounded bg-neutral-800" />
+          <div className="h-4 w-20 animate-pulse rounded bg-neutral-800" />
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <div className="h-4 w-full animate-pulse rounded bg-neutral-800" />
+        <div className="h-4 w-full animate-pulse rounded bg-neutral-800" />
+        <div className="h-4 w-2/3 animate-pulse rounded bg-neutral-800" />
+      </div>
+    </article>
+  );
+}
+
+async function BlogPageInner({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  return <BlogArticleContent slug={slug} />;
+}
+
+export default function BlogPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  return (
+    <Suspense fallback={<ArticleFallback />}>
+      <BlogPageInner params={params} />
+    </Suspense>
   );
 }
