@@ -133,7 +133,7 @@ export default async function BlogPage({
               );
             },
             img: (props) => {
-              if (props.src && props.alt) {
+              if (props.src && props.alt && typeof props.src === "string") {
                 const { src, alt } = props;
                 return (
                   <Image

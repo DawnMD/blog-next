@@ -15,7 +15,11 @@ import {
 
 const FADE_DOWN_ANIMATION_VARIANTS = {
   hidden: { opacity: 0, y: -10 },
-  show: { opacity: 1, y: 0, transition: { type: "spring" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring" as const },
+  },
 };
 
 const navigation = [
@@ -87,7 +91,7 @@ export const Header = () => {
                 {name}
                 {href === pathname && (
                   <motion.div
-                    className="bg-brand absolute inset-0 -z-[1] rounded-md"
+                    className="bg-brand absolute inset-0 -z-1 rounded-md"
                     layoutId="header"
                     transition={{
                       type: "spring",
