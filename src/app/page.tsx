@@ -224,7 +224,7 @@ export default function Home() {
         action={<SectionLink href="/about">Full timeline</SectionLink>}
       >
         <ol className="border-line-soft border-l">
-          {experiences.map((job) => (
+          {experiences.slice(0, 2).map((job) => (
             <li key={job.company} className="relative pb-10 pl-6 last:pb-0">
               <span
                 aria-hidden="true"

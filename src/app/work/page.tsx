@@ -57,7 +57,10 @@ export default function WorkPage() {
                     {job.company} · {job.location}
                   </p>
                 </div>
-                <Badge>{job.period}</Badge>
+                <div className="flex flex-wrap items-center gap-2">
+                  {job.internship && <Badge tone="brand">Internship</Badge>}
+                  <Badge>{job.period}</Badge>
+                </div>
               </div>
 
               <p className="mt-5 leading-relaxed text-neutral-400">

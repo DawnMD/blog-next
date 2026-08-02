@@ -50,7 +50,7 @@ export type Social = (typeof socials)[number];
 
 export const stats = [
   { label: "Years of experience", value: "5+" },
-  { label: "Engineers mentored & led", value: "3" },
+  { label: "Engineers mentored & led", value: "8" },
   { label: "Production platforms shipped", value: "6" },
 ] as const;
 
@@ -62,6 +62,7 @@ export type Experience = {
   end: string;
   period: string;
   current?: boolean;
+  internship?: boolean;
   summary: string;
   highlights: { title: string; body: string }[];
   stack: string[];
@@ -116,11 +117,12 @@ export const experiences: Experience[] = [
   },
   {
     company: "CXDeployer",
-    role: "Software Developer",
-    location: "Bengaluru, IN",
+    role: "Software Developer Intern",
+    location: "Remote",
     start: "2021-08",
     end: "2021-09",
     period: "Aug 2021 — Sep 2021",
+    internship: true,
     summary:
       "Built customer journey tooling and the authentication layer for a CX platform.",
     highlights: [
@@ -138,6 +140,58 @@ export const experiences: Experience[] = [
       },
     ],
     stack: ["React", "Redux Toolkit", "Express.js", "MongoDB", "JWT"],
+  },
+  {
+    company: "A Plus Topper",
+    role: "Frontend Developer Intern",
+    location: "Remote",
+    start: "2021-03",
+    end: "2021-06",
+    period: "Mar 2021 — Jun 2021",
+    internship: true,
+    summary:
+      "First frontend role — connected a React interface to an existing Django backend and built the patterns the app used to talk back to its users.",
+    highlights: [
+      {
+        title: "React ↔ Django integration",
+        body: "Wired the React frontend to the Django REST API with Axios, handling loading and error states for each call so a failed request showed up in the interface instead of only in the console.",
+      },
+      {
+        title: "Notification and modal layer",
+        body: "Built reusable notification modals for confirmations, validation errors and async results, replacing one-off alerts with a single pattern the rest of the screens reused.",
+      },
+    ],
+    stack: ["React", "JavaScript", "Django", "REST APIs", "Axios"],
+  },
+  {
+    company: "Next Generation Technocom",
+    role: "Software Developer Intern — Team Lead",
+    location: "Remote",
+    start: "2020-06",
+    end: "2020-12",
+    period: "Jun 2020 — Dec 2020",
+    internship: true,
+    summary:
+      "Led a five-person team building an access management platform: single sign-on across data centres, directory-backed user management, and certificates for IoT devices.",
+    highlights: [
+      {
+        title: "Single sign-on across data centres",
+        body: "Ran the access management service on Kubernetes so SSO sessions stayed valid across cross-data-centre deployments, with autoscaling handling the load rather than fixed capacity.",
+      },
+      {
+        title: "Directory-backed user management",
+        body: "Built Node.js APIs over OpenLDAP covering user, group and permission operations — the create, update and deactivate flows every other part of the platform called into.",
+      },
+      {
+        title: "Certificates for IoT devices",
+        body: "Wrote Node.js APIs to generate and validate device certificates so IoT clients could authenticate to the platform without shared credentials.",
+      },
+      {
+        title: "Leading the team",
+        body: "Led a team of five — splitting the work, reviewing code and keeping the moving pieces aligned. First time leading engineers rather than just shipping alongside them.",
+      },
+    ],
+    stack: ["Node.js", "Kubernetes", "OpenLDAP", "SSO", "REST APIs"],
   },
 ];
 
@@ -245,6 +299,7 @@ export const skillGroups = [
       "tRPC",
       "oRPC",
       "Prisma",
+      "Django",
     ],
   },
   {
@@ -273,6 +328,8 @@ export const skillGroups = [
       "Netlify",
       "AWS EC2",
       "AWS S3",
+      "Kubernetes",
+      "OpenLDAP",
     ],
   },
   {
