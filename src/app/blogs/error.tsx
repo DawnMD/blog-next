@@ -1,40 +1,46 @@
 "use client"; // Error components must be Client Components
 
-import type { Metadata } from "next";
+import { Button, buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
 import { useEffect } from "react";
-export const metadata: Metadata = {
-  title: "Internal Error | Mainak Das",
-  description: " Something went wrong",
-};
 
 export default function Error({
   error,
   reset,
 }: {
-  error: Error;
+  error: Error & { digest?: string };
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
   }, [error]);
 
   return (
-    <main className="grid min-h-full place-items-center px-6 py-24 sm:py-32 lg:px-8">
-      <div className="text-center">
-        <p className="text-base font-semibold">500</p>
-        <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
-          Something went wrong!
-        </h1>
-        <div className="mt-10 flex items-center justify-center gap-x-6">
-          <button
-            onClick={reset}
-            className="bg-brand hover:bg-brand focus-visible:outline-brand rounded-md px-3.5 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-          >
-            Try again!
-          </button>
-        </div>
+    <div className="mx-auto grid max-w-5xl place-items-center px-5 py-28 text-center sm:px-8">
+      <p className="font-calSans text-brand text-sm tracking-[0.2em] uppercase">
+        Error
+      </p>
+      <h1 className="font-calSans mt-4 text-4xl tracking-tight text-neutral-50 sm:text-5xl">
+        Couldn&apos;t load the posts
+      </h1>
+      <p className="mt-5 max-w-md leading-relaxed text-neutral-400">
+        Something went wrong while fetching articles. It&apos;s probably
+        temporary — give it another go.
+      </p>
+      {error.digest ? (
+        <p className="mt-3 font-mono text-xs text-neutral-600">
+          Reference: {error.digest}
+        </p>
+      ) : null}
+      <div className="mt-9 flex flex-wrap justify-center gap-3">
+        <Button onClick={reset}>Try again</Button>
+        <Link
+          href="/"
+          className={buttonVariants({ variant: "secondary", size: "md" })}
+        >
+          Back home
+        </Link>
       </div>
-    </main>
+    </div>
   );
 }

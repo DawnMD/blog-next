@@ -1,0 +1,280 @@
+/**
+ * Single source of truth for everything résumé-derived on the site.
+ * Update this file when the CV changes and every page follows.
+ */
+
+export const siteConfig = {
+  name: "Mainak Das",
+  role: "Senior Full Stack Engineer",
+  tagline:
+    "I build fast, accessible, end-to-end type-safe products with React, Next.js and TypeScript.",
+  summary:
+    "Senior full stack developer with 5+ years of experience building and optimizing scalable web applications, AI-powered automation tools, and customer-facing products. I care about performance, accessibility, developer experience, and type safety that holds from the database all the way to the UI.",
+  location: "Bengaluru, India",
+  email: "mainakdas104@gmail.com",
+  phone: "+91 760 587 3677",
+  resumeUrl: "/mainak-das-resume.pdf",
+  avatar: "https://github.com/dawnmd.png",
+  availability: "Open to new opportunities",
+  url: "https://mainak.vercel.app",
+} as const;
+
+export const socials = [
+  {
+    name: "GitHub",
+    handle: "@DawnMD",
+    href: "https://github.com/DawnMD",
+    icon: "github",
+  },
+  {
+    name: "LinkedIn",
+    handle: "in/mainak1147",
+    href: "https://www.linkedin.com/in/mainak1147/",
+    icon: "linkedin",
+  },
+  {
+    name: "Twitter",
+    handle: "@mainak_ds",
+    href: "https://twitter.com/mainak_ds",
+    icon: "twitter",
+  },
+  {
+    name: "Email",
+    handle: siteConfig.email,
+    href: `mailto:${siteConfig.email}`,
+    icon: "mail",
+  },
+] as const;
+
+export type Social = (typeof socials)[number];
+
+export const stats = [
+  { label: "Years of experience", value: "5+" },
+  { label: "Engineers mentored & led", value: "3" },
+  { label: "Production platforms shipped", value: "6" },
+] as const;
+
+export type Experience = {
+  company: string;
+  role: string;
+  location: string;
+  start: string;
+  end: string;
+  period: string;
+  current?: boolean;
+  summary: string;
+  highlights: { title: string; body: string }[];
+  stack: string[];
+};
+
+export const experiences: Experience[] = [
+  {
+    company: "Codemancers",
+    role: "Software Developer",
+    location: "Bengaluru, IN",
+    start: "2021-10",
+    end: "2026-02",
+    period: "Oct 2021 — Feb 2026",
+    summary:
+      "Owned frontend architecture across several customer-facing products, led a small team, and pushed end-to-end type safety and testing into everything we shipped.",
+    highlights: [
+      {
+        title: "Slack standup bot",
+        body: "Designed and built a Slack-based standup automation platform with an audit dashboard using Next.js, TypeScript, Express, Prisma, Clerk and Slack Bolt. Established a reusable design system, end-to-end type safety, a monorepo architecture and Playwright E2E tests — improving developer productivity and release reliability.",
+      },
+      {
+        title: "Legacy platform modernization",
+        body: "Migrated a large production platform from Gatsby to Next.js and TypeScript. Improved SEO, removed duplicate data fetching, opened up CMS flexibility via Strapi, and optimized rendering with memoization and caching.",
+      },
+      {
+        title: "Customer experience enhancements",
+        body: "Shipped add-on features with React, Radix UI and Tailwind CSS, optimized through lazy loading and code splitting, and covered by Jest, Playwright and React Testing Library.",
+      },
+      {
+        title: "Points-based redemption system",
+        body: "Built a points-based rewards platform with React, Express and PostgreSQL enabling seamless customer redemption workflows, backed by comprehensive Jest and SuperTest coverage.",
+      },
+      {
+        title: "AI sales automation",
+        body: "Built backend APIs powering AI-driven sales workflows and CRM integrations with Salesforce and HubSpot — automating lead enrichment, insight generation and pipeline optimization.",
+      },
+      {
+        title: "Leadership & collaboration",
+        body: "Led a team of three engineers, ran code reviews, mentored juniors, and drove technical discussions for feature planning and architecture decisions with product and cross-functional teams.",
+      },
+    ],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Express",
+      "Prisma",
+      "PostgreSQL",
+      "Playwright",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    company: "CXDeployer",
+    role: "Software Developer",
+    location: "Bengaluru, IN",
+    start: "2021-08",
+    end: "2021-09",
+    period: "Aug 2021 — Sep 2021",
+    summary:
+      "Built customer journey tooling and the authentication layer for a CX platform.",
+    highlights: [
+      {
+        title: "Customer journey board",
+        body: "Developed customer journey visualization and Kanban management interfaces using React and Redux Toolkit, with dynamic form validation powered by React Hook Form.",
+      },
+      {
+        title: "User authentication",
+        body: "Implemented JWT-based authentication with Express.js and MongoDB, plus frontend auth and session handling with React, Redux, local storage, session storage and cookies.",
+      },
+      {
+        title: "UX improvements",
+        body: "Made sure errors and validation messages were surfaced clearly whenever anything in the application failed.",
+      },
+    ],
+    stack: ["React", "Redux Toolkit", "Express.js", "MongoDB", "JWT"],
+  },
+];
+
+export type Project = {
+  name: string;
+  tagline: string;
+  description: string;
+  href?: string;
+  repo?: string;
+  year: string;
+  featured?: boolean;
+  highlights: string[];
+  stack: string[];
+};
+
+export const projects: Project[] = [
+  {
+    name: "Tutor OS",
+    tagline: "Multi-tenant SaaS for tuition & coaching centers",
+    description:
+      "A production multi-tenant platform where owners run their centre — fees, attendance, exams, notes — and students get their own scoped view of the same data.",
+    href: "https://tutor-os-xi.vercel.app",
+    repo: "https://github.com/DawnMD",
+    year: "2026",
+    featured: true,
+    highlights: [
+      "Architected on Next.js 16 (App Router, React 19), TypeScript, oRPC and Prisma 7 over PostgreSQL (Neon) — end-to-end type safety from database to UI with no hand-written API types or fetch clients.",
+      "Organization-based multi-tenancy and RBAC (owner/admin vs. student) via Clerk, enforced at both the page and RPC layers, with role-branched routing that reuses shared routes and components.",
+      "Fee management with dues computed on the fly and never materialized, keeping owner and student views consistent — plus Razorpay payments with signature-verified webhooks.",
+      "Attendance tracking, session logging, exam grading and role-specific KPI dashboards with trend charts (Recharts), and a notes system with file attachments via UploadThing.",
+      "Server-first architecture: React Server Components, server-only auth guards and query prefetching.",
+    ],
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "oRPC",
+      "Prisma 7",
+      "PostgreSQL",
+      "Clerk",
+      "Razorpay",
+      "Recharts",
+    ],
+  },
+];
+
+export const skillGroups = [
+  {
+    title: "Frontend",
+    items: [
+      "React",
+      "Next.js",
+      "Gatsby",
+      "TypeScript",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Headless UI",
+      "TanStack Query",
+      "Redux",
+      "Zustand",
+      "Jotai",
+      "tRPC",
+    ],
+  },
+  {
+    title: "Backend",
+    items: [
+      "Node.js",
+      "Express.js",
+      "Next.js API Routes",
+      "REST APIs",
+      "tRPC",
+      "oRPC",
+      "Prisma",
+    ],
+  },
+  {
+    title: "Databases",
+    items: ["PostgreSQL", "Prisma ORM", "Drizzle ORM", "MongoDB"],
+  },
+  {
+    title: "Testing",
+    items: ["Jest", "React Testing Library", "Playwright", "Vitest", "SuperTest"],
+  },
+  {
+    title: "Tools & platforms",
+    items: [
+      "Salesforce",
+      "HubSpot",
+      "Slack Bolt",
+      "Bull.js",
+      "Strapi CMS",
+      "Git",
+      "Netlify",
+      "AWS EC2",
+      "AWS S3",
+    ],
+  },
+  {
+    title: "Also",
+    items: [
+      "AI/ML integration",
+      "Automation",
+      "Performance optimization",
+      "Accessibility",
+    ],
+  },
+] as const;
+
+/** Short list used for the scrolling marquee on the home page. */
+export const marqueeSkills = [
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Node.js",
+  "PostgreSQL",
+  "Prisma",
+  "tRPC",
+  "oRPC",
+  "Tailwind CSS",
+  "Playwright",
+  "TanStack Query",
+  "AWS",
+] as const;
+
+export const education = {
+  degree: "B.Tech, Computer Science Engineering",
+  institution: "Adamas University, Kolkata",
+  year: "2021",
+} as const;
+
+export const navigation = [
+  { name: "Home", href: "/" },
+  { name: "Work", href: "/work" },
+  { name: "About", href: "/about" },
+  { name: "Blogs", href: "/blogs" },
+  { name: "Testimonials", href: "/testimonials" },
+] as const;

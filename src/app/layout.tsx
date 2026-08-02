@@ -1,33 +1,65 @@
 import { Footer } from "@/components/shared/Footer";
 import { Header } from "@/components/shared/Header";
+import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
-import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Suspense } from "react";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL ?? "https://mainak.vercel.app",
-  ),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? siteConfig.url),
+  title: {
+    default: `${siteConfig.name} — ${siteConfig.role}`,
+    template: `%s · ${siteConfig.name}`,
+  },
+  description: siteConfig.summary,
+  keywords: [
+    "Mainak Das",
+    "Full Stack Engineer",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "PostgreSQL",
+  ],
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: `${siteConfig.name} — ${siteConfig.role}`,
+    description: siteConfig.tagline,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} — ${siteConfig.role}`,
+    description: siteConfig.tagline,
+    creator: "@mainak_ds",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#050505",
+  colorScheme: "dark",
 };
 
 function HeaderFallback() {
   return (
-    <header className="z-10 flex items-center justify-between px-4 py-8 sm:px-8 lg:px-16">
-      <div className="font-calSans text-2xl font-semibold text-neutral-50 lg:text-4xl">
-        <div className="h-8 w-10 lg:h-10 lg:w-16 rounded bg-neutral-800 animate-pulse" />
+    <div className="h-18" aria-hidden="true">
+      <div className="mx-auto flex h-full max-w-5xl items-center justify-between px-5 sm:px-8">
+        <div className="h-7 w-11 animate-pulse rounded bg-neutral-800" />
+        <div className="hidden h-10 w-96 animate-pulse rounded-full bg-neutral-800/60 md:block" />
+        <div className="h-9 w-24 animate-pulse rounded-full bg-neutral-800" />
       </div>
-      <nav className="hidden items-center gap-4 md:flex" aria-hidden="true">
-        {["Home", "About", "Blogs", "Testimonials"].map((name) => (
-          <span
-            key={name}
-            className="h-9 w-16 rounded bg-neutral-800 animate-pulse"
-          />
-        ))}
-      </nav>
-    </header>
+    </div>
   );
 }
 
@@ -57,6 +89,7 @@ const Matter = localFont({
       style: "normal",
     },
   ],
+  display: "swap",
   variable: "--font-matter",
 });
 
@@ -66,21 +99,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" id="top">
       <body
-        className={`${CalSans.variable} ${Matter.variable} bg-black font-sans antialiased`}
+        className={`${CalSans.variable} ${Matter.variable} bg-canvas font-sans text-neutral-400 antialiased`}
       >
-        <div className="flex min-h-dvh flex-col bg-neutral-900 text-neutral-400 sm:mx-auto sm:max-w-3xl lg:max-w-7xl">
+        <a
+          href="#main"
+          className="bg-brand sr-only rounded-full px-4 py-2 text-sm font-semibold text-neutral-950 focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100"
+        >
+          Skip to content
+        </a>
+
+        <div className="flex min-h-dvh flex-col">
           <Suspense fallback={<HeaderFallback />}>
             <Header />
           </Suspense>
-          <main className="grow px-4 pb-4 sm:px-8 lg:mx-auto lg:max-w-7xl lg:px-16">
+          <main id="main" className="grow">
             {children}
           </main>
           <Footer />
-          <Analytics />
-          <SpeedInsights />
         </div>
+
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
