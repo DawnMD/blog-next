@@ -32,7 +32,7 @@ export function BlogCard({ blog }: { blog: BlogsResponseParsed }) {
         className="flex items-center gap-2 text-xs text-neutral-500"
       />
 
-      <h3 className="font-calSans mt-3 text-lg leading-snug text-neutral-100 transition-colors group-hover:text-brand">
+      <h3 className="font-calSans group-hover:text-brand mt-3 text-lg leading-snug text-neutral-100 transition-colors">
         <Link href={blogHref(blog)}>
           <span className="absolute inset-0 rounded-2xl" />
           {blog.title}
@@ -48,7 +48,11 @@ export function BlogCard({ blog }: { blog: BlogsResponseParsed }) {
         className="text-brand mt-5 inline-flex items-center gap-1 text-sm font-medium"
       >
         Read article
-        <svg viewBox="0 0 16 16" fill="none" className="size-4 stroke-current transition-transform duration-200 group-hover:translate-x-0.5">
+        <svg
+          viewBox="0 0 16 16"
+          fill="none"
+          className="size-4 stroke-current transition-transform duration-200 group-hover:translate-x-0.5"
+        >
           <path
             d="M6.75 5.75 9.25 8l-2.5 2.25"
             strokeWidth="1.5"

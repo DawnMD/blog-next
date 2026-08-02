@@ -101,7 +101,7 @@ export default function Home() {
       <section className="relative">
         <div
           aria-hidden="true"
-          className="dot-grid animate-glow pointer-events-none absolute -top-24 -left-24 -z-1 hidden size-96 opacity-40 [mask-image:radial-gradient(circle,black,transparent_70%)] lg:block"
+          className="dot-grid animate-glow pointer-events-none absolute -top-24 -left-24 -z-1 hidden size-96 [mask-image:radial-gradient(circle,black,transparent_70%)] opacity-40 lg:block"
         />
 
         <div className="grid items-center gap-12 lg:grid-cols-[1.5fr_1fr]">

@@ -54,15 +54,13 @@ export const Footer = () => {
                   <li key={social.name}>
                     <a
                       href={social.href}
-                      target={
-                        social.icon === "mail" ? undefined : "_blank"
-                      }
+                      target={social.icon === "mail" ? undefined : "_blank"}
                       rel="noopener noreferrer"
                       className="group inline-flex items-center gap-2 text-sm text-neutral-400 transition-colors hover:text-neutral-50"
                     >
                       <SocialIcon
                         name={social.icon}
-                        className="size-3.5 text-neutral-500 transition-colors group-hover:text-brand"
+                        className="group-hover:text-brand size-3.5 text-neutral-500 transition-colors"
                       />
                       {social.name}
                     </a>

@@ -155,6 +155,37 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    name: "Better Journal",
+    tagline:
+      "Private journaling with search, a calendar and a writing dashboard",
+    description:
+      'A journaling app built around the question "what did I actually write this year?" — a rich-text editor with autosave, full-text search across every entry, a month/week/day calendar of what was written when, and a dashboard that turns a year of writing into streaks, a contribution heatmap and word counts.',
+    href: "https://better-journal.vercel.app",
+    repo: "https://github.com/DawnMD/better-journal",
+    year: "2026",
+    featured: true,
+    highlights: [
+      "End-to-end typed RPC with oRPC over Prisma 7 and PostgreSQL — the client imports the router type, never the implementation, so a renamed field is a compile error at the call site rather than a runtime surprise.",
+      "Authorization expressed as a query predicate instead of a check on the result: ownership lives in the WHERE clause, so there is one round trip and no window in which a resource can change hands between the check and the write.",
+      "Timezone-correct day bucketing — the reader's zone is an explicit input and every day boundary goes through one helper, so a note written at 02:00 IST files under the right date instead of the previous one.",
+      "A month/week/day calendar backed by a single capped range query, with the selected day and view derived from the URL so back/forward navigates it and a day view is linkable.",
+      "Postgres full-text search via a generated tsvector column and GIN index — stemming, ranking and highlighted snippets with no second datastore to run or sync.",
+      "226 Vitest tests against a real Postgres rather than a mocked Prisma client, covering cross-tenant access, DST-boundary day windows and search ranking, with lint → typecheck → test → build in CI on every push.",
+    ],
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "oRPC",
+      "Prisma 7",
+      "PostgreSQL",
+      "Clerk",
+      "TanStack Query",
+      "Plate",
+      "Vitest",
+    ],
+  },
+  {
     name: "Tutor OS",
     tagline: "Multi-tenant SaaS for tuition & coaching centers",
     description:
@@ -222,7 +253,13 @@ export const skillGroups = [
   },
   {
     title: "Testing",
-    items: ["Jest", "React Testing Library", "Playwright", "Vitest", "SuperTest"],
+    items: [
+      "Jest",
+      "React Testing Library",
+      "Playwright",
+      "Vitest",
+      "SuperTest",
+    ],
   },
   {
     title: "Tools & platforms",

@@ -92,17 +92,7 @@ async function BlogArticleContent({ slug }: { slug: string }) {
         ) : null}
       </header>
 
-      <div
-        className="prose prose-neutral prose-invert mt-10 max-w-none
-          prose-headings:font-calSans prose-headings:tracking-tight prose-headings:text-neutral-50
-          prose-a:text-brand prose-a:decoration-brand/40 prose-a:underline-offset-4 hover:prose-a:decoration-brand
-          prose-strong:text-neutral-100
-          prose-code:rounded prose-code:bg-neutral-800/70 prose-code:px-1.5 prose-code:py-0.5 prose-code:font-normal prose-code:before:content-none prose-code:after:content-none
-          prose-pre:border prose-pre:border-line-soft prose-pre:bg-surface prose-pre:p-0
-          prose-blockquote:border-l-brand prose-blockquote:not-italic prose-blockquote:text-neutral-300
-          prose-img:rounded-xl prose-hr:border-line-soft
-          lg:prose-lg"
-      >
+      <div className="prose prose-neutral prose-invert prose-headings:font-calSans prose-headings:tracking-tight prose-headings:text-neutral-50 prose-a:text-brand prose-a:decoration-brand/40 prose-a:underline-offset-4 hover:prose-a:decoration-brand prose-strong:text-neutral-100 prose-code:rounded prose-code:bg-neutral-800/70 prose-code:px-1.5 prose-code:py-0.5 prose-code:font-normal prose-code:before:content-none prose-code:after:content-none prose-pre:border prose-pre:border-line-soft prose-pre:bg-surface prose-pre:p-0 prose-blockquote:border-l-brand prose-blockquote:not-italic prose-blockquote:text-neutral-300 prose-img:rounded-xl prose-hr:border-line-soft lg:prose-lg mt-10 max-w-none">
         <Markdown
           components={{
             code: ({ node, className, ...props }) => {

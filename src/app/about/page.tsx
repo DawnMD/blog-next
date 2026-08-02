@@ -118,8 +118,8 @@ export default function About() {
                 self-taught
               </strong>
               , which is probably why I care so much about developer experience
-              and about writing things down. I&apos;ve led a small team, run code
-              reviews, mentored juniors, and spent a lot of time arguing
+              and about writing things down. I&apos;ve led a small team, run
+              code reviews, mentored juniors, and spent a lot of time arguing
               constructively about architecture.
             </p>
             <p>
